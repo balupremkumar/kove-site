@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Balu, founder of Kove</title>
+  <meta name="description" content="I'm Balu. I build AI automation tools for NZ businesses from Christchurch. Here's why and how I work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kove.co.nz/about" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kove" />
+  <meta property="og:title" content="About — Balu, founder of Kove" />
+  <meta property="og:description" content="I'm Balu. I build AI automation tools for NZ businesses from Christchurch." />
+  <meta property="og:url" content="https://kove.co.nz/about" />
+  <meta property="og:image" content="https://kove.co.nz/og/page-about.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Balu, founder of Kove" />
+  <meta name="twitter:image" content="https://kove.co.nz/og/page-about.jpg" />
+  <link rel="stylesheet" href="styles-v2.css" />
+  <style>
+    .about-hero { padding: clamp(130px,18vh,200px) 0 clamp(40px,6vh,70px); }
+    .about-grid { display:grid; grid-template-columns:0.85fr 1.15fr; gap: clamp(36px,5vw,64px); align-items:center; }
+    .portrait { aspect-ratio:4/5; border-radius:22px; border:1px solid var(--line); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
+      background: radial-gradient(circle at 30% 22%, rgba(67,166,245,0.16), transparent 55%), linear-gradient(160deg,#101a2b,#080d15); }
+    .portrait::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 130px rgba(0,0,0,0.6); pointer-events:none; }
+    .portrait .mono { font-family:var(--font-display); font-size:11rem; font-weight:700; letter-spacing:-0.06em; line-height:1;
+      background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .portrait .tag { position:absolute; bottom:20px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); }
+    .about-hero h1 { font-size:clamp(2.6rem,7vw,4.6rem); margin:16px 0 22px; }
+    .about-hero .lead { font-size:clamp(1.15rem,1.9vw,1.45rem); color:var(--text); font-weight:400; max-width:42ch; }
+    @media (max-width:860px){ .about-grid { grid-template-columns:1fr; gap:36px; } .portrait { max-width:320px; } }
+
+    .showcase { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .sc { padding:30px; }
+    .sc:hover { border-color:var(--line-strong); transform:translateY(-4px); }
+    .sc h3 { font-size:1.2rem; margin-bottom:12px; }
+    .sc p { color:var(--muted); font-size:.98rem; margin-bottom:18px; }
+    .sc .stack { font-family:var(--font-mono); font-size:.72rem; color:var(--faint); }
+    @media (max-width:860px){ .showcase { grid-template-columns:1fr; } }
+
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+    .principle .num { font-family:var(--font-mono); color:var(--ice); font-size:.82rem; margin-bottom:14px; }
+    .principle h3 { font-size:1.2rem; margin-bottom:12px; }
+    .principle p { color:var(--muted); }
+    @media (max-width:860px){ .principles { grid-template-columns:1fr; gap:26px; } }
+
+    .note { border-left:2px solid rgba(67,166,245,0.4); padding-left:20px; color:var(--faint); font-size:.92rem; font-style:italic; margin-top:24px; max-width:60ch; }
+  </style>
+</head>
+<body data-page="about">
+  <div id="nav-mount"></div>
+
+  <header class="about-hero" data-screen-label="About / Hero">
+    <div class="wrap about-grid">
+      <div class="portrait reveal"><span class="mono">B</span><span class="tag">Photo coming</span></div>
+      <div>
+        <span class="eyebrow reveal">About</span>
+        <h1 class="reveal" data-d="1">I'm Balu.</h1>
+        <p class="lead reveal" data-d="2">I build AI automation tools for NZ businesses. I work alone, I build the actual software, and I make sure your team can use it without me.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section-pad" style="padding-top:clamp(40px,6vh,72px)" data-screen-label="About / Story">
+    <div class="wrap-narrow prose">
+      <span class="eyebrow reveal">Why this exists</span>
+      <h2 class="reveal" data-d="1" style="margin-top:14px">The work was always 30% software, 70% craft</h2>
+      <p class="reveal">I spent years watching businesses spend thousands on software that sits unused. Tools bought because they were on a shortlist, deployed because someone approved a budget, abandoned because no one had time to make them work.</p>
+      <p class="reveal">The problem was never the tool. It was that no one was responsible for making it land — for shaping it to how the team actually works, for sitting next to people while they figured it out, for fixing the friction that always shows up in week two.</p>
+      <p class="reveal">So I started building the tools myself. And the more I built, the clearer it got: the work was always 30% software and 70% craft.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0" data-screen-label="About / Shipped">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Things I've shipped</span><h2 style="margin-top:12px">What I've built</h2></div>
+      <div class="showcase">
+        <a href="work-canterbury-lead-generator.html" class="glass sc reveal"><h3>Canterbury Lead Generator</h3><p>A multi-source pipeline that scrapes 14 NZ directories, enriches each lead with Claude, verifies emails and auto-drafts cold outreach. Replaced a full day of weekly research.</p><div class="stack">Python · Playwright · Claude · SQLite</div></a>
+        <a href="work-forge-crm.html" class="glass sc reveal" data-d="1"><h3>Forge</h3><p>A custom CRM built after every off-the-shelf tool felt too slow. Kanban-first, dark, fast. Custom fields, automation rules, dashboard. Used daily.</p><div class="stack">Node.js · SQLite · React</div></a>
+        <a href="work-voice-dictation.html" class="glass sc reveal" data-d="2"><h3>Voice Dictation</h3><p>A Windows app that records on a hotkey, transcribes with Whisper, and pastes into any app. Learns from corrections over time.</p><div class="stack">Python · Whisper · Win32</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0" data-screen-label="About / How I work">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">How I work</span><h2 style="margin-top:12px">Three things I hold to</h2></div>
+      <div class="principles">
+        <div class="principle reveal"><div class="num">01</div><h3>I build, I don't consult.</h3><p>You get working software, not a slide deck. If you can't run it on day 90, I haven't done my job.</p></div>
+        <div class="principle reveal" data-d="1"><div class="num">02</div><h3>You own everything.</h3><p>Source code in your GitHub. Credentials in your accounts. Hosting on your bill. No lock-in, ever.</p></div>
+        <div class="principle reveal" data-d="2"><div class="num">03</div><h3>Your team has to use it.</h3><p>I don't count a project done until adoption is real — training, docs, and being there to fix the friction.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0" data-screen-label="About / Background">
+    <div class="wrap-narrow prose">
+      <span class="eyebrow reveal">Background</span>
+      <h2 class="reveal" data-d="1" style="margin-top:12px">Where this comes from</h2>
+      <p class="reveal">By day I work in industry — automating internal processes that save my team thousands of hours a year, building internal tools that replaced expensive vendor software, and being the person who gets asked "can you just make this work?"</p>
+      <p class="reveal">Kove is what I do in the evenings and weekends — and where I'm taking the same approach to other NZ businesses.</p>
+      <p class="note reveal">Note for launch: fill in the specifics about the day-job role / industry framing here before this goes live.</p>
+    </div>
+  </section>
+
+  <section class="cta-strip" data-screen-label="About / CTA">
+    <div class="cta-glow"></div>
+    <div class="wrap">
+      <h2 class="reveal">Want to talk?</h2>
+      <p class="reveal" data-d="1">If you've got a workflow eating your team's time, I'd like to hear about it. The first call is free and there's no pitch.</p>
+      <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a 20-min call <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="site-v2.js"></script>
+</body>
+</html>

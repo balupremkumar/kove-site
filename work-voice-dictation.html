@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speech-to-text that pastes into any Windows app — Kove</title>
+  <meta name="description" content="A background Windows dictation tool: hotkey to record, local Whisper to transcribe, pastes into any focused app, and learns from corrections over time." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kove.co.nz/work/voice-dictation" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kove" />
+  <meta property="og:title" content="Speech-to-text that pastes into any Windows app — Kove" />
+  <meta property="og:description" content="A background Windows dictation tool that learns from corrections over time." />
+  <meta property="og:url" content="https://kove.co.nz/work/voice-dictation" />
+  <meta property="og:image" content="https://kove.co.nz/og/work-voice-dictation.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Speech-to-text that pastes into any Windows app — Kove" />
+  <meta name="twitter:image" content="https://kove.co.nz/og/work-voice-dictation.jpg" />
+  <link rel="stylesheet" href="styles-v2.css" />
+</head>
+<body data-page="work">
+  <div id="nav-mount"></div>
+
+  <header class="page-hero" style="padding-bottom:clamp(24px,4vh,40px)" data-screen-label="Case / Voice Dictation">
+    <div class="glow-a"></div>
+    <div class="wrap-narrow">
+      <a href="work.html" class="case-back reveal">← All work</a>
+      <span class="badge reveal">Personal productivity</span>
+      <h1 class="reveal" data-d="1" style="max-width:20ch">Speech-to-text that pastes into any Windows app</h1>
+      <div class="case-meta reveal" data-d="2">
+        <div><div class="label">Type</div><div class="val">Personal productivity tool</div></div>
+        <div><div class="label">Date</div><div class="val">May 2026</div></div>
+        <div><div class="label">Stack</div><div class="val">Python · Whisper · Win32</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="metric-strip reveal">
+        <div class="glass metric"><div class="num grad">&gt; 30w</div><div class="desc">faster than typing past this</div></div>
+        <div class="glass metric"><div class="num grad">46</div><div class="desc">unit tests</div></div>
+        <div class="glass metric"><div class="num grad">$0</div><div class="desc">local Whisper, offline</div></div>
+      </div>
+    </div>
+  </section>
+
+  <article style="padding-bottom:clamp(48px,7vh,80px)">
+    <div class="wrap-narrow prose">
+      <h2 class="reveal">The problem</h2>
+      <p class="reveal">I write a lot — emails, code comments, posts, this site. Typing is the bottleneck.</p>
+      <p class="reveal">Off-the-shelf dictation tools all required me to break flow — open a separate app, dictate, copy, paste. By the time I'd done that I could have typed it.</p>
+      <p class="reveal">I wanted: hit a hotkey, speak, release, have the text appear in whatever app I'm in. Like a fast assistant typing for me.</p>
+
+      <h2 class="reveal">What I built</h2>
+      <p class="reveal">A background Windows app:</p>
+      <p class="reveal"><strong>1. Listen.</strong> A tray app holds a global hotkey — press-and-hold to record, release to transcribe.</p>
+      <p class="reveal"><strong>2. Transcribe.</strong> A local Whisper model (small for speed, swap to medium for accuracy). All on-device — no API cost, no internet required.</p>
+      <p class="reveal"><strong>3. Paste.</strong> Win32 AttachThreadInput + simulated Ctrl+V drops the text into whatever window has focus — VS Code, browsers, Slack, Electron apps.</p>
+      <p class="reveal"><strong>4. Learn.</strong> A speech profile (SQLite) tracks corrections. After I fix the same word three times, it starts applying the correction automatically.</p>
+      <p class="reveal"><strong>5. Show feedback.</strong> The tray icon pulses while recording; a silence-countdown badge shows when it'll cut off; a confidence-bordered preview lets me review low-confidence transcriptions before pasting.</p>
+
+      <h2 class="reveal">The result</h2>
+      <p class="reveal"><strong>Faster than typing</strong> for messages over ~30 words. <strong>46 unit tests</strong> covering hotkey state, paste logic and profile learning. <strong>Free</strong> — local Whisper, no API cost, fully offline. Personal — but <strong>the pattern generalises</strong>: this is exactly the kind of small productivity tool I'd build for a client with a repetitive transcription or data-entry task.</p>
+      <h3 class="reveal">Tech used</h3>
+      <div class="chip-row reveal"><span class="chip">Python</span><span class="chip">Whisper</span><span class="chip">Tkinter (tray)</span><span class="chip">Win32 API</span><span class="chip">SQLite</span><span class="chip">pytest</span></div>
+    </div>
+  </article>
+
+  <section class="cta-strip" style="border-top:1px solid var(--line)" data-screen-label="Case / CTA">
+    <div class="cta-glow"></div>
+    <div class="wrap-narrow">
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,2.6rem)">Got a manual data-entry workflow draining your team?</h2>
+      <div class="reveal" data-d="1"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a Workflow Review <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="site-v2.js"></script>
+</body>
+</html>

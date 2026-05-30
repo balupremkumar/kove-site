@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kove — Icon Concepts (round 2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-v2.css" />
+  <style>
+    body { background: radial-gradient(1100px 640px at 82% -8%, rgba(63,107,255,0.12), transparent 60%), var(--bg); }
+    .doc-head { padding: clamp(80px,12vh,140px) 0 36px; }
+    .doc-head h1 { font-size: clamp(2.4rem,6.5vw,4.6rem); margin: 20px 0 16px; }
+    .doc-head .lead { max-width: 58ch; }
+    .principles-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:30px; }
+    .pchip { font-family:var(--font-mono); font-size:.72rem; color:var(--muted); border:1px solid var(--line); border-radius:100px; padding:8px 14px; }
+    .pchip b { color: var(--ice); font-weight:500; }
+
+    .concept { padding: clamp(56px,8vh,104px) 0; border-top: 1px solid var(--line); }
+    .c-grid { display:grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(32px,5vw,68px); align-items:center; }
+
+    .hero-stage {
+      position: relative; aspect-ratio: 1/1; border-radius: 26px; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      background: radial-gradient(120% 120% at 30% 18%, rgba(67,166,245,0.16), transparent 52%), linear-gradient(180deg,#0C1422,#070B12);
+      border: 1px solid var(--line);
+    }
+    .hero-stage::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 130px rgba(0,0,0,0.55); pointer-events:none; }
+    .hero-stage svg { width: 52%; height: 52%; overflow: visible; }
+
+    .c-num { font-family:var(--font-mono); color:var(--ice); letter-spacing:.2em; font-size:.78rem; }
+    .c-name { font-size: clamp(2rem,4.4vw,3.2rem); margin: 12px 0 6px; }
+    .c-style { color:var(--muted); font-family:var(--font-mono); font-size:.8rem; margin-bottom:20px; }
+    .c-style b { color: var(--ice); font-weight:500; }
+    .c-body { color: var(--muted); font-size: 1.06rem; line-height:1.62; max-width:50ch; margin-bottom: 22px; }
+    .c-body strong { color: var(--text); font-weight:600; }
+    .hook { display:flex; gap:11px; align-items:flex-start; background: rgba(67,166,245,0.06); border:1px solid rgba(67,166,245,0.16); border-radius:12px; padding:14px 16px; margin-bottom:24px; }
+    .hook svg { flex-shrink:0; color: var(--ice); margin-top:1px; }
+    .hook p { font-size:.92rem; color:var(--text); margin:0; }
+    .hook p b { color: var(--ice); }
+
+    .specimens { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .spec { display:flex; flex-direction:column; align-items:center; gap:9px; }
+    .spec .cap { font-family:var(--font-mono); font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
+    .tile { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
+    .tile.dark { background: linear-gradient(160deg,#0E1828,#080D16); border:1px solid var(--line-strong); }
+    .tile.grad { background: var(--accent-grad); }
+    .tile.light { background:#F4F6FA; }
+    .tile.tiny { width:30px; height:30px; border-radius:8px; }
+    .wm { display:flex; align-items:center; gap:3px; font-family:var(--font-display); font-weight:700; font-size:1.7rem; letter-spacing:-0.05em; }
+    .wm.light-ink { color:#0B1320; }
+
+    @media (max-width: 880px){ .c-grid{ grid-template-columns:1fr; gap:30px; } .hero-stage{ max-width:380px; } }
+  </style>
+</head>
+<body data-screen-label="Icon Concepts v2">
+  <main class="wrap">
+    <header class="doc-head">
+      <span class="eyebrow">Brand · icon round 2</span>
+      <h1>Marks that <span class="grad">stick</span>.</h1>
+      <p class="lead">Three bolder directions, each built the way Apple, Nike and FedEx build theirs — <strong style="color:var(--text);font-weight:500">one solid silhouette with a single hook</strong> you can't unsee. All pass the napkin test, all work in one ink colour, all hold up at favicon size.</p>
+      <div class="principles-row">
+        <span class="pchip"><b>Symbol</b> · a bite (Apple)</span>
+        <span class="pchip"><b>Motion</b> · a swoosh (Nike)</span>
+        <span class="pchip"><b>Hidden letter</b> · negative space (FedEx)</span>
+      </div>
+    </header>
+
+    <!-- ===== A — COVE ===== -->
+    <section class="concept" data-screen-label="Icon A — Cove">
+      <div class="c-grid">
+        <div class="hero-stage reveal">
+          <svg viewBox="0 0 120 120" aria-label="Cove mark">
+            <defs>
+              <linearGradient id="gA" x1="14" y1="14" x2="106" y2="106" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AE9FF"/><stop offset="0.5" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/></linearGradient>
+              <mask id="mA"><circle cx="58" cy="60" r="46" fill="#fff"/><circle cx="112" cy="60" r="30" fill="#000"/></mask>
+            </defs>
+            <rect width="120" height="120" fill="url(#gA)" mask="url(#mA)"/>
+            <circle cx="95" cy="60" r="7" fill="url(#gA)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">ICON A</div>
+          <h2 class="c-name">Cove</h2>
+          <div class="c-style">// the bay, bitten in — <b>symbolic, like Apple</b></div>
+          <p class="c-body">A single confident disc with a <strong>sheltered bay scooped out of one side</strong>, and a small vessel resting safely in the mouth of it. One solid shape, one idea: <strong>a harbour for your operations.</strong></p>
+          <div class="hook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6a6 6 0 1 0 6 6"/></svg>
+            <p><b>The hook:</b> like Apple's bite — the curve carved out of the circle is the thing people remember. The little boat makes it unmistakably a cove, not a Pac-Man.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile dark"><svg width="36" height="36" viewBox="0 0 120 120"><defs><mask id="mA2"><circle cx="58" cy="60" r="46" fill="#fff"/><circle cx="112" cy="60" r="30" fill="#000"/></mask></defs><rect width="120" height="120" fill="url(#gA)" mask="url(#mA2)"/><circle cx="95" cy="60" r="7" fill="url(#gA)"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile dark tiny"><svg width="18" height="18" viewBox="0 0 120 120"><defs><mask id="mA3"><circle cx="58" cy="60" r="46" fill="#fff"/><circle cx="112" cy="60" r="30" fill="#000"/></mask></defs><rect width="120" height="120" fill="url(#gA)" mask="url(#mA3)"/><circle cx="95" cy="60" r="7" fill="url(#gA)"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="36" height="36" viewBox="0 0 120 120"><defs><mask id="mA4"><circle cx="58" cy="60" r="46" fill="#fff"/><circle cx="112" cy="60" r="30" fill="#000"/></mask></defs><rect width="120" height="120" fill="#0B1320" mask="url(#mA4)"/><circle cx="95" cy="60" r="7" fill="#0B1320"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120"><defs><mask id="mA5"><circle cx="58" cy="60" r="46" fill="#fff"/><circle cx="112" cy="60" r="30" fill="#000"/></mask></defs><rect width="120" height="120" fill="url(#gA)" mask="url(#mA5)"/><circle cx="95" cy="60" r="7" fill="url(#gA)"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B — SWELL ===== -->
+    <section class="concept" data-screen-label="Icon B — Swell">
+      <div class="c-grid">
+        <div class="hero-stage reveal">
+          <svg viewBox="0 0 120 120" aria-label="Swell mark">
+            <defs><linearGradient id="gB" x1="16" y1="40" x2="108" y2="86" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#9AE9FF"/><stop offset="0.55" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/></linearGradient></defs>
+            <path fill="url(#gB)" d="M14 84 C30 50 58 36 104 30 C72 44 52 60 44 86 C40 98 22 98 14 84 Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">ICON B</div>
+          <h2 class="c-name">Swell</h2>
+          <div class="c-style">// flow + done, in one stroke — <b>abstract, like Nike</b></div>
+          <p class="c-body">One bold, asymmetric wave that rolls up and flicks — reading at once as <strong>a wave settling into a calm bay</strong> and as a <strong>checkmark</strong>. Pure motion: work flowing smoothly, the job done.</p>
+          <div class="hook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14c4-8 12-8 16-2"/><path d="M20 6l-4 12"/></svg>
+            <p><b>The hook:</b> a swoosh that's also a tick. Heavier on the left for forward momentum — the same trick that makes Nike's mark feel like it's moving.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile grad"><svg width="38" height="38" viewBox="0 0 120 120"><path fill="#06101D" d="M14 84 C30 50 58 36 104 30 C72 44 52 60 44 86 C40 98 22 98 14 84 Z"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile grad tiny"><svg width="20" height="20" viewBox="0 0 120 120"><path fill="#06101D" d="M14 84 C30 50 58 36 104 30 C72 44 52 60 44 86 C40 98 22 98 14 84 Z"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="38" height="38" viewBox="0 0 120 120"><path fill="#0B1320" d="M14 84 C30 50 58 36 104 30 C72 44 52 60 44 86 C40 98 22 98 14 84 Z"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="34" height="34" viewBox="0 0 120 120"><path fill="url(#gB)" d="M14 84 C30 50 58 36 104 30 C72 44 52 60 44 86 C40 98 22 98 14 84 Z"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== C — KEYSTONE ===== -->
+    <section class="concept" data-screen-label="Icon C — Keystone">
+      <div class="c-grid">
+        <div class="hero-stage reveal">
+          <svg viewBox="0 0 120 120" aria-label="Keystone mark">
+            <defs>
+              <linearGradient id="gC" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AE9FF"/><stop offset="0.55" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/></linearGradient>
+              <mask id="mC">
+                <rect x="10" y="10" width="100" height="100" rx="26" fill="#fff"/>
+                <path d="M44 32 V88" stroke="#000" stroke-width="11" stroke-linecap="round"/>
+                <path d="M50 62 L80 36" stroke="#000" stroke-width="11" stroke-linecap="round"/>
+                <path d="M50 60 Q78 74 82 90" stroke="#000" stroke-width="11" stroke-linecap="round"/>
+              </mask>
+            </defs>
+            <rect x="10" y="10" width="100" height="100" rx="26" fill="url(#gC)" mask="url(#mC)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">ICON C</div>
+          <h2 class="c-name">Keystone</h2>
+          <div class="c-style">// the K, hidden in the tile — <b>negative space, like FedEx</b></div>
+          <p class="c-body">A solid app-tile with the <strong>K cut clean out of the negative space</strong> — and its lower leg isn't straight, it <strong>curves away like the inner shore of a cove</strong>. The most app-native and "ownable" of the three.</p>
+          <div class="hook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4v16M5 13l8-9M5 12q9 3 9 8"/></svg>
+            <p><b>The hook:</b> the letter lives in the empty space, FedEx-style — and the curved leg is the cove. Reads as "K" instantly, rewards a second look.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile" style="background:transparent;border:none"><svg width="64" height="64" viewBox="0 0 120 120"><defs><mask id="mC2"><rect x="10" y="10" width="100" height="100" rx="26" fill="#fff"/><path d="M44 32 V88" stroke="#000" stroke-width="11" stroke-linecap="round"/><path d="M50 62 L80 36" stroke="#000" stroke-width="11" stroke-linecap="round"/><path d="M50 60 Q78 74 82 90" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs><rect x="10" y="10" width="100" height="100" rx="26" fill="url(#gC)" mask="url(#mC2)"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile tiny" style="background:transparent;border:none"><svg width="30" height="30" viewBox="0 0 120 120"><defs><mask id="mC3"><rect x="10" y="10" width="100" height="100" rx="26" fill="#fff"/><path d="M44 32 V88" stroke="#000" stroke-width="12" stroke-linecap="round"/><path d="M50 62 L80 36" stroke="#000" stroke-width="12" stroke-linecap="round"/><path d="M50 60 Q78 74 82 90" stroke="#000" stroke-width="12" stroke-linecap="round"/></mask></defs><rect x="10" y="10" width="100" height="100" rx="26" fill="url(#gC)" mask="url(#mC3)"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="44" height="44" viewBox="0 0 120 120" fill="none"><path d="M44 32 V88" stroke="#0B1320" stroke-width="12" stroke-linecap="round"/><path d="M50 62 L80 36" stroke="#0B1320" stroke-width="12" stroke-linecap="round"/><path d="M50 60 Q78 74 82 90" stroke="#0B1320" stroke-width="12" stroke-linecap="round"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120" fill="none"><path d="M44 32 V88" stroke="url(#gC)" stroke-width="13" stroke-linecap="round"/><path d="M50 62 L80 36" stroke="url(#gC)" stroke-width="13" stroke-linecap="round"/><path d="M50 60 Q78 74 82 90" stroke="url(#gC)" stroke-width="13" stroke-linecap="round"/></svg><span style="margin-left:1px">ove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept" style="text-align:center" data-screen-label="Icons — Next">
+      <span class="eyebrow reveal" style="justify-content:center">Your call</span>
+      <h2 class="reveal" data-d="1" style="margin-top:16px">Pick one and I'll make it the brand.</h2>
+      <p class="reveal" data-d="2" class="lead" style="color:var(--muted);max-width:48ch;margin:14px auto 0">Tell me A, B or C (or a blend). I'll drop it into the homepage, every page, the LinkedIn banner, OG images, favicon and signature.</p>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const els = [...document.querySelectorAll(".reveal")];
+      const force = (e)=>{ e.style.transition="none"; e.classList.add("in"); e.style.opacity="1"; e.style.transform="none"; e.style.filter="none"; };
+      if (reduce || !("IntersectionObserver" in window)) { els.forEach(force); return; }
+      const io = new IntersectionObserver((es)=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }),{threshold:.15});
+      els.forEach(e=>io.observe(e));
+      const t0 = document.timeline.currentTime;
+      setTimeout(()=>{ const frozen = document.timeline.currentTime===t0; if(frozen){els.forEach(force);return;} const vh=innerHeight; els.forEach(e=>{const r=e.getBoundingClientRect(); if(r.top<vh&&r.bottom>0)e.classList.add("in");}); },1000);
+      setTimeout(()=>els.forEach(e=>{ if(getComputedStyle(e).opacity==="0") force(e); }),2400);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Replaced 3 SaaS subscriptions with one custom CRM — Kove</title>
+  <meta name="description" content="Forge — a fast, dark, kanban-first CRM built after every off-the-shelf tool had too much friction. Retired 3 SaaS subscriptions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kove.co.nz/work/forge-crm" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kove" />
+  <meta property="og:title" content="Replaced 3 SaaS subscriptions with one custom CRM — Kove" />
+  <meta property="og:description" content="Forge — a fast, dark, kanban-first CRM. Retired 3 SaaS subscriptions." />
+  <meta property="og:url" content="https://kove.co.nz/work/forge-crm" />
+  <meta property="og:image" content="https://kove.co.nz/og/work-forge-crm.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Replaced 3 SaaS subscriptions with one custom CRM — Kove" />
+  <meta name="twitter:image" content="https://kove.co.nz/og/work-forge-crm.jpg" />
+  <link rel="stylesheet" href="styles-v2.css" />
+</head>
+<body data-page="work">
+  <div id="nav-mount"></div>
+
+  <header class="page-hero" style="padding-bottom:clamp(24px,4vh,40px)" data-screen-label="Case / Forge CRM">
+    <div class="glow-a"></div>
+    <div class="wrap-narrow">
+      <a href="work.html" class="case-back reveal">← All work</a>
+      <span class="badge reveal">Internal tool</span>
+      <h1 class="reveal" data-d="1" style="max-width:20ch">Replaced 3 SaaS subscriptions with one custom CRM</h1>
+      <div class="case-meta reveal" data-d="2">
+        <div><div class="label">Type</div><div class="val">Internal tool — my pipeline</div></div>
+        <div><div class="label">Date</div><div class="val">May 2026</div></div>
+        <div><div class="label">Stack</div><div class="val">Node.js · React · SQLite</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="metric-strip reveal">
+        <div class="glass metric"><div class="num grad">3</div><div class="desc">SaaS subscriptions retired</div></div>
+        <div class="glass metric"><div class="num grad">&lt; 1s</div><div class="desc">page load (Notion: 8s)</div></div>
+        <div class="glass metric"><div class="num grad">~3</div><div class="desc">weekends to build</div></div>
+      </div>
+    </div>
+  </section>
+
+  <article style="padding-bottom:clamp(48px,7vh,80px)">
+    <div class="wrap-narrow prose">
+      <h2 class="reveal">The problem</h2>
+      <p class="reveal">Every off-the-shelf CRM I tried had something that made me grit my teeth. Notion was slow. HubSpot was bloated. Pipedrive looked like 2014. Monday wanted $40 per user per month for features I'd already paid for three times over.</p>
+      <p class="reveal">What I needed wasn't complicated — a kanban view of leads, custom fields, a dashboard, follow-up reminders, automation when status changes. Every tool had 80% of that plus 200% of what I didn't want.</p>
+
+      <h2 class="reveal">What I built</h2>
+      <p class="reveal">Forge — a fast, dark, kanban-first CRM that does exactly what I need and nothing more.</p>
+      <h3 class="reveal">Core features</h3>
+      <p class="reveal"><strong>Multiple boards</strong> with custom stages · <strong>custom fields</strong> per board (text, number, date, select, person) · <strong>automation rules</strong> on every status change · <strong>dashboard</strong> with a 14-day activity sparkline · <strong>search</strong> across all items · <strong>drag-and-drop kanban</strong> with optimistic updates · a <strong>dark UI</strong> with emerald/amber/red signal colours · <strong>sub-1-second cold load</strong>.</p>
+      <h3 class="reveal">Notable decisions</h3>
+      <p class="reveal"><strong>node:sqlite</strong> over better-sqlite3, because native compile on Node 24 was a nightmare. <strong>Optimistic UI everywhere</strong> — perceived speed is the feature. SSR for the first paint, client-side after. No build step in dev.</p>
+
+      <h2 class="reveal">The result</h2>
+      <p class="reveal"><strong>3 SaaS subscriptions retired</strong> — Notion, Pipedrive, and a calendar tool. <strong>Under 1 second page load</strong> versus Notion's 8 for the same data. <strong>Used daily</strong> for lead pipeline (fed by the Lead Generator), project tracking and follow-ups. Total dev time: <strong>~3 weekends</strong>.</p>
+      <h3 class="reveal">Tech used</h3>
+      <div class="chip-row reveal"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">SQLite (node:sqlite)</span><span class="chip">React 18</span><span class="chip">Vite</span><span class="chip">Tailwind</span><span class="chip">@dnd-kit</span></div>
+    </div>
+  </article>
+
+  <section class="cta-strip" style="border-top:1px solid var(--line)" data-screen-label="Case / CTA">
+    <div class="cta-glow"></div>
+    <div class="wrap-narrow">
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,2.6rem)">Want a tool built for how your business actually works?</h2>
+      <div class="reveal" data-d="1"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a Workflow Review <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="site-v2.js"></script>
+</body>
+</html>

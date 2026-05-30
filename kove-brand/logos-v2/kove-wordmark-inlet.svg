@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="72" viewBox="0 0 260 72">
+  <defs>
+    <linearGradient id="g" x1="10" y1="8" x2="62" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A7ECFF"></stop><stop offset="0.5" stop-color="#48A9F6"></stop><stop offset="1" stop-color="#3F6BFF"></stop>
+    </linearGradient>
+    <mask id="m">
+      <rect x="8" y="8" width="56" height="56" rx="15" fill="#fff"></rect>
+      <circle cx="55" cy="28" r="17.5" fill="#000"></circle>
+      <circle cx="46.5" cy="38.5" r="5" fill="#fff"></circle>
+    </mask>
+  </defs>
+  <rect x="8" y="8" width="56" height="56" rx="15" fill="url(#g)" mask="url(#m)"></rect>
+  <text x="80" y="49" font-family="&#39;Schibsted Grotesk&#39;, system-ui, sans-serif" font-weight="700" font-size="42" letter-spacing="-2" fill="#EAF1F8">Kove</text>
+</svg>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kove — Logo Concepts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-v2.css" />
+  <style>
+    body { background: radial-gradient(1200px 700px at 80% -10%, rgba(63,107,255,0.12), transparent 60%), var(--bg); }
+
+    .doc-head { padding: clamp(80px,12vh,150px) 0 40px; }
+    .doc-head h1 { font-size: clamp(2.6rem, 7vw, 5rem); margin: 22px 0 18px; }
+    .doc-head .lead { max-width: 56ch; }
+
+    .legend { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .legend div { display: flex; flex-direction: column; gap: 4px; }
+    .legend .k { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+    .legend .v { color: var(--text); font-weight: 500; }
+    .swatches { display: flex; gap: 8px; margin-top: 4px; }
+    .swatches span { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--line-strong); }
+
+    /* concept block */
+    .concept { padding: clamp(64px,9vh,120px) 0; border-top: 1px solid var(--line); }
+    .concept-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(32px,5vw,72px); align-items: center; }
+    .stage {
+      position: relative; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        radial-gradient(120% 120% at 30% 20%, rgba(67,166,245,0.14), transparent 55%),
+        linear-gradient(180deg, #0B1320, #070B12);
+      border: 1px solid var(--line);
+    }
+    .stage::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 120px rgba(0,0,0,0.6); pointer-events:none; }
+    .stage svg.hero-mark { width: 56%; height: 56%; overflow: visible; }
+
+    .c-num { font-family: var(--font-mono); color: var(--ice); letter-spacing: .2em; font-size: .8rem; }
+    .c-name { font-size: clamp(2rem,4.4vw,3.4rem); margin: 14px 0 6px; }
+    .c-tag { color: var(--ice); font-family: var(--font-mono); font-size: .82rem; letter-spacing: .04em; margin-bottom: 22px; }
+    .c-body { color: var(--muted); font-size: 1.08rem; line-height: 1.65; max-width: 50ch; margin-bottom: 26px; }
+    .c-body strong { color: var(--text); font-weight: 600; }
+
+    .lockups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .lock {
+      border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      min-height: 96px; position: relative;
+    }
+    .lock .cap { position: absolute; top: 9px; left: 12px; font-family: var(--font-mono); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+    .lock.on-light { background: #F4F6FA; }
+    .lock.on-light .cap { color: #9aa3b0; }
+    .lock svg { overflow: visible; }
+    .wordmark { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.05em; font-size: 1.7rem; color: var(--text); display:flex; align-items:center; gap:2px; }
+    .wordmark.dark { color: #0B1320; }
+
+    .motion-note { margin-top: 22px; font-size: .9rem; color: var(--faint); display:flex; gap:10px; align-items:flex-start; }
+    .motion-note svg { flex-shrink:0; margin-top:2px; color: var(--ice); }
+
+    .closing { padding: clamp(64px,9vh,110px) 0; border-top: 1px solid var(--line); text-align:center; }
+    .closing h2 { max-width: 20ch; margin: 0 auto 18px; }
+    .closing p { color: var(--muted); max-width: 46ch; margin: 0 auto 30px; }
+
+    @media (max-width: 860px) {
+      .concept-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stage { max-width: 420px; }
+    }
+  </style>
+</head>
+<body data-screen-label="Logo Concepts">
+  <main class="wrap">
+
+    <header class="doc-head">
+      <span class="eyebrow">Brand exploration · v2</span>
+      <h1>Three marks for <span class="grad">Kove</span>.</h1>
+      <p class="lead">Every concept is built from one idea — <strong style="color:var(--text);font-weight:500">Kove ≈ cove</strong>: a sheltered bay, a safe harbour for your business's operations. No generic "tech" glyphs. Each works as a mark, a wordmark, an app icon, and in one ink colour.</p>
+      <div class="legend">
+        <div><span class="k">Palette</span><span class="v">Deep Cove</span>
+          <div class="swatches"><span style="background:#070B12"></span><span style="background:#111A29"></span><span style="background:#43A6F5"></span><span style="background:#9AE9FF"></span><span style="background:#57E5C6"></span></div>
+        </div>
+        <div><span class="k">Type</span><span class="v">Schibsted Grotesk + JetBrains Mono</span></div>
+        <div><span class="k">Feel</span><span class="v">Premium · cool · cinematic</span></div>
+      </div>
+    </header>
+
+    <!-- ============ CONCEPT 1 — HAVEN ============ -->
+    <section class="concept" data-screen-label="Concept 1 — Haven">
+      <div class="concept-grid">
+        <div class="stage reveal">
+          <svg class="hero-mark draw" viewBox="0 0 120 120" fill="none" aria-label="Haven mark">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AE9FF"/><stop offset="0.5" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/>
+              </linearGradient>
+              <radialGradient id="d1" cx="0.5" cy="0.4" r="0.6"><stop stop-color="#CFF3FF"/><stop offset="1" stop-color="#43A6F5"/></radialGradient>
+            </defs>
+            <!-- harbour wall: a broken ring, opening at the top (the cove mouth) -->
+            <path class="ring" d="M30 24 A48 48 0 1 0 90 24" stroke="url(#g1)" stroke-width="9" stroke-linecap="round"/>
+            <!-- the vessel, safe inside -->
+            <circle class="dot" cx="60" cy="64" r="11" fill="url(#d1)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">CONCEPT 01</div>
+          <h2 class="c-name">Haven</h2>
+          <div class="c-tag">// the sheltering harbour</div>
+          <p class="c-body">An almost-complete ring with a single opening at the top — the <strong>mouth of the cove</strong> — cradling a luminous vessel that sits safe inside. It says the thing the business is about: <strong>your operations, sheltered.</strong> Confident, minimal, unmistakable at any size — the Apple-grade option.</p>
+          <div class="lockups">
+            <div class="lock"><span class="cap">Wordmark</span>
+              <span class="wordmark">
+                <svg width="26" height="26" viewBox="0 0 120 120" fill="none"><path d="M30 24 A48 48 0 1 0 90 24" stroke="url(#g1)" stroke-width="11" stroke-linecap="round"/><circle cx="60" cy="64" r="12" fill="#9AE9FF"/></svg>ove
+              </span>
+            </div>
+            <div class="lock"><span class="cap">App icon</span>
+              <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(160deg,#0E1726,#070B12);border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center">
+                <svg width="30" height="30" viewBox="0 0 120 120" fill="none"><path d="M30 24 A48 48 0 1 0 90 24" stroke="url(#g1)" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="64" r="11" fill="#9AE9FF"/></svg>
+              </div>
+            </div>
+            <div class="lock on-light"><span class="cap">On light</span>
+              <span class="wordmark dark">
+                <svg width="26" height="26" viewBox="0 0 120 120" fill="none"><path d="M30 24 A48 48 0 1 0 90 24" stroke="#0B1320" stroke-width="11" stroke-linecap="round"/><circle cx="60" cy="64" r="12" fill="#0B1320"/></svg>ove
+              </span>
+            </div>
+          </div>
+          <div class="motion-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span>Motion: the ring draws itself from the cove mouth, then the vessel fades up with a soft ripple of light.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONCEPT 2 — TIDE ============ -->
+    <section class="concept" data-screen-label="Concept 2 — Tide">
+      <div class="concept-grid">
+        <div class="stage reveal">
+          <svg class="hero-mark tide" viewBox="0 0 120 120" fill="none" aria-label="Tide mark">
+            <defs>
+              <linearGradient id="g2" x1="10" y1="20" x2="110" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AE9FF"/><stop offset="0.6" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/>
+              </linearGradient>
+            </defs>
+            <circle class="t t0" cx="60" cy="28" r="6" fill="#9AE9FF"/>
+            <path class="t t1" d="M16 52 Q60 74 104 52" stroke="url(#g2)" stroke-width="7" stroke-linecap="round"/>
+            <path class="t t2" d="M26 66 Q60 86 94 66" stroke="url(#g2)" stroke-width="7" stroke-linecap="round" opacity="0.66"/>
+            <path class="t t3" d="M37 80 Q60 98 83 80" stroke="url(#g2)" stroke-width="7" stroke-linecap="round" opacity="0.42"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">CONCEPT 02</div>
+          <h2 class="c-name">Tide</h2>
+          <div class="c-tag">// depth contours of an inlet</div>
+          <p class="c-body">Stacked contour lines, like the <strong>depth chart of a cove</strong> on a nautical map — each layer a step closer to the safe centre. It reads as <strong>precision, mapping, and getting to the bottom of how your business actually works.</strong> The most ownable and the richest for animation.</p>
+          <div class="lockups">
+            <div class="lock"><span class="cap">Wordmark</span>
+              <span class="wordmark">
+                <svg width="26" height="22" viewBox="0 0 120 110" fill="none"><circle cx="60" cy="22" r="8" fill="url(#g2)"/><path d="M16 48 Q60 68 104 48" stroke="url(#g2)" stroke-width="9" stroke-linecap="round"/><path d="M27 64 Q60 82 93 64" stroke="url(#g2)" stroke-width="9" stroke-linecap="round" opacity="0.62"/><path d="M38 80 Q60 96 82 80" stroke="url(#g2)" stroke-width="9" stroke-linecap="round" opacity="0.38"/></svg>Kove
+              </span>
+            </div>
+            <div class="lock"><span class="cap">App icon</span>
+              <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(160deg,#0E1726,#070B12);border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center">
+                <svg width="32" height="28" viewBox="0 0 120 110" fill="none"><circle cx="60" cy="22" r="8" fill="url(#g2)"/><path d="M16 48 Q60 68 104 48" stroke="url(#g2)" stroke-width="9" stroke-linecap="round"/><path d="M27 64 Q60 82 93 64" stroke="url(#g2)" stroke-width="9" stroke-linecap="round" opacity="0.62"/><path d="M38 80 Q60 96 82 80" stroke="url(#g2)" stroke-width="9" stroke-linecap="round" opacity="0.38"/></svg>
+              </div>
+            </div>
+            <div class="lock on-light"><span class="cap">On light</span>
+              <span class="wordmark dark">
+                <svg width="26" height="22" viewBox="0 0 120 110" fill="none"><circle cx="60" cy="22" r="8" fill="#0B1320"/><path d="M16 48 Q60 68 104 48" stroke="#0B1320" stroke-width="9" stroke-linecap="round"/><path d="M27 64 Q60 82 93 64" stroke="#0B1320" stroke-width="9" stroke-linecap="round" opacity="0.58"/><path d="M38 80 Q60 96 82 80" stroke="#0B1320" stroke-width="9" stroke-linecap="round" opacity="0.34"/></svg>Kove
+              </span>
+            </div>
+          </div>
+          <div class="motion-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span>Motion: contours ripple outward in sequence like a tide; they gently undulate forever and parallax on scroll.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONCEPT 3 — KEEL ============ -->
+    <section class="concept" data-screen-label="Concept 3 — Keel">
+      <div class="concept-grid">
+        <div class="stage reveal">
+          <svg class="hero-mark keel" viewBox="0 0 120 120" fill="none" aria-label="Keel mark">
+            <defs>
+              <linearGradient id="g3" x1="20" y1="10" x2="100" y2="110" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AE9FF"/><stop offset="0.55" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/>
+              </linearGradient>
+            </defs>
+            <!-- stem -->
+            <path class="ks" d="M34 22 V98" stroke="url(#g3)" stroke-width="10" stroke-linecap="round"/>
+            <!-- upper diagonal -->
+            <path class="ku" d="M40 60 L82 24" stroke="url(#g3)" stroke-width="10" stroke-linecap="round"/>
+            <!-- lower leg as a cove curve sweeping like water -->
+            <path class="kl" d="M40 60 Q72 74 80 100" stroke="url(#g3)" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">CONCEPT 03</div>
+          <h2 class="c-name">Keel</h2>
+          <div class="c-tag">// the K, cut by a cove</div>
+          <p class="c-body">A precise geometric <strong>K</strong> where the lower leg isn't a straight stroke — it's a <strong>curved sweep, like the inner shore of a cove</strong> (or the keel of a boat that's found harbour). The most "logo-like" and corporate of the three; razor-sharp as a tiny favicon, strong on a business card.</p>
+          <div class="lockups">
+            <div class="lock"><span class="cap">Wordmark</span>
+              <span class="wordmark">
+                <svg width="22" height="26" viewBox="0 0 120 120" fill="none"><path d="M34 22 V98" stroke="url(#g3)" stroke-width="13" stroke-linecap="round"/><path d="M42 60 L84 24" stroke="url(#g3)" stroke-width="13" stroke-linecap="round"/><path d="M42 60 Q74 74 82 100" stroke="url(#g3)" stroke-width="13" stroke-linecap="round"/></svg><span style="margin-left:1px">ove</span>
+              </span>
+            </div>
+            <div class="lock"><span class="cap">App icon</span>
+              <div style="width:54px;height:54px;border-radius:14px;background:var(--accent-grad);display:flex;align-items:center;justify-content:center">
+                <svg width="30" height="30" viewBox="0 0 120 120" fill="none"><path d="M34 22 V98" stroke="#06101D" stroke-width="12" stroke-linecap="round"/><path d="M42 60 L84 24" stroke="#06101D" stroke-width="12" stroke-linecap="round"/><path d="M42 60 Q74 74 82 100" stroke="#06101D" stroke-width="12" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="lock on-light"><span class="cap">On light</span>
+              <span class="wordmark dark">
+                <svg width="22" height="26" viewBox="0 0 120 120" fill="none"><path d="M34 22 V98" stroke="#0B1320" stroke-width="13" stroke-linecap="round"/><path d="M42 60 L84 24" stroke="#0B1320" stroke-width="13" stroke-linecap="round"/><path d="M42 60 Q74 74 82 100" stroke="#0B1320" stroke-width="13" stroke-linecap="round"/></svg><span style="margin-left:1px">ove</span>
+              </span>
+            </div>
+          </div>
+          <div class="motion-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span>Motion: the three strokes draw in fast and decisive; the curved leg overshoots slightly, like settling into place.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" data-screen-label="Concepts — Next">
+      <span class="eyebrow reveal">Your call</span>
+      <h2 class="reveal" data-d="1" style="margin-top:18px">Which one is Kove?</h2>
+      <p class="reveal" data-d="2">Tell me your favourite (or a blend) and I'll roll it through the full site, the LinkedIn banner, OG images, favicon and email signature. The homepage revamp next door already shows the world it lives in.</p>
+      <div class="reveal" data-d="3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="index.html" class="btn btn-primary">See the homepage revamp <span class="arrow">→</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reveals = [...document.querySelectorAll(".reveal")];
+      const marks = [...document.querySelectorAll(".hero-mark")];
+
+      // Prepare marks (hide strokes) only when we intend to animate them.
+      if (!reduce) marks.forEach((svg) =>
+        svg.querySelectorAll("path").forEach((p) => {
+          const L = p.getTotalLength();
+          p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p.dataset.len = L;
+        }));
+
+      const showReveal = (e) => e.classList.add("in");
+      const drawMark = (svg) => {
+        if (svg.dataset.drawn) return; svg.dataset.drawn = "1";
+        svg.querySelectorAll("path").forEach((p, i) =>
+          p.animate([{ strokeDashoffset: p.dataset.len }, { strokeDashoffset: 0 }],
+            { duration: 1100, delay: 160 * i, easing: "cubic-bezier(0.16,1,0.3,1)", fill: "forwards" }));
+        const d = svg.querySelector("circle");
+        if (d) d.animate([{ opacity: 0, transform: "scale(0.4)" }, { opacity: 1, transform: "scale(1)" }],
+          { duration: 700, delay: 560, easing: "cubic-bezier(0.34,1.56,0.64,1)", fill: "both", transformOrigin: "center" });
+      };
+      // Direct final-state setters (no timeline needed) for frozen environments.
+      // Crucially set transition:none first — otherwise assigning opacity starts a
+      // (frozen) transition that's stuck at its 0 start value.
+      const forceReveal = (e) => { e.style.transition = "none"; e.classList.add("in"); e.style.opacity = "1"; e.style.transform = "none"; e.style.filter = "none"; };
+      const forceMark = (svg) => { svg.dataset.drawn = "1"; svg.querySelectorAll("path").forEach((p) => p.style.strokeDashoffset = "0"); const d = svg.querySelector("circle"); if (d) d.style.opacity = "1"; };
+
+      if (reduce || !("IntersectionObserver" in window)) {
+        reveals.forEach(forceReveal); marks.forEach(forceMark);
+      } else {
+        const rio = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { showReveal(en.target); rio.unobserve(en.target); } }), { threshold: 0.15 });
+        reveals.forEach((e) => rio.observe(e));
+        const mio = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { drawMark(en.target); mio.unobserve(en.target); } }), { threshold: 0.35 });
+        marks.forEach((s) => mio.observe(s));
+
+        // Frozen-timeline / dead-IO safety net.
+        const t0 = document.timeline.currentTime;
+        setTimeout(() => {
+          const frozen = document.timeline.currentTime === t0;
+          if (frozen) { reveals.forEach(forceReveal); marks.forEach(forceMark); return; }
+          const vh = innerHeight;
+          reveals.forEach((e) => { const r = e.getBoundingClientRect(); if (r.top < vh && r.bottom > 0) showReveal(e); });
+          marks.forEach((s) => { const r = s.getBoundingClientRect(); if (r.top < vh && r.bottom > 0) drawMark(s); });
+        }, 1100);
+        // Ultimate guarantee: anything still invisible after 2.4s gets forced.
+        setTimeout(() => {
+          reveals.forEach((e) => { if (getComputedStyle(e).opacity === "0") forceReveal(e); });
+          marks.forEach((s) => { if (!s.dataset.drawn) forceMark(s); });
+        }, 2400);
+      }
+
+      // Perpetual gentle undulation for Tide contours (real browsers only).
+      if (!reduce) {
+        const tide = document.querySelector(".hero-mark.tide");
+        if (tide) {
+          let t = 0; const paths = tide.querySelectorAll(".t");
+          (function loop() { t += 0.018; paths.forEach((p, i) => { p.style.transform = `translateY(${Math.sin(t + i * 0.7) * 2.4}px)`; }); requestAnimationFrame(loop); })();
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

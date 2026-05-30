@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kove — Sonar Variations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-v2.css" />
+  <style>
+    body { background: radial-gradient(1100px 640px at 82% -8%, rgba(63,107,255,0.13), transparent 60%), var(--bg); }
+    .doc-head { padding: clamp(80px,12vh,140px) 0 36px; }
+    .doc-head h1 { font-size: clamp(2.4rem,6.5vw,4.6rem); margin: 20px 0 16px; }
+    .doc-head .lead { max-width: 60ch; }
+
+    .concept { padding: clamp(56px,8vh,104px) 0; border-top: 1px solid var(--line); }
+    .c-grid { display:grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(32px,5vw,72px); align-items:center; }
+
+    .stage {
+      position: relative; aspect-ratio: 1/1; border-radius: 28px; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      background: radial-gradient(130% 130% at 28% 16%, rgba(67,166,245,0.16), transparent 52%), linear-gradient(180deg,#0D1524,#070B12);
+      border: 1px solid var(--line);
+    }
+    .stage::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 140px rgba(0,0,0,0.5); pointer-events:none; z-index:5; }
+    .stage .mk { width: 56%; height: 56%; overflow: visible; position:relative; z-index:2; filter: drop-shadow(0 16px 36px rgba(67,130,245,0.3)); }
+
+    .c-num { font-family:var(--font-mono); color:var(--ice); letter-spacing:.2em; font-size:.78rem; }
+    .c-name { font-size: clamp(2rem,4.4vw,3.2rem); margin: 12px 0 6px; }
+    .c-style { color:var(--muted); font-family:var(--font-mono); font-size:.8rem; margin-bottom:20px; }
+    .c-style b { color: var(--ice); font-weight:500; }
+    .c-body { color: var(--muted); font-size: 1.06rem; line-height:1.62; max-width:50ch; margin-bottom: 22px; }
+    .c-body strong { color: var(--text); font-weight:600; }
+    .anim-note { display:flex; gap:11px; align-items:flex-start; background: rgba(67,166,245,0.06); border:1px solid rgba(67,166,245,0.16); border-radius:12px; padding:14px 16px; margin-bottom:26px; }
+    .anim-note svg { flex-shrink:0; color: var(--ice); margin-top:1px; }
+    .anim-note p { font-size:.9rem; color:var(--text); margin:0; }
+    .anim-note p b { color: var(--ice); }
+
+    .specimens { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+    .spec { display:flex; flex-direction:column; align-items:center; gap:9px; }
+    .spec .cap { font-family:var(--font-mono); font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
+    .tile { width:66px; height:66px; border-radius:17px; display:flex; align-items:center; justify-content:center; }
+    .tile.dark { background: linear-gradient(160deg,#0F1A2C,#080D16); border:1px solid var(--line-strong); }
+    .tile.light { background:#F4F6FA; }
+    .tile.tiny { width:30px; height:30px; border-radius:8px; }
+    .wm { display:flex; align-items:center; gap:7px; font-family:var(--font-display); font-weight:700; font-size:1.7rem; letter-spacing:-0.05em; color: var(--text); }
+
+    /* ---------- shared sonar animation primitives ---------- */
+    .ping { transform-box: fill-box; transform-origin: center; opacity: 0; }
+    @keyframes ping { 0%{ transform: scale(.34); opacity:0; } 12%{ opacity:.75; } 100%{ transform: scale(2.5); opacity:0; } }
+    @keyframes corepulse { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.14); } }
+    .core-pulse { transform-box: fill-box; transform-origin: center; animation: corepulse 2.6s var(--ease-soft) infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes archy { 0%,100%{ transform: translateY(0); opacity:.55; } 50%{ transform: translateY(-3px); opacity:1; } }
+
+    /* radar sweep overlay */
+    .sweep { position:absolute; inset:14%; border-radius:50%; z-index:1;
+      background: conic-gradient(from 0deg, rgba(154,233,255,0.0) 0deg, rgba(154,233,255,0.0) 300deg, rgba(154,233,255,0.30) 350deg, rgba(154,233,255,0.55) 360deg);
+      mask: radial-gradient(circle, #000 64%, transparent 65%);
+      -webkit-mask: radial-gradient(circle, #000 64%, transparent 65%);
+      animation: spin 4.4s linear infinite; }
+
+    @media (prefers-reduced-motion: reduce) { .ping, .core-pulse, .sweep, .arc-rip { animation: none !important; } .ping { opacity:.25; } }
+    @media (max-width: 880px){ .c-grid{ grid-template-columns:1fr; gap:30px; } .stage{ max-width:380px; } }
+  </style>
+</head>
+<body data-screen-label="Sonar Variations">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="gS" x1="20" y1="20" x2="100" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A7ECFF"/><stop offset="0.5" stop-color="#43A6F5"/><stop offset="1" stop-color="#3F6BFF"/></linearGradient>
+  </defs></svg>
+
+  <main class="wrap">
+    <header class="doc-head">
+      <span class="eyebrow">Brand · Sonar variations</span>
+      <h1>Five takes on <span class="grad">Sonar</span>.</h1>
+      <p class="lead">You liked Sonar — depth soundings reading the shape of a cove. Here are five directions, each with motion where it adds something: a <strong style="color:var(--text);font-weight:500">radar ping</strong>, a <strong style="color:var(--text);font-weight:500">rotating sweep</strong>, <strong style="color:var(--text);font-weight:500">travelling ripples</strong>. Each still reads cleanly as a static logo and survives down to favicon size.</p>
+    </header>
+
+    <!-- 1 — RADAR -->
+    <section class="concept" data-screen-label="Sonar 1 — Radar">
+      <div class="c-grid">
+        <div class="stage reveal">
+          <svg class="mk" viewBox="0 0 120 120" fill="none" aria-label="Radar">
+            <circle class="ping" cx="60" cy="60" r="20" stroke="url(#gS)" stroke-width="6" style="animation: ping 2.8s ease-out infinite;"/>
+            <circle class="ping" cx="60" cy="60" r="20" stroke="url(#gS)" stroke-width="6" style="animation: ping 2.8s ease-out infinite; animation-delay: 1.4s;"/>
+            <circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="9" opacity="0.30"/>
+            <circle cx="60" cy="60" r="30" stroke="url(#gS)" stroke-width="9" opacity="0.55"/>
+            <circle class="core-pulse" cx="60" cy="60" r="13" fill="url(#gS)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">VARIATION 01</div>
+          <h2 class="c-name">Radar</h2>
+          <div class="c-style">// concentric rings, centred — <b>the cleanest logo</b></div>
+          <p class="c-body">Centred concentric rings around a pulsing core. By centring it, the RSS/wifi read disappears entirely — this is <strong>pure radar</strong>. The most balanced and timeless of the set; works as a perfect circle in any lockup.</p>
+          <div class="anim-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 8a4 4 0 0 1 4 4M12 4a8 8 0 0 1 8 8"/></svg>
+            <p><b>Animation:</b> a ping ring expands out from the core every ~1.4s while the core gently breathes. Loops forever, calm.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile dark"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="9" opacity="0.3"/><circle cx="60" cy="60" r="30" stroke="url(#gS)" stroke-width="9" opacity="0.55"/><circle cx="60" cy="60" r="13" fill="url(#gS)"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile dark tiny"><svg width="20" height="20" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="44" stroke="url(#gS)" stroke-width="11" opacity="0.45"/><circle cx="60" cy="60" r="15" fill="url(#gS)"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="#0B1320" stroke-width="9" opacity="0.3"/><circle cx="60" cy="60" r="30" stroke="#0B1320" stroke-width="9" opacity="0.55"/><circle cx="60" cy="60" r="13" fill="#0B1320"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="10" opacity="0.4"/><circle cx="60" cy="60" r="30" stroke="url(#gS)" stroke-width="10" opacity="0.6"/><circle cx="60" cy="60" r="14" fill="url(#gS)"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 — SWEEP -->
+    <section class="concept" data-screen-label="Sonar 2 — Sweep">
+      <div class="c-grid">
+        <div class="stage reveal">
+          <div class="sweep"></div>
+          <svg class="mk" viewBox="0 0 120 120" fill="none" aria-label="Sweep">
+            <circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="7" opacity="0.28"/>
+            <circle cx="60" cy="60" r="31" stroke="url(#gS)" stroke-width="7" opacity="0.5"/>
+            <line x1="60" y1="60" x2="60" y2="16" stroke="url(#gS)" stroke-width="3" opacity="0.4"/>
+            <line x1="60" y1="60" x2="104" y2="60" stroke="url(#gS)" stroke-width="3" opacity="0.4"/>
+            <circle class="core-pulse" cx="60" cy="60" r="11" fill="url(#gS)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">VARIATION 02</div>
+          <h2 class="c-name">Sweep</h2>
+          <div class="c-style">// radar screen, scanning — <b>the most alive</b></div>
+          <p class="c-body">The radar rings plus crosshairs, with a luminous sweep arm rotating around the dial. It says <strong>actively scanning, finding opportunities</strong> — perfect for a brand whose whole pitch is "I find what's slowing you down." Best as a hero/loader; the static version drops the sweep.</p>
+          <div class="anim-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3"/></svg>
+            <p><b>Animation:</b> a soft conic sweep rotates ~every 4.4s, catching each ring as it passes — like a real sonar display.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile dark"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="7" opacity="0.28"/><circle cx="60" cy="60" r="31" stroke="url(#gS)" stroke-width="7" opacity="0.5"/><circle cx="60" cy="60" r="11" fill="url(#gS)"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile dark tiny"><svg width="20" height="20" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="44" stroke="url(#gS)" stroke-width="10" opacity="0.45"/><circle cx="60" cy="60" r="14" fill="url(#gS)"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="#0B1320" stroke-width="7" opacity="0.3"/><circle cx="60" cy="60" r="31" stroke="#0B1320" stroke-width="7" opacity="0.55"/><circle cx="60" cy="60" r="11" fill="#0B1320"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="46" stroke="url(#gS)" stroke-width="8" opacity="0.4"/><circle cx="60" cy="60" r="31" stroke="url(#gS)" stroke-width="8" opacity="0.6"/><circle cx="60" cy="60" r="12" fill="url(#gS)"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 — RIPPLE -->
+    <section class="concept" data-screen-label="Sonar 3 — Ripple">
+      <div class="c-grid">
+        <div class="stage reveal">
+          <svg class="mk" viewBox="0 0 120 120" fill="none" aria-label="Ripple">
+            <circle class="core-pulse" cx="60" cy="26" r="8" fill="url(#gS)"/>
+            <path class="arc-rip" style="animation: archy 3s ease-in-out infinite;" d="M30 50 Q60 70 90 50" stroke="url(#gS)" stroke-width="9" stroke-linecap="round"/>
+            <path class="arc-rip" style="animation: archy 3s ease-in-out infinite; animation-delay:.4s;" d="M24 70 Q60 92 96 70" stroke="url(#gS)" stroke-width="9" stroke-linecap="round" opacity="0.62"/>
+            <path class="arc-rip" style="animation: archy 3s ease-in-out infinite; animation-delay:.8s;" d="M30 90 Q60 108 90 90" stroke="url(#gS)" stroke-width="9" stroke-linecap="round" opacity="0.36"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">VARIATION 03</div>
+          <h2 class="c-name">Ripple</h2>
+          <div class="c-style">// sun over a bay — <b>the warmest, most 'cove'</b></div>
+          <p class="c-body">A point of light above downward-opening arcs — sun over the surface of a sheltered bay, ripples spreading out beneath. The friendliest, most human read, and the clearest tie to the literal meaning of <strong>Kove</strong>.</p>
+          <div class="anim-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h2M19 12h2M12 3v2"/><circle cx="12" cy="13" r="4"/></svg>
+            <p><b>Animation:</b> the ripples rise and settle in sequence, top to bottom — water gently lapping. The sun breathes.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile dark"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="26" r="8" fill="url(#gS)"/><path d="M30 50 Q60 70 90 50" stroke="url(#gS)" stroke-width="9" stroke-linecap="round"/><path d="M24 70 Q60 92 96 70" stroke="url(#gS)" stroke-width="9" stroke-linecap="round" opacity="0.62"/><path d="M30 90 Q60 108 90 90" stroke="url(#gS)" stroke-width="9" stroke-linecap="round" opacity="0.36"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile dark tiny"><svg width="20" height="20" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="30" r="10" fill="url(#gS)"/><path d="M26 58 Q60 80 94 58" stroke="url(#gS)" stroke-width="11" stroke-linecap="round"/><path d="M32 82 Q60 100 88 82" stroke="url(#gS)" stroke-width="11" stroke-linecap="round" opacity="0.5"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="26" r="8" fill="#0B1320"/><path d="M30 50 Q60 70 90 50" stroke="#0B1320" stroke-width="9" stroke-linecap="round"/><path d="M24 70 Q60 92 96 70" stroke="#0B1320" stroke-width="9" stroke-linecap="round" opacity="0.6"/><path d="M30 90 Q60 108 90 90" stroke="#0B1320" stroke-width="9" stroke-linecap="round" opacity="0.35"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="27" r="8.5" fill="url(#gS)"/><path d="M28 54 Q60 74 92 54" stroke="url(#gS)" stroke-width="10" stroke-linecap="round"/><path d="M30 78 Q60 96 90 78" stroke="url(#gS)" stroke-width="10" stroke-linecap="round" opacity="0.55"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 — SOUNDING (original, refined) -->
+    <section class="concept" data-screen-label="Sonar 4 — Sounding">
+      <div class="c-grid">
+        <div class="stage reveal">
+          <svg class="mk" viewBox="0 0 120 120" fill="none" aria-label="Sounding">
+            <circle class="ping" cx="46" cy="78" r="14" stroke="url(#gS)" stroke-width="5" style="animation: ping 3s ease-out infinite; transform-origin: 46px 78px;"/>
+            <circle class="core-pulse" cx="46" cy="78" r="11" fill="url(#gS)" style="transform-origin:46px 78px;"/>
+            <path d="M46 56 A22 22 0 0 1 68 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round"/>
+            <path d="M46 38 A40 40 0 0 1 86 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round" opacity="0.6"/>
+            <path d="M46 20 A58 58 0 0 1 104 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round" opacity="0.32"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">VARIATION 04</div>
+          <h2 class="c-name">Sounding</h2>
+          <div class="c-style">// the original, refined — <b>directional &amp; bold</b></div>
+          <p class="c-body">The corner-anchored Sonar you first liked, kept but sharpened: bolder weights, a real focal core, and a ping so it doesn't sit still. The arcs radiate from one point — a sounding sent out into the deep. Distinctive and confident.</p>
+          <div class="anim-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20a16 16 0 0 1 16-16"/><circle cx="5" cy="19" r="1.5" fill="currentColor"/></svg>
+            <p><b>Animation:</b> a ping pulses out from the core along the arcs every ~3s. Subtle, premium, never distracting.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile dark"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="46" cy="78" r="11" fill="url(#gS)"/><path d="M46 56 A22 22 0 0 1 68 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round"/><path d="M46 38 A40 40 0 0 1 86 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round" opacity="0.6"/><path d="M46 20 A58 58 0 0 1 104 78" stroke="url(#gS)" stroke-width="11" stroke-linecap="round" opacity="0.32"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile dark tiny"><svg width="20" height="20" viewBox="0 0 120 120" fill="none"><circle cx="46" cy="78" r="12" fill="url(#gS)"/><path d="M46 54 A24 24 0 0 1 70 78" stroke="url(#gS)" stroke-width="12" stroke-linecap="round"/><path d="M46 32 A46 46 0 0 1 92 78" stroke="url(#gS)" stroke-width="12" stroke-linecap="round" opacity="0.5"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="38" height="38" viewBox="0 0 120 120" fill="none"><circle cx="46" cy="78" r="11" fill="#0B1320"/><path d="M46 56 A22 22 0 0 1 68 78" stroke="#0B1320" stroke-width="11" stroke-linecap="round"/><path d="M46 38 A40 40 0 0 1 86 78" stroke="#0B1320" stroke-width="11" stroke-linecap="round" opacity="0.6"/><path d="M46 20 A58 58 0 0 1 104 78" stroke="#0B1320" stroke-width="11" stroke-linecap="round" opacity="0.32"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120" fill="none"><circle cx="46" cy="78" r="12" fill="url(#gS)"/><path d="M46 55 A23 23 0 0 1 69 78" stroke="url(#gS)" stroke-width="12" stroke-linecap="round"/><path d="M46 34 A44 44 0 0 1 90 78" stroke="url(#gS)" stroke-width="12" stroke-linecap="round" opacity="0.5"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 — BEACON TILE -->
+    <section class="concept" data-screen-label="Sonar 5 — Beacon">
+      <div class="c-grid">
+        <div class="stage reveal">
+          <svg class="mk" viewBox="0 0 120 120" aria-label="Beacon tile">
+            <defs>
+              <linearGradient id="gBt" x1="12" y1="12" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A7ECFF"/><stop offset="0.5" stop-color="#48A9F6"/><stop offset="1" stop-color="#3F6BFF"/></linearGradient>
+            </defs>
+            <rect x="12" y="12" width="96" height="96" rx="26" fill="url(#gBt)"/>
+            <g fill="none" stroke="#08121F">
+              <circle class="ping" cx="60" cy="60" r="16" stroke-width="5" style="animation: ping 2.8s ease-out infinite; opacity:.0;"/>
+              <circle cx="60" cy="60" r="40" stroke-width="8" opacity="0.35"/>
+              <circle cx="60" cy="60" r="26" stroke-width="8" opacity="0.6"/>
+            </g>
+            <circle class="core-pulse" cx="60" cy="60" r="11" fill="#08121F"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-num">VARIATION 05</div>
+          <h2 class="c-name">Beacon</h2>
+          <div class="c-style">// Sonar in an app tile — <b>most app-native</b></div>
+          <p class="c-body">The radar rendered as <strong>ink on a solid gradient tile</strong> — the most modern, iOS-native shape. The rings sit knocked-out of the colour so it reads instantly on a home screen or in an app switcher, and pings on launch.</p>
+          <div class="anim-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="2"/></svg>
+            <p><b>Animation:</b> a ping ripples out across the tile every ~1.4s — ideal as an app-launch or favicon micro-animation.</p>
+          </div>
+          <div class="specimens">
+            <div class="spec"><div class="tile" style="background:transparent;border:none;width:66px;height:66px"><svg width="66" height="66" viewBox="0 0 120 120"><rect x="12" y="12" width="96" height="96" rx="26" fill="url(#gBt)"/><g fill="none" stroke="#08121F"><circle cx="60" cy="60" r="40" stroke-width="8" opacity="0.35"/><circle cx="60" cy="60" r="26" stroke-width="8" opacity="0.6"/></g><circle cx="60" cy="60" r="11" fill="#08121F"/></svg></div><span class="cap">Icon</span></div>
+            <div class="spec"><div class="tile tiny" style="background:transparent;border:none"><svg width="30" height="30" viewBox="0 0 120 120"><rect x="12" y="12" width="96" height="96" rx="26" fill="url(#gBt)"/><g fill="none" stroke="#08121F"><circle cx="60" cy="60" r="40" stroke-width="10" opacity="0.4"/></g><circle cx="60" cy="60" r="14" fill="#08121F"/></svg></div><span class="cap">Favicon</span></div>
+            <div class="spec"><div class="tile light"><svg width="40" height="40" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="44" stroke="#0B1320" stroke-width="8" opacity="0.35"/><circle cx="60" cy="60" r="28" stroke="#0B1320" stroke-width="8" opacity="0.6"/><circle cx="60" cy="60" r="12" fill="#0B1320"/></svg></div><span class="cap">Mono</span></div>
+            <div class="spec"><div class="wm"><svg width="30" height="30" viewBox="0 0 120 120"><rect x="12" y="12" width="96" height="96" rx="26" fill="url(#gBt)"/><g fill="none" stroke="#08121F"><circle cx="60" cy="60" r="40" stroke-width="9" opacity="0.4"/><circle cx="60" cy="60" r="26" stroke-width="9" opacity="0.62"/></g><circle cx="60" cy="60" r="11" fill="#08121F"/></svg><span>Kove</span></div><span class="cap">Lockup</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept" style="text-align:center" data-screen-label="Sonar — Next">
+      <span class="eyebrow reveal" style="justify-content:center">Your call</span>
+      <h2 class="reveal" data-d="1" style="margin-top:16px">Which Sonar is Kove?</h2>
+      <p class="reveal lead" data-d="2" style="color:var(--muted);max-width:50ch;margin:14px auto 0">Pick one — Radar, Sweep, Ripple, Sounding or Beacon — and I'll roll it (with its animation) through the nav, hero, favicon, banner and OG images.</p>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const els = [...document.querySelectorAll(".reveal")];
+      const force = (e)=>{ e.style.transition="none"; e.classList.add("in"); e.style.opacity="1"; e.style.transform="none"; e.style.filter="none"; };
+      if (reduce || !("IntersectionObserver" in window)) { els.forEach(force); return; }
+      const io = new IntersectionObserver((es)=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }),{threshold:.15});
+      els.forEach(e=>io.observe(e));
+      const t0 = document.timeline.currentTime;
+      setTimeout(()=>{ const frozen = document.timeline.currentTime===t0; if(frozen){els.forEach(force);return;} const vh=innerHeight; els.forEach(e=>{const r=e.getBoundingClientRect(); if(r.top<vh&&r.bottom>0)e.classList.add("in");}); },1000);
+      setTimeout(()=>els.forEach(e=>{ if(getComputedStyle(e).opacity==="0") force(e); }),2400);
+    })();
+  </script>
+</body>
+</html>
