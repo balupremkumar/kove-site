@@ -57,7 +57,7 @@
           </div>
           <div class="footer-cols">
             <div><h4>Sitemap</h4><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
-            <div><h4>Contact</h4><a href="mailto:balu@kove.nz">balu@kove.nz</a><a href="tel:+64211895800">021 189 5800</a><a href="#">LinkedIn</a></div>
+            <div><h4>Contact</h4><a href="mailto:balu@kove.nz">balu@kove.nz</a><a href="tel:+64211895800">021 189 5800</a><a href="https://www.linkedin.com/in/balu-prem-kumar-244b2050/" target="_blank" rel="noopener">LinkedIn</a></div>
           </div>
         </div>
         <div class="footer-bottom"><span>© 2026 Kove · Built in Christchurch</span><span>NZBN —</span></div>
