@@ -1,0 +1,39 @@
+# Kove
+
+> AI automation and workflow tools for Canterbury trades and professional services businesses. Based in Christchurch, New Zealand.
+
+Kove is a solo AI automation consultancy run by Balu Premkumar. I build custom automation tools, AI pipelines, and internal software for NZ businesses — primarily owner-operated trades and professional services companies in the Canterbury region with 5–20 staff.
+
+## What I do
+
+- **Workflow automation** — identifying manual, repetitive processes and replacing them with automated pipelines
+- **AI integration** — adding AI (Claude, Whisper, local LLMs) to existing business workflows
+- **Custom internal tools** — CRMs, dashboards, lead generation pipelines, document processing tools
+- **Process efficiency** — saving 5–20 hours per week of manual work per business
+
+## Who I work with
+
+Canterbury and NZ trades businesses (builders, plumbers, electricians, engineers), professional services firms (accountants, consultants, health sector), and owner-operators who are losing time to repetitive manual work.
+
+## Work examples
+
+- Canterbury Lead Generator — scrapes 14 NZ directories, enriches with Claude, saves 6+ hours/week of manual research
+- Forge CRM — custom kanban CRM replacing 3 SaaS subscriptions
+- Voice Dictation tool — hotkey speech-to-text into any Windows app using Whisper
+- Podcast Intelligence Pipeline — 7-stage AI pipeline (transcription → chapters → show notes → timestamps) with HIPC-compliant local backend for NZ health sector
+
+## Contact
+
+- Website: https://kove.nz
+- Email: balu@kove.nz
+- Phone: 021 189 5800
+- Location: Christchurch, Canterbury, New Zealand
+- LinkedIn: https://www.linkedin.com/in/balu-prem-kumar-244b2050/
+
+## Pages
+
+- /services — full list of automation services and pricing
+- /work — case studies
+- /about — background and approach
+- /contact — get in touch or book a call
+- /lp/workflow-review — free workflow review offer
