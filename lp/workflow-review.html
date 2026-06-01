@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Workflow Review — Kove</title>
+  <meta name="description" content="Book a free 90-minute Workflow Review with Balu at Kove. I'll find what to automate first and write it up — no pitch, no obligation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="../styles-v2.css" />
+  <style>
+    .lp-wrap { max-width: 680px; margin: 0 auto; padding: clamp(100px,16vh,160px) clamp(20px,5vw,40px) clamp(80px,12vh,120px); }
+    .lp-eyebrow { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .28em; text-transform: uppercase; color: var(--ice); margin-bottom: 28px; display: block; }
+    .lp-wrap h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 22px; }
+    .lp-wrap .lead { font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--muted); line-height: 1.58; margin-bottom: 44px; max-width: 56ch; }
+    .what-you-get { margin-bottom: 44px; padding: 28px 30px; border-left: 2px solid rgba(154,233,255,0.35); }
+    .what-you-get h2 { font-size: 1.1rem; margin-bottom: 16px; color: var(--text); letter-spacing: -0.02em; }
+    .what-you-get ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .what-you-get li { color: var(--muted); font-size: .98rem; padding-left: 20px; position: relative; }
+    .what-you-get li::before { content: "→"; position: absolute; left: 0; color: var(--ice); font-size: .88rem; }
+    .lp-form { background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border: 1px solid var(--line); border-radius: 18px; padding: clamp(28px,4vw,40px); }
+    .lp-form h2 { font-size: 1.35rem; margin-bottom: 24px; }
+    .small-print { font-size: .82rem; color: var(--faint); margin-top: 14px; text-align: center; }
+    .small-print a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+<body data-page="lp">
+
+  <main class="lp-wrap">
+    <span class="lp-eyebrow">Kove · Christchurch NZ</span>
+    <h1>Find out what to automate first — free.</h1>
+    <p class="lead">A 90-minute session. I look at how your business runs, find the work that's eating your time, and write up a plain-English plan. No pitch at the end. You can take the plan anywhere.</p>
+
+    <div class="what-you-get">
+      <h2>What you walk away with</h2>
+      <ul>
+        <li>A clear list of what to automate — ranked by time saved</li>
+        <li>A rough scope and cost estimate for each item</li>
+        <li>Honest advice on what's worth doing vs. what isn't</li>
+        <li>A written summary you keep, whatever happens next</li>
+      </ul>
+    </div>
+
+    <div class="lp-form">
+      <h2>Book your Workflow Review</h2>
+      <form id="lpForm" novalidate>
+        <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required autocomplete="name" /></div>
+        <div class="field"><label for="email">Work email</label><input type="email" id="email" name="email" required autocomplete="email" /></div>
+        <div class="field"><label for="phone">Phone <span class="opt">(optional — fastest way to reach you)</span></label><input type="tel" id="phone" name="phone" autocomplete="tel" /></div>
+        <div class="field"><label for="business">Business name &amp; industry</label><input type="text" id="business" name="business" required autocomplete="organization" /></div>
+        <div class="field"><label for="message">What's taking the most time in your business right now?</label><textarea id="message" name="message" maxlength="400" required></textarea></div>
+        <input type="text" class="honeypot" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" style="width:100%">Send request <span class="arrow">→</span></button>
+        <p class="small-print">I'll reply within 1 working day to lock in a time. <a href="../privacy.html">Privacy policy.</a></p>
+      </form>
+      <div id="lpSuccess" style="display:none; text-align:center; padding:32px 0">
+        <div style="width:52px;height:52px;border-radius:50%;background:rgba(87,229,198,0.12);color:#57E5C6;display:flex;align-items:center;justify-content:center;margin:0 auto 18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h2 style="font-size:1.6rem;margin-bottom:10px">Done — I'll be in touch.</h2>
+        <p style="color:var(--muted)">Expect a reply within 1 working day with a time that works.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const form = document.getElementById("lpForm");
+      const success = document.getElementById("lpSuccess");
+      const setInvalid = (f, bad) => f.closest(".field").classList.toggle("invalid", bad);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim());
+        let ok = true;
+        [[form.name, form.name.value.trim()], [form.business, form.business.value.trim()], [form.message, form.message.value.trim()]].forEach(([el, v]) => { if (!v) { setInvalid(el, true); ok = false; } else setInvalid(el, false); });
+        if (!emailOk) { setInvalid(form.email, true); ok = false; } else setInvalid(form.email, false);
+        if (form.company_url.value) return;
+        if (!ok) return;
+
+        const btn = document.getElementById("submitBtn");
+        btn.textContent = "Sending…"; btn.disabled = true;
+
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), phone: form.phone.value.trim(), business: form.business.value.trim(), message: `[Workflow Review LP]\n${form.message.value.trim()}`, company_url: form.company_url.value }),
+        })
+          .then((r) => r.ok ? r.json() : Promise.reject())
+          .then(() => { form.style.display = "none"; success.style.display = "block"; })
+          .catch(() => { btn.textContent = "Send request →"; btn.disabled = false; });
+      });
+    })();
+  </script>
+</body>
+</html>

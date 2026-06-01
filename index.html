@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kove — A sheltered harbour for your operations</title>
+  <title>Kove — Runs while you're on the tools.</title>
   <meta name="description" content="I build AI automation tools for Canterbury trades and professional services. Save your team 10+ hours a week. Christchurch, NZ." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href="https://kove.co.nz/" />
+  <link rel="canonical" href="https://kove.nz/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kove" />
-  <meta property="og:title" content="Kove — A sheltered harbour for your operations" />
+  <meta property="og:title" content="Kove — AI automation for Canterbury businesses" />
   <meta property="og:description" content="I build AI automation tools for Canterbury trades and professional services. Save your team 10+ hours a week." />
-  <meta property="og:url" content="https://kove.co.nz/" />
-  <meta property="og:image" content="https://kove.co.nz/og/kove-default.jpg" />
+  <meta property="og:url" content="https://kove.nz/" />
+  <meta property="og:image" content="https://kove.nz/og/kove-default.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kove — A sheltered harbour for your operations" />
-  <meta name="twitter:image" content="https://kove.co.nz/og/kove-default.jpg" />
+  <meta name="twitter:title" content="Kove — AI automation for Canterbury businesses" />
+  <meta name="twitter:image" content="https://kove.nz/og/kove-default.jpg" />
   <link rel="stylesheet" href="styles-v2.css" />
   <style>
     /* ===================== HERO ===================== */
@@ -153,13 +154,13 @@
     <div id="heroLight"></div>
 
     <div class="wrap">
-      <span class="eyebrow hero-tag reveal">AI automation · Christchurch NZ</span>
+      <span class="eyebrow hero-tag reveal">Runs while you're on the tools. · Christchurch NZ</span>
       <h1>
         <span class="line reveal" data-d="1">I automate the work</span>
         <span class="line reveal" data-d="2">that's <span class="grad">slowing your</span></span>
         <span class="line reveal" data-d="3">team down.</span>
       </h1>
-      <p class="hero-sub reveal" data-d="4">I build the kind of tools most consultants charge $50K for — then I hand them to your team and make sure they actually get used.</p>
+      <p class="hero-sub reveal" data-d="4">I build the kind of tools most consultants charge $50K for.<br>Then I hand them to your team and make sure they actually get used.</p>
       <div class="hero-ctas reveal" data-d="4">
         <a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a free 20-min call <span class="arrow">→</span></a>
         <a href="work.html" class="btn btn-ghost btn-lg">See the work</a>
@@ -221,9 +222,9 @@
 
       <div class="why-row">
         <div class="reveal">
-          <span class="why-num">01 — HANDS-ON</span>
-          <h3>I build it. I don't just advise.</h3>
-          <p>Most "AI consultants" sell you a roadmap and vanish. I write the code, deploy it, and sit with your team until it runs. If it doesn't work, that's on me.</p>
+          <span class="why-num">01 — OPEN BUILD</span>
+          <h3>You see every step of the build.</h3>
+          <p>The code, the logic, the documentation — all visible to you throughout. Not a black box handed over at the end. You're not waiting on a project queue or a junior staffer interpreting your brief. One person, accountable from day one.</p>
         </div>
         <div class="why-vis reveal" data-d="1"><span class="mono-tag">$ deploy --to production ✓</span></div>
       </div>
@@ -242,6 +243,14 @@
           <p>Source code, accounts, credentials, hosting. The day we finish, it's yours. No retainer required, no SaaS dependency I quietly control.</p>
         </div>
         <div class="why-vis reveal" data-d="1"><span class="mono-tag">your-github / your-keys / your-call</span></div>
+      </div>
+      <div class="why-row">
+        <div class="reveal">
+          <span class="why-num">04 — DATA STAYS YOURS</span>
+          <h3>Built for data that can't leave your walls.</h3>
+          <p>Some clients — legal, finance, regulated industries — can't send sensitive data to a cloud API. I build local-first pipelines that run entirely on your hardware. No third-party API calls for sensitive workloads. Air-gapped by design if you need it.</p>
+        </div>
+        <div class="why-vis reveal" data-d="1"><span class="mono-tag">air-gapped · local-llm · your-network</span></div>
       </div>
     </div>
   </section>
@@ -303,6 +312,38 @@
           <p>A background dictation tool that learns from corrections. Faster than typing, works in any focused Windows window.</p>
           <span class="pl">Read case study <span class="arrow">→</span></span>
         </a>
+        <a href="work-podcast-pipeline.html" class="glass work-card reveal" data-d="4">
+          <span class="badge badge--compliance">Health sector</span>
+          <h3>Podcast post-production, fully automated</h3>
+          <p>7-stage pipeline: upload audio, get chapters, show notes, timestamps and guest research back in minutes. Built with a local-only mode for HIPC-compliant processing — no audio leaves the network.</p>
+          <span class="pl">Read case study <span class="arrow">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section-pad" style="padding-top:0" data-screen-label="Home / FAQ">
+    <div class="wrap-narrow">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Common questions</span>
+        <h2 style="margin-top:12px">The usual doubts, answered straight.</h2>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Who owns the code?</h3>
+        <p class="muted">You do. Source code goes in your GitHub repo. Credentials and API keys go in your accounts. Hosting is on your bill. When we're done, you could never speak to me again and it would keep running. No retainer lock-in by design.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>What if it breaks?</h3>
+        <p class="muted">Every project has a 60-day warranty — I fix anything that breaks at no charge. Clients on a monthly retainer get same-day response. I also write proper docs and keep the stack plain, so your team can handle small things themselves.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Will this replace my staff?</h3>
+        <p class="muted">No. I build tools that handle the dull, repetitive work — the jobs people dread. Your team does less data entry and more of the work that actually needs a human. Every client who's asked this has come back saying their people are happier, not fewer.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How long does it take?</h3>
+        <p class="muted">A Workflow Review wraps up in one session. A full build is 4–8 weeks from kick-off to handover. I don't drag it out — I'd rather ship something working and iterate than spend months on a spec document.</p>
       </div>
     </div>
   </section>
@@ -312,7 +353,7 @@
     <div class="cta-glow" data-parallax="-0.05"></div>
     <div class="wrap">
       <h2 class="reveal">What would you do with 10 hours back this week?</h2>
-      <p class="reveal" data-d="1">Book a free 20-minute call. No pitch — I'll ask about your business and tell you what I'd automate first.</p>
+      <p class="reveal" data-d="1">Book a free 20-minute call. No pitch. I'll ask about your business and tell you what I'd automate first.</p>
       <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a call <span class="arrow">→</span></a></div>
     </div>
   </section>

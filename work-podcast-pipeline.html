@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7-stage podcast intelligence pipeline — Kove</title>
+  <meta name="description" content="Upload audio, get chapters, show notes, guest research and timestamps back in minutes. HIPC-compliant local backend for the NZ health sector." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kove.nz/work/podcast-pipeline" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kove" />
+  <meta property="og:title" content="7-stage podcast intelligence pipeline — Kove" />
+  <meta property="og:description" content="Upload audio, get chapters, show notes, guest research and timestamps back in minutes." />
+  <meta property="og:url" content="https://kove.nz/work/podcast-pipeline" />
+  <meta property="og:image" content="https://kove.nz/og/work-podcast-pipeline.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="7-stage podcast intelligence pipeline — Kove" />
+  <meta name="twitter:image" content="https://kove.nz/og/work-podcast-pipeline.jpg" />
+  <link rel="stylesheet" href="styles-v2.css" />
+</head>
+<body data-page="work">
+  <div id="nav-mount"></div>
+
+  <header class="page-hero" style="padding-bottom:clamp(24px,4vh,40px)" data-screen-label="Case / Podcast Pipeline">
+    <div class="glow-a"></div>
+    <div class="wrap-narrow">
+      <a href="work.html" class="case-back reveal">← All work</a>
+      <span class="badge reveal">AI tool</span>
+      <h1 class="reveal" data-d="1" style="max-width:22ch">7-stage podcast intelligence pipeline</h1>
+      <div class="case-meta reveal" data-d="2">
+        <div><div class="label">Type</div><div class="val">Internal tool — NZ health sector</div></div>
+        <div><div class="label">Date</div><div class="val">May 2026</div></div>
+        <div><div class="label">Stack</div><div class="val">Python · FastAPI · Claude API · Whisper</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="metric-strip reveal">
+        <div class="glass metric"><div class="num grad">7</div><div class="desc">stages, fully automated</div></div>
+        <div class="glass metric"><div class="num grad">~4 hrs</div><div class="desc">saved per episode</div></div>
+        <div class="glass metric"><div class="num grad">100%</div><div class="desc">HIPC-compliant local option</div></div>
+      </div>
+    </div>
+  </section>
+
+  <article style="padding-bottom:clamp(48px,7vh,80px)">
+    <div class="wrap-narrow prose">
+      <h2 class="reveal">The problem</h2>
+      <p class="reveal">Post-production for a one-hour podcast episode routinely takes 3–5 hours. Someone has to listen back, write show notes, pull timestamps, research guests, identify the best clips, and format everything for the feed. It's skilled work, but most of it is just patient attention — exactly the kind of task AI can take over.</p>
+      <p class="reveal">For a NZ health sector client, there was an added constraint: audio content included clinically sensitive material. Any cloud AI processing was off the table. The tool had to run locally and meet the Health Information Privacy Code (HIPC).</p>
+
+      <h2 class="reveal">What I built</h2>
+      <p class="reveal">A FastAPI backend with a 7-stage pipeline that turns a raw audio file into a complete, publish-ready package — all triggered from a single upload.</p>
+      <h3 class="reveal">The seven stages</h3>
+      <p class="reveal"><strong>1. Transcription</strong> — faster-whisper with speaker diarisation (pyannote.audio), outputs a timestamped, labelled transcript. <strong>2. Chapter detection</strong> — Claude Sonnet identifies natural topic breaks and writes chapter titles. <strong>3. Timestamps</strong> — exact in/out times extracted from the diarised transcript for every chapter. <strong>4. Guest research</strong> — guest names parsed from the transcript, cross-referenced against public sources, bio drafted. <strong>5. Highlight extraction</strong> — best 90-second clip identified for social promotion. <strong>6. Show notes</strong> — full, formatted show notes written from transcript + chapters. <strong>7. Voice studio</strong> — optional Chatterbox TTS step for narrated summaries and intro/outro generation.</p>
+      <h3 class="reveal">Dual backend for compliance</h3>
+      <p class="reveal">The pipeline has two modes controlled by a single config toggle. Cloud mode uses Claude Sonnet via the Anthropic API for fastest results. Local mode runs Qwen2.5-14B via LM Studio for fully air-gapped processing — no audio or transcript leaves the machine. The NZ health client runs local mode. The output format is identical either way.</p>
+
+      <h2 class="reveal">The result</h2>
+      <p class="reveal"><strong>~4 hours of manual post-production</strong> reduced to under 10 minutes of pipeline time plus a quick review pass. Every episode now ships with consistent show notes, accurate timestamps, and a research brief on the guest — work that used to get skipped when time was tight. The local backend option satisfied the client's HIPC obligations without any special procurement or legal review.</p>
+      <h3 class="reveal">Tech used</h3>
+      <div class="chip-row reveal"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">faster-whisper</span><span class="chip">pyannote.audio</span><span class="chip">Claude Sonnet</span><span class="chip">Qwen2.5-14B</span><span class="chip">Chatterbox TTS</span><span class="chip">Pedalboard</span></div>
+    </div>
+  </article>
+
+  <section class="cta-strip" style="border-top:1px solid var(--line)" data-screen-label="Case / CTA">
+    <div class="cta-glow"></div>
+    <div class="wrap-narrow">
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,2.6rem)">Got content that's piling up? I can automate the production side.</h2>
+      <div class="reveal" data-d="1"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a Workflow Review <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="site-v2.js"></script>
+</body>
+</html>
