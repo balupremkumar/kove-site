@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-NZ">
 <head>
   <meta charset="UTF-8" />
@@ -81,7 +81,8 @@
     .drift2 { animation: drift 18s ease-in-out infinite alternate-reverse; }
     @keyframes drift { from { transform: translateY(-8px); } to { transform: translateY(10px); } }
 
-    #heroLight { position: absolute; width: 460px; height: 460px; border-radius: 50%; transform: translate(-50%,-50%);
+    #heroLight { position: absolute; top: 0; left: 0; width: 460px; height: 460px; border-radius: 50%;
+      transform: translate(var(--lx, 50vw), var(--ly, 40vh)) translate(-50%,-50%);
       background: radial-gradient(circle, rgba(154,233,255,0.16), rgba(67,166,245,0.05) 40%, transparent 70%);
       pointer-events: none; opacity: 0; transition: opacity .5s; z-index: 1; mix-blend-mode: screen; }
 
@@ -404,6 +405,6 @@
   </section>
 
   <div id="footer-mount"></div>
-  <script src="site-v2.js"></script>
+  <script src="site-v2.js" defer></script>
 </body>
 </html>

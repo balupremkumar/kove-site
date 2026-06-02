@@ -169,8 +169,8 @@
     if (light && hero) {
       hero.addEventListener("pointermove", (e) => {
         const r = hero.getBoundingClientRect();
-        light.style.left = (e.clientX - r.left) + "px";
-        light.style.top = (e.clientY - r.top) + "px";
+        light.style.setProperty("--lx", (e.clientX - r.left) + "px");
+        light.style.setProperty("--ly", (e.clientY - r.top) + "px");
         light.style.opacity = "1";
       });
       hero.addEventListener("pointerleave", () => { light.style.opacity = "0"; });
