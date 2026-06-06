@@ -123,14 +123,20 @@
     @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; } }
 
     /* why rows */
-    .why-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 60px 0; border-top: 1px solid var(--line); }
+    .why-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 64px 0; border-top: 1px solid var(--line); }
     .why-row:nth-child(even) .why-vis { order: -1; }
-    .why-num { font-family: var(--font-mono); color: var(--ice); font-size: .8rem; letter-spacing: .1em; margin-bottom: 16px; display: block; }
-    .why-row h3 { font-size: clamp(1.5rem,2.6vw,2.1rem); margin-bottom: 14px; }
-    .why-row p { color: var(--muted); font-size: 1.1rem; max-width: 44ch; }
-    .why-vis { aspect-ratio: 5/4; border-radius: 18px; border: 1px solid var(--line); position: relative; overflow: hidden;
-      background: radial-gradient(120% 100% at 30% 10%, rgba(67,166,245,0.10), transparent 55%), linear-gradient(180deg, #0C1320, #080C14); display:flex; align-items:center; justify-content:center; }
-    .why-vis .mono-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--faint); letter-spacing: .04em; }
+    .why-num { font-family: var(--font-mono); color: var(--ice); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+    .why-row h3 { font-size: clamp(1.5rem,2.6vw,2.1rem); margin-bottom: 14px; position: relative; display: inline-block; }
+    .why-row h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--ice), transparent); transition: width .7s cubic-bezier(0.34,1.56,0.64,1); }
+    .why-row:hover h3::after { width: 100%; }
+    .why-row p { color: var(--muted); font-size: 1.05rem; max-width: 44ch; line-height: 1.7; margin-bottom: 16px; }
+    .why-detail { font-family: var(--font-mono); font-size: .76rem; color: var(--ice); opacity: .75; letter-spacing: .04em; }
+    .why-vis { aspect-ratio: 5/4; border-radius: 18px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; transition: border-color .4s, box-shadow .4s, transform .4s; }
+    .why-vis::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(67,166,245,0.08), transparent 65%); pointer-events: none; transition: opacity .5s; }
+    .why-vis:hover { border-color: var(--line-strong); box-shadow: var(--glow); transform: translateY(-4px); }
+    .why-vis:hover::before { opacity: 1.8; }
+    .why-badge { width: 80px; height: 80px; background: rgba(67,166,245,0.08); border: 1px solid rgba(154,233,255,0.22); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ice); letter-spacing: -.04em; position: relative; z-index: 2; transition: transform .5s cubic-bezier(0.34,1.56,0.64,1), box-shadow .5s, border-color .5s; }
+    .why-vis:hover .why-badge { transform: scale(1.08) translateY(-4px); box-shadow: 0 0 40px rgba(154,233,255,0.18); border-color: rgba(154,233,255,0.4); }
     @media (max-width: 820px) { .why-row { grid-template-columns: 1fr; gap: 28px; } .why-row:nth-child(even) .why-vis { order: 0; } }
 
     /* pricing */
@@ -268,35 +274,39 @@
 
       <div class="why-row">
         <div class="reveal">
-          <span class="why-num">01 — OPEN BUILD</span>
+          <span class="why-num">01 — Open Build</span>
           <h3>You see every step of the build.</h3>
           <p>The code, the logic, the documentation are all visible throughout. One person does the work, accountable from day one.</p>
+          <span class="why-detail">$ deploy --to production ✓</span>
         </div>
-        <div class="why-vis reveal" data-d="1"><span class="mono-tag">$ deploy --to production ✓</span></div>
+        <div class="glass why-vis reveal" data-d="1"><div class="why-badge">01</div></div>
       </div>
       <div class="why-row">
         <div class="reveal">
-          <span class="why-num">02 — NZ-SPECIFIC</span>
+          <span class="why-num">02 — NZ-Specific</span>
           <h3>I already know your stack.</h3>
           <p>Xero, Tradify, ServiceM8, MYOB, Workflow Max. I've integrated with all of them. I won't bill you to learn what your business runs on.</p>
+          <span class="why-detail">xero · tradify · servicem8 · myob</span>
         </div>
-        <div class="why-vis reveal" data-d="1"><span class="mono-tag">xero · tradify · servicem8 · myob</span></div>
+        <div class="glass why-vis reveal" data-d="1"><div class="why-badge">02</div></div>
       </div>
       <div class="why-row">
         <div class="reveal">
-          <span class="why-num">03 — NO LOCK-IN</span>
+          <span class="why-num">03 — No Lock-In</span>
           <h3>You own everything.</h3>
           <p>Source code, accounts, credentials, hosting. The day we finish, it's yours. No retainer required. No ongoing dependency.</p>
+          <span class="why-detail">your-github / your-keys / your-call</span>
         </div>
-        <div class="why-vis reveal" data-d="1"><span class="mono-tag">your-github / your-keys / your-call</span></div>
+        <div class="glass why-vis reveal" data-d="1"><div class="why-badge">03</div></div>
       </div>
       <div class="why-row">
         <div class="reveal">
-          <span class="why-num">04 — DATA STAYS YOURS</span>
+          <span class="why-num">04 — Data Stays Yours</span>
           <h3>Built for data that can't leave your walls.</h3>
           <p>Some clients — legal, finance, regulated industries — can't send sensitive data to a cloud API. I build local-first pipelines that run entirely on your hardware. No third-party API calls for sensitive workloads. Air-gapped by design if you need it.</p>
+          <span class="why-detail">air-gapped · local-llm · your-network</span>
         </div>
-        <div class="why-vis reveal" data-d="1"><span class="mono-tag">air-gapped · local-llm · your-network</span></div>
+        <div class="glass why-vis reveal" data-d="1"><div class="why-badge">04</div></div>
       </div>
     </div>
   </section>
