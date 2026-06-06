@@ -34,7 +34,7 @@
       <div class="case-meta reveal" data-d="2">
         <div><div class="label">Type</div><div class="val">Internal tool — NZ health sector</div></div>
         <div><div class="label">Date</div><div class="val">May 2026</div></div>
-        <div><div class="label">Stack</div><div class="val">Python · FastAPI · Claude API · Whisper</div></div>
+        <div><div class="label">Stack</div><div class="val">Python · FastAPI · Claude Sonnet · faster-whisper · Chatterbox TTS</div></div>
       </div>
     </div>
   </header>
@@ -52,13 +52,13 @@
   <article style="padding-bottom:clamp(48px,7vh,80px)">
     <div class="wrap-narrow prose">
       <h2 class="reveal">The problem</h2>
-      <p class="reveal">Post-production for a one-hour podcast episode routinely takes 3–5 hours. Someone has to listen back, write show notes, pull timestamps, research guests, identify the best clips, and format everything for the feed. It's skilled work, but most of it is just patient attention — exactly the kind of task AI can take over.</p>
+      <p class="reveal">Post-production for a one-hour podcast episode routinely takes 3–5 hours. Someone has to listen back, write show notes, pull timestamps, research guests, identify the best clips, and format everything for the feed. It's skilled work, but most of it is just patient attention. The kind AI handles well.</p>
       <p class="reveal">For a NZ health sector client, there was an added constraint: audio content included clinically sensitive material. Any cloud AI processing was off the table. The tool had to run locally and meet the Health Information Privacy Code (HIPC).</p>
 
       <h2 class="reveal">What I built</h2>
       <p class="reveal">A FastAPI backend with a 7-stage pipeline that turns a raw audio file into a complete, publish-ready package — all triggered from a single upload.</p>
       <h3 class="reveal">The seven stages</h3>
-      <p class="reveal"><strong>1. Transcription</strong> — faster-whisper with speaker diarisation (pyannote.audio), outputs a timestamped, labelled transcript. <strong>2. Chapter detection</strong> — Claude Sonnet identifies natural topic breaks and writes chapter titles. <strong>3. Timestamps</strong> — exact in/out times extracted from the diarised transcript for every chapter. <strong>4. Guest research</strong> — guest names parsed from the transcript, cross-referenced against public sources, bio drafted. <strong>5. Highlight extraction</strong> — best 90-second clip identified for social promotion. <strong>6. Show notes</strong> — full, formatted show notes written from transcript + chapters. <strong>7. Voice studio</strong> — optional Chatterbox TTS step for narrated summaries and intro/outro generation.</p>
+      <p class="reveal"><strong>1. Transcription</strong> — faster-whisper with VAD and word-level timestamps, producing a clean, time-coded transcript. <strong>2. Speaker diarisation</strong> — pyannote.audio identifies and labels each speaker across the full episode. <strong>3. Guest research</strong> — guest names extracted from the transcript, cross-referenced against public sources, bio drafted automatically. <strong>4. Show notes</strong> — Claude writes the full package: episode title, description, themes, notable moments with timestamps, key quotes. <strong>5. Chapter markers</strong> — Claude detects natural topic shifts, names each chapter, and outputs exact timecodes ready for your podcast host. <strong>6. Cold open</strong> — a punchy 30-second hook written by Claude and synthesised in the host's own cloned voice via Chatterbox TTS. <strong>7. Quality score</strong> — four dimensions rated (information density, pacing, clarity, memorable moments) with weak-segment flags so you know exactly what to tighten before publishing.</p>
       <h3 class="reveal">Dual backend for compliance</h3>
       <p class="reveal">The pipeline has two modes controlled by a single config toggle. Cloud mode uses Claude Sonnet via the Anthropic API for fastest results. Local mode runs Qwen2.5-14B via LM Studio for fully air-gapped processing — no audio or transcript leaves the machine. The NZ health client runs local mode. The output format is identical either way.</p>
 
