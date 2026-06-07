@@ -32,8 +32,8 @@ If something is genuinely missing or contradictory, flag it and continue with th
 - **Personal brand name:** Balu (single name in personal contexts, "Balu Premkumar" in formal contexts only)
 - **Tagline:** AI automation for NZ businesses
 - **Founder:** Balu Premkumar, Christchurch, NZ
-- **Domain:** kove.co.nz (one site, no separate personal domain)
-- **Email:** balu@kove.co.nz
+- **Domain:** kove.nz (one site, no separate personal domain)
+- **Email:** balu@kove.nz
 - **Phone:** [user to provide]
 - **Day job:** Industry referenced only — never named (NDA / professional courtesy)
 
@@ -190,14 +190,14 @@ If something is genuinely missing or contradictory, flag it and continue with th
 
 ---
 
-## 3. Site architecture — kove.co.nz
+## 3. Site architecture — kove.nz
 
 ### 3.1 Stack and infrastructure
 - **Framework:** Astro 4 (static-first, MDX for case studies)
 - **Styling:** Tailwind CSS + custom CSS variables for tokens
 - **Hosting:** Cloudflare Pages (free, automatic HTTPS, global CDN)
 - **Deploy:** GitHub → Cloudflare Pages auto-deploy on push to `main`
-- **Forms:** Cloudflare Pages Functions (serverless) → forwards to balu@kove.co.nz
+- **Forms:** Cloudflare Pages Functions (serverless) → forwards to balu@kove.nz
 - **Analytics:** Cloudflare Web Analytics (privacy-first, no cookies)
 - **Performance budget:** Lighthouse 95+ all categories, < 50kb initial JS
 
@@ -257,7 +257,7 @@ kove-site/
 - 3 columns desktop, stacked mobile:
   - Col 1: Kove wordmark + tagline + Christchurch, NZ
   - Col 2: Sitemap (Work, Services, About, Contact)
-  - Col 3: Contact — phone, email (balu@kove.co.nz), LinkedIn link
+  - Col 3: Contact — phone, email (balu@kove.nz), LinkedIn link
 - Bottom strip: `© 2026 Kove · Built in Christchurch · NZBN [number]`
 
 **Button.astro**
@@ -275,7 +275,7 @@ kove-site/
 **ContactForm.astro**
 - Fields: Name, Email, Phone (optional), Business name, "What's slowing your team down?" (textarea, required, 500 char limit)
 - Submission: POST to `/api/contact` (Cloudflare Pages Function)
-- Function sends email to balu@kove.co.nz via Resend or MailChannels (free)
+- Function sends email to balu@kove.nz via Resend or MailChannels (free)
 - Honeypot field for spam
 - Success state: replace form with `Thanks. I'll be in touch within 1 working day.`
 
@@ -714,7 +714,7 @@ Success state replaces form:
 
 > **Or skip the form**
 >
-> 📧 balu@kove.co.nz
+> 📧 balu@kove.nz
 > 📞 [phone number]
 > 📍 Christchurch, Canterbury, NZ
 >
@@ -730,7 +730,7 @@ Success state replaces form:
 
 H1: `Not here.`
 Sub: `That URL doesn't exist. Probably never did.`
-CTA: `← Back to kove.co.nz`
+CTA: `← Back to kove.nz`
 
 ---
 
@@ -753,7 +753,7 @@ CTA: `← Back to kove.co.nz`
 
 **Right side (bottom-right, 64px margin):**
 - Small Kove wordmark (amber, 18px)
-- Small text below (12px, #6B7280): `kove.co.nz`
+- Small text below (12px, #6B7280): `kove.nz`
 
 **Safe zones:**
 - Mobile crops to centre — keep important content within centre 1200px
@@ -799,12 +799,12 @@ I work three ways:
 
 If your team's losing hours to repetitive work, I'd like to hear about it.
 
-→ kove.co.nz
-→ balu@kove.co.nz
+→ kove.nz
+→ balu@kove.nz
 ```
 
 **Featured section (3 items, configure after site launches):**
-1. Link to kove.co.nz (image: OG image)
+1. Link to kove.nz (image: OG image)
 2. Link to /work/canterbury-lead-generator (image: case study OG image)
 3. Pinned post — your first strong LinkedIn post (see §5.4)
 
@@ -821,7 +821,7 @@ Recent work includes a multi-source lead generation pipeline, a custom CRM, and 
 
 Working with businesses of 5–20 staff across Canterbury who want to get serious about automation without locking themselves into agencies or SaaS subscriptions they don't understand.
 
-→ kove.co.nz
+→ kove.nz
 ```
 
 **Skills to add (top 10, in this order):**
@@ -1039,7 +1039,7 @@ Code patterns happily shared — DM me if you want to talk through how something
   <tr>
     <td style="padding-bottom: 12px;">
       <span style="font-size: 13px; color: #6B7280;">AI Automation Consultant · </span>
-      <a href="https://kove.co.nz" style="font-size: 13px; color: #F59E0B; text-decoration: none; font-weight: 600;">Kove</a>
+      <a href="https://kove.nz" style="font-size: 13px; color: #F59E0B; text-decoration: none; font-weight: 600;">Kove</a>
     </td>
   </tr>
   <tr>
@@ -1049,12 +1049,12 @@ Code patterns happily shared — DM me if you want to talk through how something
   </tr>
   <tr>
     <td style="padding-bottom: 4px;">
-      <a href="mailto:balu@kove.co.nz" style="font-size: 13px; color: #1a1a1a; text-decoration: none;">✉ balu@kove.co.nz</a>
+      <a href="mailto:balu@kove.nz" style="font-size: 13px; color: #1a1a1a; text-decoration: none;">✉ balu@kove.nz</a>
     </td>
   </tr>
   <tr>
     <td style="padding-bottom: 12px;">
-      <a href="https://kove.co.nz" style="font-size: 13px; color: #1a1a1a; text-decoration: none;">🔗 kove.co.nz</a>
+      <a href="https://kove.nz" style="font-size: 13px; color: #1a1a1a; text-decoration: none;">🔗 kove.nz</a>
     </td>
   </tr>
   <tr>
@@ -1073,7 +1073,7 @@ Code patterns happily shared — DM me if you want to talk through how something
     <td>
       <span style="font-size: 14px; font-weight: 600; color: #0B0D0E;">Balu</span>
       <span style="font-size: 14px; color: #6B7280;"> · </span>
-      <a href="https://kove.co.nz" style="font-size: 14px; color: #F59E0B; text-decoration: none; font-weight: 600;">Kove</a>
+      <a href="https://kove.nz" style="font-size: 14px; color: #F59E0B; text-decoration: none; font-weight: 600;">Kove</a>
     </td>
   </tr>
 </table>
@@ -1112,7 +1112,7 @@ I'm not pitching here — wanted to offer a Workflow Review. It's a 90-minute de
 Worth a 15-minute call to see if it's a fit?
 
 — Balu
-balu@kove.co.nz · kove.co.nz · 📞 [phone]
+balu@kove.nz · kove.nz · 📞 [phone]
 ```
 
 ### 7.2 LinkedIn DM template (for warmer prospects)
@@ -1144,7 +1144,7 @@ Hi [first name],
 
 Last note from me — I won't keep nudging.
 
-If you ever want to talk about what AI automation could look like for [business], I'm at balu@kove.co.nz. I've also written a handful of pieces on how I think about this for NZ trades and professional services — kove.co.nz/work has a few examples.
+If you ever want to talk about what AI automation could look like for [business], I'm at balu@kove.nz. I've also written a handful of pieces on how I think about this for NZ trades and professional services — kove.nz/work has a few examples.
 
 All the best,
 Balu
@@ -1474,8 +1474,8 @@ The placeholder reads as deliberate restraint, not absence.
 Tick off as each asset ships.
 
 ### Foundation (do first)
-- [ ] Register kove.co.nz at Metaname
-- [ ] Set up Google Workspace → balu@kove.co.nz
+- [ ] Register kove.nz at Metaname
+- [ ] Set up Google Workspace → balu@kove.nz
 - [ ] Configure DNS (MX, SPF, DKIM, DMARC) on Metaname
 - [ ] Create GitHub repo `kove-site`
 - [ ] Create brand asset folder `kove-brand/`
@@ -1501,7 +1501,7 @@ Tick off as each asset ships.
 - [ ] `og-default.jpg` (1200×630)
 - [ ] Per-page OG images (4× case study + 4× page)
 - [ ] favicon.svg + favicon.ico
-- [ ] Deploy to Cloudflare Pages, point kove.co.nz DNS
+- [ ] Deploy to Cloudflare Pages, point kove.nz DNS
 - [ ] Lighthouse audit — 95+ all categories
 - [ ] Mobile QA on iPhone 12 width (390px)
 

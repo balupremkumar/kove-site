@@ -34,6 +34,7 @@ Animations: scroll-reveal via `.reveal` class, parallax via `data-parallax`, mag
 | work-canterbury-lead-generator.html | /work/canterbury-lead-generator |
 | work-forge-crm.html | /work/forge-crm |
 | work-voice-dictation.html | /work/voice-dictation |
+| work-podcast-pipeline.html | /work/podcast-pipeline |
 | about.html | /about |
 | contact.html | /contact |
 | 404.html | 404 |
@@ -70,8 +71,8 @@ Animations: scroll-reveal via `.reveal` class, parallax via `data-parallax`, mag
 - Forge CRM: `C:\AI\projects\Local Monday\` — internal CRM (also a case study on this site)
 
 ## Outstanding (before launch)
-- [ ] Register kove.co.nz at Metaname ($25/yr)
-- [ ] Set up Google Workspace → balu@kove.co.nz
+- [ ] Register kove.nz at Metaname ($25/yr)
+- [ ] Set up Google Workspace → balu@kove.nz
 - [ ] Configure DNS: MX, SPF, DKIM, DMARC
 - [ ] Create GitHub remote repo `kove-site`
 - [ ] Connect to Cloudflare Pages (auto-deploy on push to main)

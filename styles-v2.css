@@ -175,6 +175,9 @@ section { position: relative; z-index: 2; }
   padding: 7px 14px; border-radius: 100px;
   background: rgba(67,166,245,0.08); border: 1px solid rgba(67,166,245,0.22);
 }
+.badge--compliance {
+  color: #7ef5c8; background: rgba(87,229,198,0.08); border-color: rgba(87,229,198,0.28);
+}
 .chip {
   font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
   background: rgba(255,255,255,0.03); border: 1px solid var(--line);
@@ -394,6 +397,25 @@ ul.ticks.dot li svg { color: var(--ice); }
 @media (prefers-reduced-motion: reduce) {
   .glow-a, .glow-b, .grad { animation: none !important; }
   .spotlight-layer { display: none; }
+}
+
+/* ---- Sticky mobile call bar ---- */
+.call-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 160;
+  background: var(--ice); color: #04101F;
+  font-weight: 700; font-size: 1rem; letter-spacing: -0.01em;
+  padding: 16px 24px;
+  align-items: center; justify-content: center; gap: 10px;
+  border-top: 1px solid rgba(154,233,255,0.4);
+  text-decoration: none;
+  transition: background .2s;
+}
+.call-bar:active { background: #7dd9f5; }
+.call-bar svg { flex-shrink: 0; }
+@media (max-width: 768px) {
+  .call-bar { display: flex; }
+  body { padding-bottom: 58px; }
 }
 @media (hover: none) {
   .spotlight-layer { display: none; }
