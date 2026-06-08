@@ -56,17 +56,17 @@
     <div class="wrap-narrow prose">
       <h2 class="reveal">The problem</h2>
       <p class="reveal">Every off-the-shelf CRM I tried had something that made me grit my teeth. Notion was slow. HubSpot was bloated. Pipedrive looked like 2014. Monday wanted $40 per user per month for features I'd already paid for three times over.</p>
-      <p class="reveal">What I needed wasn't complicated — a kanban view of leads, custom fields, a dashboard, follow-up reminders, automation when status changes. Every tool had 80% of that plus 200% of what I didn't want.</p>
+      <p class="reveal">What I needed wasn't complicated: a kanban view of leads, custom fields, a dashboard, follow-up reminders, automation when status changes. Every tool had 80% of that plus 200% of what I didn't want.</p>
 
       <h2 class="reveal">What I built</h2>
       <p class="reveal">Forge — a fast, dark, kanban-first CRM that does exactly what I need and nothing more.</p>
       <h3 class="reveal">Core features</h3>
-      <p class="reveal"><strong>Multiple boards</strong> with custom stages · <strong>custom fields</strong> per board (text, number, date, select, person) · <strong>four views</strong> — Kanban, Calendar, Timeline (Gantt), and Table with column aggregations · <strong>dashboard</strong> with a 14-day completed sparkline · <strong>global search</strong> across all items with Ctrl+K · <strong>drag-and-drop kanban</strong> with optimistic updates · <strong>lead pipeline integration</strong> feeding directly from the lead generator · <strong>dark UI</strong> with clear signal colours · <strong>sub-1-second cold load</strong>.</p>
+      <p class="reveal"><strong>Multiple boards</strong> with custom stages · <strong>custom fields</strong> per board (text, number, date, select, person) · <strong>four views:</strong> Kanban, Calendar, Timeline (Gantt), and Table with column aggregations · <strong>dashboard</strong> with a 14-day completed sparkline · <strong>global search</strong> across all items with Ctrl+K · <strong>drag-and-drop kanban</strong> with optimistic updates · <strong>lead pipeline integration</strong> feeding directly from the lead generator · <strong>dark UI</strong> with clear signal colours · <strong>sub-1-second cold load</strong>.</p>
       <h3 class="reveal">Notable decisions</h3>
-      <p class="reveal"><strong>node:sqlite</strong> over better-sqlite3, because native compile on Node 24 was a nightmare. <strong>Optimistic UI everywhere</strong> — perceived speed is the feature. SSR for the first paint, client-side after. No build step in dev.</p>
+      <p class="reveal"><strong>node:sqlite</strong> over better-sqlite3, because native compile on Node 24 was a nightmare. <strong>Optimistic UI everywhere</strong>: perceived speed is the feature. SSR for the first paint, client-side after. No build step in dev.</p>
 
       <h2 class="reveal">The result</h2>
-      <p class="reveal"><strong>3 SaaS subscriptions retired</strong> — Notion, Pipedrive, and a calendar tool. <strong>Under 1 second page load</strong> versus Notion's 8 for the same data. <strong>Used daily</strong> for lead pipeline (fed by the Lead Generator), project tracking and follow-ups. Total dev time: <strong>~3 weekends</strong>.</p>
+      <p class="reveal"><strong>3 SaaS subscriptions retired</strong> (Notion, Pipedrive, and a calendar tool). <strong>Under 1 second page load</strong> versus Notion's 8 for the same data. <strong>Used daily</strong> for lead pipeline (fed by the Lead Generator), project tracking and follow-ups. Total dev time: <strong>~3 weekends</strong>.</p>
       <h3 class="reveal">Tech used</h3>
       <div class="chip-row reveal"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">SQLite (node:sqlite)</span><span class="chip">React 18</span><span class="chip">Vite</span><span class="chip">Tailwind</span><span class="chip">@dnd-kit</span></div>
     </div>

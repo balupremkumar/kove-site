@@ -55,17 +55,17 @@
   <article style="padding-bottom:clamp(48px,7vh,80px)">
     <div class="wrap-narrow prose">
       <h2 class="reveal">The problem</h2>
-      <p class="reveal">I needed a steady flow of Canterbury business leads for cold outreach. The manual version was brutal — search a directory, copy a name, look up the website, find an owner, verify the email, score the lead, draft an email, log it, follow up.</p>
+      <p class="reveal">I needed a steady flow of Canterbury business leads for cold outreach. The manual version was brutal: search a directory, copy a name, look up the website, find an owner, verify the email, score the lead, draft an email, log it, follow up.</p>
       <p class="reveal">A few hours every week, every week, before I'd done any actual outreach.</p>
       <p class="reveal">It was 100% structured work I was doing by hand because no off-the-shelf tool covered all 14 NZ-specific directories I wanted. Apollo and ZoomInfo don't index this market well; the ones that do charge enterprise prices.</p>
 
       <h2 class="reveal">What I built</h2>
       <p class="reveal">A multi-stage pipeline that runs overnight on a laptop:</p>
       <p class="reveal"><strong>1. Scrape (14 sources).</strong> Playwright for the JavaScript-heavy directories, BeautifulSoup for the static ones. Each source is its own module.</p>
-      <p class="reveal"><strong>2. Deduplicate.</strong> The same business appears across 3–5 directories — soft-matched on normalised name + suburb.</p>
+      <p class="reveal"><strong>2. Deduplicate.</strong> The same business appears across 3–5 directories, soft-matched on normalised name + suburb.</p>
       <p class="reveal"><strong>3. Enrich.</strong> Crawl each homepage and contact page, detect the tech stack, and send the text to Claude Haiku to extract owner, role, email and notes.</p>
       <p class="reveal"><strong>4. Verify.</strong> NZBN API for company status and director; SMTP RCPT verify each email; WHOIS on .co.nz domains.</p>
-      <p class="reveal"><strong>5. Score.</strong> 18 weighted signals — email present, SMTP verified, owner found, NZ Ltd, GST registered, job software installed, hiring signal, and more.</p>
+      <p class="reveal"><strong>5. Score.</strong> 18 weighted signals: email present, SMTP verified, owner found, NZ Ltd, GST registered, job software installed, hiring signal, and more.</p>
       <p class="reveal"><strong>6. Draft.</strong> For every lead scoring 6+, Claude drafts a personalised cold email mentioning something specific to the business.</p>
 
       <h2 class="reveal">How it works</h2>
@@ -78,10 +78,10 @@ Score (18 signals, 0–10)
 Draft email (Claude, score ≥ 6)
   <span class="a">↓</span>
 ranked CSV + hot_leads CSV</div>
-      <p class="reveal">Checkpoint/resume after each phase — if a run crashes it picks up from the last good step. 122 unit tests cover every pure function.</p>
+      <p class="reveal">Checkpoint/resume after each phase. If a run crashes it picks up from the last good step. 122 unit tests cover every pure function.</p>
 
       <h2 class="reveal">The result</h2>
-      <p class="reveal"><strong>6+ hours / week saved.</strong> <strong>50+ qualified leads / week</strong> produced unattended. <strong>~$8 in API credits</strong> to build — Haiku is cheap. <strong>122 unit tests</strong> mean it runs reliably and fails loudly.</p>
+      <p class="reveal"><strong>6+ hours / week saved.</strong> <strong>50+ qualified leads / week</strong> produced unattended. <strong>~$8 in API credits</strong> to build (Haiku is cheap). <strong>122 unit tests</strong> mean it runs reliably and fails loudly.</p>
       <h3 class="reveal">Tech used</h3>
       <div class="chip-row reveal"><span class="chip">Python</span><span class="chip">Playwright</span><span class="chip">BeautifulSoup</span><span class="chip">Claude Haiku</span><span class="chip">NZBN API</span><span class="chip">SMTP verify</span><span class="chip">SQLite</span><span class="chip">pytest</span></div>
     </div>

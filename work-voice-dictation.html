@@ -55,21 +55,21 @@
   <article style="padding-bottom:clamp(48px,7vh,80px)">
     <div class="wrap-narrow prose">
       <h2 class="reveal">The problem</h2>
-      <p class="reveal">I write a lot — emails, code comments, posts, this site. Typing is the bottleneck.</p>
-      <p class="reveal">Off-the-shelf dictation tools all required me to break flow — open a separate app, dictate, copy, paste. By the time I'd done that I could have typed it.</p>
+      <p class="reveal">I write a lot: emails, code comments, posts, this site. Typing is the bottleneck.</p>
+      <p class="reveal">Off-the-shelf dictation tools all required me to break flow: open a separate app, dictate, copy, paste. By the time I'd done that I could have typed it.</p>
       <p class="reveal">I wanted: hit a hotkey, speak, release, have the text appear in whatever app is focused. No copy, no paste, no switching windows.</p>
 
       <h2 class="reveal">What I built</h2>
       <p class="reveal">A background Windows app:</p>
-      <p class="reveal"><strong>1. Listen.</strong> A tray app holds a global hotkey — press-and-hold to record, release to transcribe.</p>
-      <p class="reveal"><strong>2. Transcribe.</strong> whisper.cpp runs large-v3-turbo (quantised) as a resident server — GPU-accelerated via Vulkan, sub-0.5s from release to preview. All on-device — no API cost, no internet required.</p>
-      <p class="reveal"><strong>3. Paste.</strong> Win32 SendInput with KEYEVENTF_UNICODE injects the text at a low level into whatever window has focus — works in RDP sessions, VS Code, Slack, Chrome, and other Electron apps that ignore simulated clipboard pastes.</p>
+      <p class="reveal"><strong>1. Listen.</strong> A tray app holds a global hotkey. Press-and-hold to record, release to transcribe.</p>
+      <p class="reveal"><strong>2. Transcribe.</strong> whisper.cpp runs large-v3-turbo (quantised) as a resident server, GPU-accelerated via Vulkan, sub-0.5s from release to preview. All on-device. No API cost, no internet required.</p>
+      <p class="reveal"><strong>3. Paste.</strong> Win32 SendInput with KEYEVENTF_UNICODE injects the text at a low level into whatever window has focus. Works in RDP sessions, VS Code, Slack, Chrome, and other Electron apps that ignore simulated clipboard pastes.</p>
       <p class="reveal"><strong>4. Learn.</strong> A speech profile (SQLite) tracks corrections. After I fix the same word three times, it starts applying the correction automatically.</p>
       <p class="reveal"><strong>5. Show feedback.</strong> The tray icon pulses while recording; a silence-countdown badge shows when it'll cut off; a confidence-bordered preview lets me review low-confidence transcriptions before pasting.</p>
 
       <h2 class="reveal">The result</h2>
-      <p class="reveal"><strong>Faster than typing</strong> for anything over ~30 words. <strong>Sub-0.5 second</strong> release-to-preview latency using whisper.cpp with large-v3-turbo. <strong>Free to run</strong> — no API cost, fully offline, nothing leaves the machine. Personal tool — but <strong>the same pattern works</strong> for any team with a repetitive transcription or data-entry task.</p>
-          <p class="reveal"><strong>Next:</strong> Custom vocabulary, agent-routing mode, and a proper installer. The goal is a tool that handles every word you'd otherwise type — not just dictation, but a voice layer across your entire workflow.</p>
+      <p class="reveal"><strong>Faster than typing</strong> for anything over ~30 words. <strong>Sub-0.5 second</strong> release-to-preview latency using whisper.cpp with large-v3-turbo. <strong>Free to run</strong>: no API cost, fully offline, nothing leaves the machine. Personal tool, but <strong>the same pattern works</strong> for any team with a repetitive transcription or data-entry task.</p>
+          <p class="reveal"><strong>Next:</strong> Custom vocabulary, agent-routing mode, and a proper installer. The goal is a tool that handles every word you'd otherwise type. Not just dictation, but a voice layer across your entire workflow.</p>
       <h3 class="reveal">Tech used</h3>
       <div class="chip-row reveal"><span class="chip">Python</span><span class="chip">whisper.cpp</span><span class="chip">large-v3-turbo</span><span class="chip">pystray</span><span class="chip">Win32 SendInput</span><span class="chip">SQLite</span><span class="chip">sounddevice</span></div>
     </div>
