@@ -33,7 +33,10 @@ Canterbury and NZ trades businesses (builders, plumbers, electricians, engineers
 ## Pages
 
 - /services — full list of automation services and pricing
+- /power-platform — Power Apps, Power Automate, Copilot Studio agents and SharePoint solutions on existing Microsoft 365 licences
 - /work — case studies
+- /insights — guides and build logs on automation for NZ businesses
+- /insights/leaving-workflowmax — WorkflowMax alternatives in 2026: subscription, stay, or own the tool
 - /about — background and approach
 - /contact — get in touch or book a call
 - /lp/workflow-review — free workflow review offer

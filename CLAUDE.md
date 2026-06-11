@@ -2,15 +2,14 @@
 
 ## What this is
 Public-facing website for Kove — a Christchurch NZ AI automation consultancy (solo, founder: Balu Premkumar).
-Target: Canterbury trades + professional services, 5–20 staff, owner-operators.
+Target: Canterbury trades + professional services, 5–20 staff, owner-operators. Second lane: M365 professional services firms (Power Platform / Copilot agents).
 
 ## Current state
-HTML/CSS/JS prototype built by Claude Design ("Deep Cove" v2 design system).
-Files are deployable as static HTML today. Future path is Astro 4 + Tailwind + Cloudflare Pages.
+HTML/CSS/JS static site ("Deep Cove" v2 design system + V3 polish), live at https://kove.nz.
 
 ## Stack (current)
 - Pure HTML + `styles-v2.css` + `site-v2.js` — no build step needed
-- Deploy target: Cloudflare Pages (free, auto-deploy on push to main)
+- Deploy: Cloudflare Workers static assets + worker.js, auto-deploy on push to master
 
 ## Design system — "Deep Cove"
 ```css
@@ -30,6 +29,7 @@ Animations: scroll-reveal via `.reveal` class, parallax via `data-parallax`, mag
 |---|---|
 | index.html | / (homepage) |
 | services.html | /services |
+| power-platform.html | /power-platform |
 | work.html | /work |
 | work-canterbury-lead-generator.html | /work/canterbury-lead-generator |
 | work-forge-crm.html | /work/forge-crm |
@@ -37,7 +37,13 @@ Animations: scroll-reveal via `.reveal` class, parallax via `data-parallax`, mag
 | work-podcast-pipeline.html | /work/podcast-pipeline |
 | about.html | /about |
 | contact.html | /contact |
+| insights.html | /insights |
+| insights/leaving-workflowmax.html | /insights/leaving-workflowmax |
+| lp/workflow-review.html | /lp/workflow-review (noindex) |
+| lp/power-platform-review.html | /lp/power-platform-review (noindex) |
 | 404.html | 404 |
+
+Note: pages in subfolders (insights/, lp/) — injected nav/footer links are depth-aware via the `R` prefix in site-v2.js; subfolder pages reference assets with `../`.
 
 ## Brand assets
 `kove-brand/` contains:
@@ -47,35 +53,20 @@ Animations: scroll-reveal via `.reveal` class, parallax via `data-parallax`, mag
 - `og-images/` — 1200×630 OG images per page
 
 ## Key source of truth
-`personal-brand-build.md` — the locked build doc with all copy, design tokens, pricing, page specs, and LinkedIn assets. Read this before making any content or copy decisions.
-
-## Placeholders to fill before launch
-1. **Phone number** — appears in nav, footer, contact page, email signature
-2. **Day job framing** — /about background section (role/industry, never named)
-3. **NZBN number** — footer © strip (not required for v1 as sole trader)
+`personal-brand-build.md` — original build doc (copy, design tokens, page specs). For case study copy, `C:\AI\Wiki\Balu-Wiki\wiki\projects\*.md` is canonical.
 
 ## Tone rules (from build doc)
 - NZ straight-talk. No "leverage", "synergy", "ecosystem", "transform", "AI-powered"
 - First person singular — "I" not "we"
 - Preferred words: build, ship, hand over, work, fix, save, find, run, automate
+- Minimal em dashes (de-AI pass standard)
 
 ## Design files to ignore (not live pages)
 - icon-concepts.html
 - logo-concepts.html
 - modern-marks.html
 - sonar-variations.html
-(These are design exploration files from the Claude Design session)
 
 ## Related projects
-- Lead Generator: `C:\AI\projects\Lead Generator\` — pipeline that produces leads fed into outreach
+- Lead Generator: `C:\AI\projects\Lead Generator\` — SEPARATE project, no cross-modification. Read-only data feed for content.
 - Forge CRM: `C:\AI\projects\Local Monday\` — internal CRM (also a case study on this site)
-
-## Outstanding (before launch)
-- [ ] Register kove.nz at Metaname ($25/yr)
-- [ ] Set up Google Workspace → balu@kove.nz
-- [ ] Configure DNS: MX, SPF, DKIM, DMARC
-- [ ] Create GitHub remote repo `kove-site`
-- [ ] Connect to Cloudflare Pages (auto-deploy on push to main)
-- [ ] Fill phone number placeholder throughout
-- [ ] Lighthouse audit — target 95+ all categories
-- [ ] Mobile QA at 390px width

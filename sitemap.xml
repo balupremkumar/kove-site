@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://kove.nz/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://kove.nz/services</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://kove.nz/power-platform</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://kove.nz/work</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://kove.nz/about</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://kove.nz/contact</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -10,5 +11,7 @@
   <url><loc>https://kove.nz/work-voice-dictation</loc><priority>0.7</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://kove.nz/work-podcast-pipeline</loc><priority>0.7</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://kove.nz/lp/workflow-review</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://kove.nz/insights</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://kove.nz/insights/leaving-workflowmax</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://kove.nz/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
 </urlset>

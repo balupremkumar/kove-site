@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-NZ" class="preload">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4KN43EF3W"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V4KN43EF3W');</script>
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","x41d5edlcw");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — Kove</title>
+  <meta name="description" content="Guides and build logs on automation for NZ businesses. What works, what it costs, and what to avoid. Written from real builds, not theory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kove.nz/insights" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kove" />
+  <meta property="og:title" content="Insights — Kove" />
+  <meta property="og:description" content="Guides and build logs on automation for NZ businesses. Written from real builds, not theory." />
+  <meta property="og:url" content="https://kove.nz/insights" />
+  <meta property="og:image" content="https://kove.nz/og/kove-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Insights — Kove" />
+  <meta name="twitter:image" content="https://kove.nz/og/kove-default.jpg" />
+  <link rel="stylesheet" href="styles-v2.css" />
+  <style>
+    .post-list { display: flex; flex-direction: column; gap: 18px; }
+    .post-card { display: grid; grid-template-columns: 150px 1fr auto; gap: clamp(18px, 3vw, 40px); align-items: center; padding: clamp(24px, 3.2vw, 36px); }
+    .post-card:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+    .post-kind { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .16em; color: var(--ice); }
+    .post-date { font-family: var(--font-mono); font-size: .72rem; color: var(--faint); margin-top: 8px; }
+    .post-card h2 { font-size: clamp(1.25rem, 2.3vw, 1.7rem); margin-bottom: 10px; line-height: 1.15; }
+    .post-card p { color: var(--muted); font-size: .98rem; margin: 0; max-width: 64ch; }
+    .post-card .arrow { color: var(--ice); font-size: 1.3rem; }
+    @media (max-width: 720px) { .post-card { grid-template-columns: 1fr; gap: 12px; } .post-card .arrow { display: none; } }
+    .sec-label { margin: 56px 0 24px; }
+  </style>
+</head>
+<body data-page="insights">
+  <div id="nav-mount"></div>
+
+  <header class="page-hero" data-screen-label="Insights / Hero">
+    <div class="glow-a"></div>
+    <div class="wrap">
+      <span class="eyebrow reveal">Insights</span>
+      <h1 class="reveal fly" data-d="1">Notes from the build</h1>
+      <p class="lead reveal" data-d="2">Guides and build logs on automation for NZ businesses. What works, what it costs, what to avoid. Written from real builds, not theory.</p>
+    </div>
+  </header>
+
+  <section style="padding-bottom:clamp(64px,9vh,110px)" data-screen-label="Insights / Posts">
+    <div class="wrap">
+      <div class="post-list">
+        <a href="insights/leaving-workflowmax.html" class="glass post-card reveal">
+          <div><div class="post-kind">Guide</div><div class="post-date">June 2026</div></div>
+          <div>
+            <h2>Leaving WorkflowMax? Read this before you buy another subscription</h2>
+            <p>Two years after Xero retired WorkflowMax, plenty of NZ firms are unhappy where they landed. Your three real options, the data problem nobody mentions, and when a custom tool beats another monthly invoice.</p>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="sec-head sec-label reveal"><span class="eyebrow">Build logs</span><h2 class="split-h2 reveal" style="margin-top:12px">Written from the workshop.</h2></div>
+      <div class="post-list">
+        <a href="work-canterbury-lead-generator.html" class="glass post-card reveal">
+          <div><div class="post-kind">Build log</div><div class="post-date">May 2026</div></div>
+          <div><h2>Cut lead research from a full day to zero</h2><p>An overnight pipeline across 14 NZ directories. 122 unit tests, ~$8 in API credits.</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a href="work-forge-crm.html" class="glass post-card reveal" data-d="1">
+          <div><div class="post-kind">Build log</div><div class="post-date">May 2026</div></div>
+          <div><h2>Replaced 3 SaaS subscriptions with one custom CRM</h2><p>Kanban-first, sub-second loads, built in roughly three weekends.</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a href="work-voice-dictation.html" class="glass post-card reveal" data-d="2">
+          <div><div class="post-kind">Build log</div><div class="post-date">May 2026</div></div>
+          <div><h2>Speak your intent and ship it</h2><p>Offline voice into any app, cleaned and pasted in under half a second.</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a href="work-podcast-pipeline.html" class="glass post-card reveal" data-d="3">
+          <div><div class="post-kind">Build log</div><div class="post-date">May 2026</div></div>
+          <div><h2>7-stage podcast intelligence pipeline</h2><p>Audio in, chapters and show notes out. HIPC-compliant local mode for the health sector.</p></div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip" data-screen-label="Insights / CTA">
+    <div class="cta-glow"></div>
+    <div class="wrap">
+      <h2 class="reveal">Got a workflow worth writing about?</h2>
+      <p class="reveal" data-d="1">Book a free 20-minute call. I'll tell you what I'd automate first, and you'll get a straight answer either way.</p>
+      <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a call <span class="arrow">→</span></a></div>
+      <div class="cta-alt reveal" data-d="3"><span class="trust-line">Taking on <b>2 new builds</b> right now · I reply within <b>1 working day</b></span></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="site-v2.js" defer></script>
+</body>
+</html>

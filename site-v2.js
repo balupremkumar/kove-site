@@ -7,12 +7,16 @@
 (function () {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* root prefix — pages one level deep (e.g. /insights/...) need ../ on injected links */
+  const depth = location.pathname.split("/").length - 2;
+  const R = depth > 0 ? "../".repeat(depth) : "";
+
   /* ---------------- NAV ---------------- */
   const navHTML = `
     <div class="scroll-prog" id="scrollProg"></div>
     <nav class="nav" id="nav">
       <div class="nav-inner">
-        <a href="index.html" class="brand" aria-label="Kove home">
+        <a href="${R}index.html" class="brand" aria-label="Kove home">
           <svg class="brand-mark" width="28" height="28" viewBox="0 0 120 120" fill="none" aria-hidden="true">
             <defs>
               <linearGradient id="navg" x1="20" y1="20" x2="100" y2="104" gradientUnits="userSpaceOnUse">
@@ -26,31 +30,32 @@
           <span class="brand-word">Kove</span>
         </a>
         <div class="nav-links">
-          <a href="work.html">Work</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
+          <a href="${R}work.html">Work</a>
+          <a href="${R}services.html">Services</a>
+          <a href="${R}insights.html">Insights</a>
+          <a href="${R}about.html">About</a>
         </div>
-        <a href="contact.html" class="nav-cta">Book a call <span class="arrow">→</span></a>
+        <a href="${R}contact.html" class="nav-cta">Book a call <span class="arrow">→</span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
       </div>
     </nav>
     <div class="nav-overlay" id="navOverlay">
-      <a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a href="${R}work.html">Work</a><a href="${R}services.html">Services</a><a href="${R}insights.html">Insights</a><a href="${R}about.html">About</a><a href="${R}contact.html">Contact</a>
     </div>`;
 
   const footerHTML = `
     <footer class="footer">
       <div class="wrap">
         <nav class="fnav" aria-label="Footer navigation">
-          <a href="work.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">See the work</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
-          <a href="services.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Services</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
-          <a href="contact.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Book a call</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+          <a href="${R}work.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">See the work</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+          <a href="${R}services.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Services</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+          <a href="${R}contact.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Book a call</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
         </nav>
         <div class="footer-top">
           <div>
-            <a href="index.html" class="brand" style="margin-bottom:18px">
+            <a href="${R}index.html" class="brand" style="margin-bottom:18px">
               <svg width="34" height="34" viewBox="0 0 120 120" fill="none" aria-hidden="true">
                 <circle cx="60" cy="60" r="46" stroke="url(#navg)" stroke-width="10" opacity="0.32"/>
                 <circle cx="60" cy="60" r="30" stroke="url(#navg)" stroke-width="10" opacity="0.6"/>
@@ -61,7 +66,7 @@
             <p class="faint" style="font-size:.85rem">Christchurch · Canterbury · NZ</p>
           </div>
           <div class="footer-cols">
-            <div><h4>Sitemap</h4><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+            <div><h4>Sitemap</h4><a href="${R}work.html">Work</a><a href="${R}services.html">Services</a><a href="${R}power-platform.html">Power Platform</a><a href="${R}insights.html">Insights</a><a href="${R}about.html">About</a><a href="${R}contact.html">Contact</a><a href="${R}privacy.html">Privacy</a></div>
             <div><h4>Contact</h4><a href="mailto:balu@kove.nz">balu@kove.nz</a><a href="tel:+64211895800">021 189 5800</a><a href="https://www.linkedin.com/in/balu-prem-kumar-244b2050/" target="_blank" rel="noopener">LinkedIn</a></div>
           </div>
         </div>
@@ -89,8 +94,10 @@
 
   /* nav active page */
   const page = (location.pathname.split("/").pop() || "index.html");
+  const inInsights = location.pathname.includes("insights");
   document.querySelectorAll(".nav-links a, .nav-overlay a").forEach((a) => {
-    if (a.getAttribute("href") === page) a.classList.add("active");
+    const target = a.getAttribute("href").replace(R, "");
+    if (target === page || (inInsights && target === "insights.html")) a.classList.add("active");
   });
 
   const nav = document.getElementById("nav");
