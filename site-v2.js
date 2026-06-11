@@ -32,6 +32,7 @@
         <div class="nav-links">
           <a href="${R}work.html">Work</a>
           <a href="${R}services.html">Services</a>
+          <a href="${R}power-platform.html">Power Platform</a>
           <a href="${R}insights.html">Insights</a>
           <a href="${R}about.html">About</a>
         </div>
@@ -42,7 +43,7 @@
       </div>
     </nav>
     <div class="nav-overlay" id="navOverlay">
-      <a href="${R}work.html">Work</a><a href="${R}services.html">Services</a><a href="${R}insights.html">Insights</a><a href="${R}about.html">About</a><a href="${R}contact.html">Contact</a>
+      <a href="${R}work.html">Work</a><a href="${R}services.html">Services</a><a href="${R}power-platform.html">Power Platform</a><a href="${R}insights.html">Insights</a><a href="${R}about.html">About</a><a href="${R}contact.html">Contact</a>
     </div>`;
 
   const footerHTML = `
