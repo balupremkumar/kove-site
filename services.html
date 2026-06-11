@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en-NZ">
+<html lang="en-NZ" class="preload">
 <head>
   <meta charset="UTF-8" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4KN43EF3W"></script>
@@ -24,6 +24,20 @@
   <meta name="twitter:title" content="Services — Kove" />
   <meta name="twitter:image" content="https://kove.nz/og/page-services.jpg" />
   <link rel="stylesheet" href="styles-v2.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How quickly can you start?","acceptedAnswer":{"@type":"Answer","text":"Usually 2–4 weeks from Workflow Review to first build day."}},
+    {"@type":"Question","name":"Do you work onsite?","acceptedAnswer":{"@type":"Answer","text":"In Canterbury, yes — happy to spend a day with your team. Elsewhere, video and async."}},
+    {"@type":"Question","name":"What if I don't like what you build?","acceptedAnswer":{"@type":"Answer","text":"First milestone is 50% on signing, 50% on acceptance. If you don't accept, you don't pay the second half."}},
+    {"@type":"Question","name":"Can I see examples?","acceptedAnswer":{"@type":"Answer","text":"See the work page at kove.nz/work. Most are anonymised because clients prefer it."}},
+    {"@type":"Question","name":"Do you offer retainers without an Audit + Build first?","acceptedAnswer":{"@type":"Answer","text":"Rarely. Retainers work when there's already infrastructure to maintain."}},
+    {"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"No. You describe the problem in plain language — I handle everything technical and hand it back running."}},
+    {"@type":"Question","name":"What if my data is sensitive?","acceptedAnswer":{"@type":"Answer","text":"I can build entirely local, air-gapped systems where nothing leaves your machine. No cloud APIs, no third-party data handling. Common requirement for healthcare and legal clients."}},
+    {"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing is discussed after the Workflow Review once I understand the scope. The Review itself is a fixed flat fee — book one and you'll have a number in hand before committing to anything further."}},
+    {"@type":"Question","name":"How long does a build actually take?","acceptedAnswer":{"@type":"Answer","text":"Straightforward automations: 2–3 weeks. Custom tools with multiple integrations: 4–8 weeks. I'll give you a realistic timeline after scoping."}},
+    {"@type":"Question","name":"What happens after you hand over?","acceptedAnswer":{"@type":"Answer","text":"You get the source code, documentation, and 30 days of support included. After that, retainer or ad hoc — your call."}}
+  ]}
+  </script>
 </head>
 <body data-page="services">
   <div id="nav-mount"></div>
@@ -32,7 +46,7 @@
     <div class="glow-a"></div>
     <div class="wrap">
       <span class="eyebrow reveal">Services</span>
-      <h1 class="reveal" data-d="1">Start small, scale as it makes sense</h1>
+      <h1 class="reveal fly" data-d="1">Start small, scale as it makes sense</h1>
       <p class="lead reveal" data-d="2">A review, a full build, or ongoing support. Never anything you don't need.</p>
     </div>
   </header>
@@ -134,7 +148,49 @@
     </div>
   </section>
 
-  <section class="section-pad" data-screen-label="Services / What I don't do">
+  <section class="section-pad" data-screen-label="Services / Catalog">
+    <div class="wrap">
+      <div class="cat-grid">
+        <div class="cat-left reveal">
+          <span class="eyebrow">Beyond the big builds</span>
+          <h2 class="split-h2 reveal">If it repeats, it can probably run itself.</h2>
+          <p>Not every job needs a six-week build. These are the systems I set up most often, sized to the problem in front of you.</p>
+        </div>
+        <div class="cat-list">
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><h3>Customer inquiry agent</h3><p>Answers the common questions, captures the job details, and knows when to hand off to a real person. Trained on your services, your pricing rules, your tone.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div><h3>Document extraction</h3><p>Invoices, forms and RFQs read automatically and entered into your systems. No more retyping PDFs into Xero.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+            <div><h3>Email triage + routing</h3><p>Reads what comes in, sorts it, drafts the replies, routes the rest. Quote requests stop sitting unread for three days.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div>
+            <div><h3>Meeting transcription + summaries</h3><p>Site meetings and client calls transcribed and summarised with action points, then filed where your team will actually find them.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+            <div><h3>Reporting dashboards</h3><p>One screen pulling from Xero, your job system and your spreadsheets. The Monday-morning numbers, already there when you sit down.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div><h3>Lead qualification + follow-up</h3><p>New inquiries scored against your ideal job profile and followed up within minutes, not days.</p></div>
+          </div>
+          <div class="glass cat-item reveal">
+            <div class="cat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div><h3>AI readiness audit</h3><p>A structured look at where AI genuinely fits your business, and where it doesn't. You get a report, not a sales pitch.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0" data-screen-label="Services / What I don't do">
     <div class="wrap">
       <div class="glass dont reveal" style="padding:clamp(28px,4vw,40px)">
         <span class="eyebrow" style="color:var(--faint)">The honest part</span>
@@ -150,20 +206,25 @@
     </div>
   </section>
 
-  <section style="padding-bottom:clamp(64px,9vh,110px)" data-screen-label="Services / FAQ">
-    <div class="wrap-narrow">
-      <div class="sec-head reveal" style="margin-bottom:24px"><span class="eyebrow">FAQ</span><h2 style="margin-top:12px">Questions I get asked</h2></div>
-      <div class="reveal">
-        <div class="faq-item"><h3>How quickly can you start?</h3><p>Usually 2–4 weeks from Workflow Review to first build day.</p></div>
-        <div class="faq-item"><h3>Do you work onsite?</h3><p>In Canterbury, yes — happy to spend a day with your team. Elsewhere, video and async.</p></div>
-        <div class="faq-item"><h3>What if I don't like what you build?</h3><p>First milestone is 50% on signing, 50% on acceptance. If you don't accept, you don't pay the second half.</p></div>
-        <div class="faq-item"><h3>Can I see examples?</h3><p>See the <a href="work.html" class="ln">work</a>. Most are anonymised because clients prefer it.</p></div>
-        <div class="faq-item"><h3>Retainers without an Audit + Build first?</h3><p>Rarely. Retainers work when there's already infrastructure to maintain.</p></div>
-        <div class="faq-item"><h3>Do I need to be technical?</h3><p>No. You describe the problem in plain language — I handle everything technical and hand it back running.</p></div>
-        <div class="faq-item"><h3>What if my data is sensitive?</h3><p>I can build entirely local, air-gapped systems where nothing leaves your machine. No cloud APIs, no third-party data handling. Common requirement for healthcare and legal clients.</p></div>
-        <div class="faq-item"><h3>How much does it cost?</h3><p>Pricing is discussed after the Workflow Review once I understand the scope. The Review itself is a fixed flat fee — book one and you'll have a number in hand before committing to anything further.</p></div>
-        <div class="faq-item"><h3>How long does a build actually take?</h3><p>Straightforward automations: 2–3 weeks. Custom tools with multiple integrations: 4–8 weeks. I'll give you a realistic timeline after scoping.</p></div>
-        <div class="faq-item"><h3>What happens after you hand over?</h3><p>You get the source code, documentation, and 30 days of support included. After that, retainer or ad hoc — your call.</p></div>
+  <section id="faq" style="padding-bottom:clamp(64px,9vh,110px)" data-screen-label="Services / FAQ">
+    <div class="wrap">
+      <div class="faq-split">
+        <div class="faq-split-left reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="split-h2 reveal" style="margin-top:14px">Questions I get asked, answered straight.</h2>
+        </div>
+        <div class="reveal" data-d="1">
+          <details class="faq-acc" open><summary>How quickly can you start?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>Usually 2–4 weeks from Workflow Review to first build day.</p></details>
+          <details class="faq-acc"><summary>Do you work onsite?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>In Canterbury, yes — happy to spend a day with your team. Elsewhere, video and async.</p></details>
+          <details class="faq-acc"><summary>What if I don't like what you build?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>First milestone is 50% on signing, 50% on acceptance. If you don't accept, you don't pay the second half.</p></details>
+          <details class="faq-acc"><summary>Can I see examples?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>See the <a href="work.html" class="ln">work</a>. Most are anonymised because clients prefer it.</p></details>
+          <details class="faq-acc"><summary>Retainers without an Audit + Build first?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>Rarely. Retainers work when there's already infrastructure to maintain.</p></details>
+          <details class="faq-acc"><summary>Do I need to be technical?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>No. You describe the problem in plain language — I handle everything technical and hand it back running.</p></details>
+          <details class="faq-acc"><summary>What if my data is sensitive?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>I can build entirely local, air-gapped systems where nothing leaves your machine. No cloud APIs, no third-party data handling. Common requirement for healthcare and legal clients.</p></details>
+          <details class="faq-acc"><summary>How much does it cost?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>Pricing is discussed after the Workflow Review once I understand the scope. The Review itself is a fixed flat fee — book one and you'll have a number in hand before committing to anything further.</p></details>
+          <details class="faq-acc"><summary>How long does a build actually take?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>Straightforward automations: 2–3 weeks. Custom tools with multiple integrations: 4–8 weeks. I'll give you a realistic timeline after scoping.</p></details>
+          <details class="faq-acc"><summary>What happens after you hand over?<svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><p>You get the source code, documentation, and 30 days of support included. After that, retainer or ad hoc — your call.</p></details>
+        </div>
       </div>
     </div>
   </section>
@@ -174,6 +235,7 @@
       <h2 class="reveal">Start with a Workflow Review.</h2>
       <p class="reveal" data-d="1">A 90-minute deep dive into your workflow. You leave with a written plan you can act on, even if you never call me back.</p>
       <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a Workflow Review <span class="arrow">→</span></a></div>
+      <div class="cta-alt reveal" data-d="3"><span class="trust-line">Taking on <b>2 new builds</b> right now · I reply within <b>1 working day</b></span></div>
     </div>
   </section>
 

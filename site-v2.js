@@ -43,6 +43,11 @@
   const footerHTML = `
     <footer class="footer">
       <div class="wrap">
+        <nav class="fnav" aria-label="Footer navigation">
+          <a href="work.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">See the work</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+          <a href="services.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Services</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+          <a href="contact.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">Book a call</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
+        </nav>
         <div class="footer-top">
           <div>
             <a href="index.html" class="brand" style="margin-bottom:18px">
@@ -60,7 +65,7 @@
             <div><h4>Contact</h4><a href="mailto:balu@kove.nz">balu@kove.nz</a><a href="tel:+64211895800">021 189 5800</a><a href="https://www.linkedin.com/in/balu-prem-kumar-244b2050/" target="_blank" rel="noopener">LinkedIn</a></div>
           </div>
         </div>
-        <div class="footer-bottom"><span>© 2026 Kove · Built in Christchurch</span><span>NZBN —</span></div>
+        <div class="footer-bottom"><span>© 2026 Kove · Built in Christchurch</span><span>balu@kove.nz</span></div>
       </div>
     </footer>`;
 
@@ -74,6 +79,19 @@
   if (nm) nm.outerHTML = navHTML;
   if (fm) fm.outerHTML = footerHTML;
   document.body.insertAdjacentHTML("beforeend", callBarHTML);
+
+  /* skip link (a11y) */
+  const firstHeader = document.querySelector("header");
+  if (firstHeader) {
+    firstHeader.id = firstHeader.id || "maincontent";
+    document.body.insertAdjacentHTML("afterbegin", `<a class="skip-link" href="#${firstHeader.id}">Skip to content</a>`);
+  }
+
+  /* nav active page */
+  const page = (location.pathname.split("/").pop() || "index.html");
+  document.querySelectorAll(".nav-links a, .nav-overlay a").forEach((a) => {
+    if (a.getAttribute("href") === page) a.classList.add("active");
+  });
 
   const nav = document.getElementById("nav");
   const prog = document.getElementById("scrollProg");
@@ -89,6 +107,13 @@
       const sp = parseFloat(el.dataset.parallax);
       el.style.transform = `translate3d(0, ${y * sp}px, 0)`;
     });
+    // process-flow progress fills
+    if (!reduce) flowFills.forEach((f) => {
+      const r = f.step.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.82 - r.top) / (r.height + innerHeight * 0.22)));
+      f.fill.style.setProperty("--p", p.toFixed(3));
+      f.step.classList.toggle("done", p > 0.92);
+    });
   };
 
   const toggle = document.getElementById("navToggle");
@@ -100,17 +125,41 @@
 
   /* ---------------- PARALLAX ---------------- */
   const parallaxEls = [...document.querySelectorAll("[data-parallax]")];
+  const flowFills = [...document.querySelectorAll(".pf-step")].map((step) => {
+    const fill = step.querySelector(".pf-fill");
+    return fill ? { step, fill } : null;
+  }).filter(Boolean);
   window.addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
   onScroll();
+
+  /* ---------------- SPLIT-WORD HEADINGS ---------------- */
+  if (!reduce) {
+    document.querySelectorAll(".split-h2").forEach((h) => {
+      const words = h.textContent.trim().split(/\s+/);
+      h.textContent = "";
+      words.forEach((w, i) => {
+        const outer = document.createElement("span");
+        outer.className = "w";
+        const inner = document.createElement("span");
+        inner.style.setProperty("--i", i);
+        inner.textContent = w;
+        outer.appendChild(inner);
+        h.appendChild(outer);
+        if (i < words.length - 1) h.appendChild(document.createTextNode(" "));
+      });
+    });
+  }
 
   /* ---------------- REVEALS (frozen-safe) ---------------- */
   const reveals = [...document.querySelectorAll(".reveal")];
   const showReveal = (e) => e.classList.add("in");
-  const forceReveal = (e) => { e.style.transition = "none"; e.classList.add("in"); e.style.opacity = "1"; e.style.transform = "none"; e.style.filter = "none"; };
+  const forceReveal = (e) => { e.style.transition = "none"; e.classList.add("in"); e.style.opacity = "1"; e.style.transform = "none"; e.style.filter = "none"; e.querySelectorAll(".w > span").forEach((s) => { s.style.transition = "none"; s.style.transform = "none"; }); };
 
-  if (reduce || !("IntersectionObserver" in window)) {
-    reveals.forEach(forceReveal);
-  } else {
+  const startReveals = () => {
+    if (reduce || !("IntersectionObserver" in window)) {
+      reveals.forEach(forceReveal);
+      return;
+    }
     const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { showReveal(en.target); io.unobserve(en.target); } }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     reveals.forEach((e) => io.observe(e));
     const t0 = document.timeline.currentTime;
@@ -120,7 +169,23 @@
       const vh = innerHeight;
       reveals.forEach((e) => { const r = e.getBoundingClientRect(); if (r.top < vh && r.bottom > 0) showReveal(e); });
     }, 1100);
-    setTimeout(() => reveals.forEach((e) => { if (getComputedStyle(e).opacity === "0") forceReveal(e); }), 2600);
+    setTimeout(() => reveals.forEach((e) => { if (getComputedStyle(e).opacity === "0" && !e.classList.contains("split-h2")) forceReveal(e); }), 2600);
+  };
+
+  /* anti-flash: transitions stay off until first paint, then reveals begin.
+     rAF doesn't fire in hidden/background tabs — timer fallback guarantees start. */
+  let revealsStarted = false;
+  const beginReveals = () => {
+    if (revealsStarted) return;
+    revealsStarted = true;
+    document.documentElement.classList.remove("preload");
+    startReveals();
+  };
+  if (document.documentElement.classList.contains("preload")) {
+    requestAnimationFrame(() => requestAnimationFrame(beginReveals));
+    setTimeout(beginReveals, 400);
+  } else {
+    beginReveals();
   }
 
   /* ---------------- COUNT-UP (timer-based, frozen-safe) ---------------- */
@@ -129,6 +194,7 @@
     if (el.dataset.done) return; el.dataset.done = "1";
     const target = parseFloat(el.dataset.count);
     const suffix = el.dataset.suffix || "";
+    const prefix = el.dataset.prefix || "";
     const dur = 1300, steps = 40, stepT = dur / steps;
     let i = 0;
     const tick = () => {
@@ -136,11 +202,11 @@
       const p = i / steps;
       const eased = 1 - Math.pow(1 - p, 3);
       const val = target % 1 === 0 ? Math.round(target * eased) : (target * eased).toFixed(1);
-      el.textContent = val + suffix;
+      el.textContent = prefix + val + suffix;
       if (i < steps) setTimeout(tick, stepT);
-      else el.textContent = (target % 1 === 0 ? target : target.toFixed(1)) + suffix;
+      else el.textContent = prefix + (target % 1 === 0 ? target : target.toFixed(1)) + suffix;
     };
-    if (reduce) { el.textContent = target + suffix; return; }
+    if (reduce) { el.textContent = prefix + target + suffix; return; }
     tick();
   };
   if ("IntersectionObserver" in window && !reduce) {
@@ -148,11 +214,43 @@
     counters.forEach((c) => cio.observe(c));
     setTimeout(() => counters.forEach(runCount), 1400); // frozen/no-IO fallback
   } else {
-    counters.forEach((c) => { c.textContent = c.dataset.count + (c.dataset.suffix || ""); });
+    counters.forEach((c) => { c.textContent = (c.dataset.prefix || "") + c.dataset.count + (c.dataset.suffix || ""); });
+  }
+
+  /* ---------------- SCROLL HINT → next section ---------------- */
+  const hint = document.querySelector(".scroll-hint");
+  if (hint) {
+    hint.setAttribute("role", "button");
+    hint.setAttribute("tabindex", "0");
+    const go = () => {
+      const next = document.querySelector(".hero ~ section, .hero ~ div");
+      if (next) next.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
+    };
+    hint.addEventListener("click", go);
+    hint.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   }
 
   /* ---------------- MAGNETIC BUTTONS ---------------- */
   if (!reduce && matchMedia("(pointer:fine)").matches) {
+    /* button text-roll: wrap label text so it rolls up on hover */
+    document.querySelectorAll(".btn").forEach((btn) => {
+      const tn = [...btn.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+      if (!tn) return;
+      const label = tn.textContent;
+      const roll = document.createElement("span");
+      roll.className = "btn-roll";
+      const orig = document.createElement("span");
+      orig.className = "orig";
+      orig.textContent = label;
+      const dup = document.createElement("span");
+      dup.className = "dup";
+      dup.setAttribute("aria-hidden", "true");
+      dup.textContent = label;
+      roll.appendChild(orig);
+      roll.appendChild(dup);
+      btn.replaceChild(roll, tn);
+    });
+
     document.querySelectorAll("[data-magnetic]").forEach((btn) => {
       btn.addEventListener("pointermove", (e) => {
         const r = btn.getBoundingClientRect();
@@ -163,17 +261,27 @@
       btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
     });
 
-    /* hero cursor light */
+    /* hero cursor light + contour lean */
     const light = document.getElementById("heroLight");
     const hero = document.getElementById("hero");
     if (light && hero) {
+      const contours = hero.querySelector(".contours");
+      if (contours) contours.style.transition = "transform .9s cubic-bezier(0.16, 1, 0.3, 1)";
       hero.addEventListener("pointermove", (e) => {
         const r = hero.getBoundingClientRect();
         light.style.setProperty("--lx", (e.clientX - r.left) + "px");
         light.style.setProperty("--ly", (e.clientY - r.top) + "px");
         light.style.opacity = "1";
+        if (contours) {
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          contours.style.transform = `translate3d(${px * 14}px, ${py * 10}px, 0)`;
+        }
       });
-      hero.addEventListener("pointerleave", () => { light.style.opacity = "0"; });
+      hero.addEventListener("pointerleave", () => {
+        light.style.opacity = "0";
+        if (contours) contours.style.transform = "";
+      });
     }
 
     /* ---------- Cursor-spotlight on glass cards (BridgeMind/Linear-style) ---------- */

@@ -33,6 +33,40 @@
     .portrait .mono { font-family:var(--font-display); font-size:11rem; font-weight:700; letter-spacing:-0.06em; line-height:1;
       background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
     .portrait .tag { position:absolute; bottom:20px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); }
+    .portrait { flex-direction:column; justify-content:flex-start; padding: clamp(20px,2.6vw,28px) clamp(24px,3vw,34px);
+      background:
+        radial-gradient(circle at 30% 22%, rgba(67,166,245,0.16), transparent 55%),
+        linear-gradient(160deg,#101a2b,#080d15); }
+    .portrait .mono { font-size: clamp(5rem,8vw,7rem); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+    .op-photo { position:relative; margin:auto 0; z-index:2; width:min(66%, 252px); aspect-ratio:1; }
+    .op-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:18px;
+      border:1px solid rgba(154,233,255,0.3); filter: saturate(0.86);
+      box-shadow: 0 18px 50px -18px rgba(0,0,0,0.75), 0 0 0 4px rgba(67,166,245,0.08); transition: filter .35s; }
+    .op-photo:hover img { filter: none; }
+    .op-contours { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.8; }
+    .op-contours path { fill:none; stroke: rgba(103,180,255,0.13); stroke-width:1.2; }
+    .op-contours g { animation: op-drift 12s ease-in-out infinite alternate; }
+    .op-contours g:last-child { animation-duration: 16s; animation-direction: alternate-reverse; }
+    @keyframes op-drift { from { transform: translateY(-6px); } to { transform: translateY(8px); } }
+    .op-light { position:absolute; inset:0; pointer-events:none;
+      background: linear-gradient(105deg, transparent 32%, rgba(154,233,255,0.05) 45%, rgba(67,166,245,0.10) 51%, transparent 66%);
+      background-size: 260% 100%; animation: op-shaft 9s ease-in-out infinite alternate; }
+    @keyframes op-shaft { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+    @media (prefers-reduced-motion: reduce) { .op-light, .op-contours g { animation: none; } }
+    .op-head { display:flex; justify-content:space-between; align-items:center; width:100%; padding-bottom:13px; border-bottom:1px solid var(--line); position:relative; z-index:2;
+      font-family:var(--font-mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); }
+    .op-dots { display:flex; gap:6px; }
+    .op-dots span { width:8px; height:8px; border-radius:50%; }
+    .op-dots span:nth-child(1) { background: rgba(154,233,255,0.4); }
+    .op-dots span:nth-child(2) { background: rgba(67,166,245,0.4); }
+    .op-dots span:nth-child(3) { background: rgba(87,229,198,0.4); }
+    .op-meta { width:100%; border-top:1px solid var(--line); padding-top:6px; position:relative; z-index:2; }
+    .op-meta > div { display:flex; justify-content:space-between; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:.72rem; }
+    .op-meta > div:last-child { border-bottom:none; }
+    .op-meta .k { color:var(--faint); text-transform:uppercase; letter-spacing:.1em; font-size:.62rem; padding-top:2px; }
+    .op-meta .v { color:var(--muted); text-align:right; }
+    .op-live { display:inline-flex; align-items:center; gap:7px; color:var(--aqua) !important; }
+    .op-live i { width:7px; height:7px; border-radius:50%; background:var(--aqua); box-shadow:0 0 8px rgba(87,229,198,0.8); animation: avail-pulse 2.4s ease-in-out infinite; }
     .about-hero h1 { font-size:clamp(2.6rem,7vw,4.6rem); margin:16px 0 22px; }
     .about-hero .lead { font-size:clamp(1.15rem,1.9vw,1.45rem); color:var(--text); font-weight:400; max-width:42ch; }
     @media (max-width:860px){ .about-grid { grid-template-columns:1fr; gap:36px; } .portrait { max-width:320px; } }
@@ -59,10 +93,34 @@
 
   <header class="about-hero" data-screen-label="About / Hero">
     <div class="wrap about-grid">
-      <div class="portrait reveal"><span class="mono">B</span><span class="tag">Christchurch, NZ</span></div>
+      <div class="portrait reveal">
+        <svg class="op-contours" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g>
+            <path d="M-20,120 Q140,80 420,135" />
+            <path d="M-20,180 Q160,135 420,195" />
+          </g>
+          <g>
+            <path d="M-20,330 Q180,290 420,345" />
+            <path d="M-20,395 Q200,355 420,408" />
+            <path d="M-20,455 Q210,420 420,465" />
+          </g>
+        </svg>
+        <span class="op-light" aria-hidden="true"></span>
+        <div class="op-head"><span class="op-dots"><span></span><span></span><span></span></span><span>operator · kove.nz</span></div>
+        <span class="mono" aria-hidden="true">B</span>
+        <div class="op-photo">
+          <img src="op-portrait.jpg" alt="Balu Premkumar, founder of Kove" loading="lazy" onerror="this.parentElement.remove()" />
+        </div>
+        <div class="op-meta">
+          <div><span class="k">Location</span><span class="v">Christchurch, NZ</span></div>
+          <div><span class="k">Day job</span><span class="v">Platforms + AI, health sector</span></div>
+          <div><span class="k">Response</span><span class="v">&lt; 1 working day</span></div>
+          <div><span class="k">Status</span><span class="v op-live"><i></i>taking on 2 builds</span></div>
+        </div>
+      </div>
       <div>
         <span class="eyebrow reveal">About</span>
-        <h1 class="reveal" data-d="1">I'm Balu.</h1>
+        <h1 class="reveal fly" data-d="1">I'm Balu.</h1>
         <p class="lead reveal" data-d="2">I build AI automation tools for NZ businesses. I work alone, I build the actual software, and I make sure your team can use it without me.</p>
       </div>
     </div>
@@ -71,7 +129,7 @@
   <section class="section-pad" style="padding-top:clamp(40px,6vh,72px)" data-screen-label="About / Story">
     <div class="wrap-narrow prose">
       <span class="eyebrow reveal">Why this exists</span>
-      <h2 class="reveal" data-d="1" style="margin-top:14px">The work was always 30% software, 70% craft</h2>
+      <h2 class="reveal split-h2" data-d="1" style="margin-top:14px">The work was always 30% software, 70% craft</h2>
       <p class="reveal">I spent years watching businesses spend thousands on software that sits unused. Tools bought because they were on a shortlist, then left unused because no one was responsible for making them work.</p>
       <p class="reveal">The problem was never the tool. It was that no one was responsible for making it land — for sitting next to people while they figured it out, and fixing the friction that always shows up in week two.</p>
       <p class="reveal">So I started building the tools myself. And the more I built, the clearer it got: the work was always 30% software and 70% craft.</p>
@@ -91,7 +149,7 @@
 
   <section class="section-pad" style="padding-top:0" data-screen-label="About / How I work">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">How I work</span><h2 style="margin-top:12px">What I won't compromise on</h2></div>
+      <div class="sec-head reveal"><span class="eyebrow">How I work</span><h2 class="reveal split-h2" style="margin-top:12px">What I won't compromise on</h2></div>
       <div class="principles">
         <div class="principle reveal"><div class="num">01</div><h3>You see the build.</h3><p>The code, the logic, the docs are visible to you the whole way through. If you can't run it on day 90, I haven't done my job.</p></div>
         <div class="principle reveal" data-d="1"><div class="num">02</div><h3>You own everything.</h3><p>Source code in your GitHub. Credentials in your accounts. Hosting on your bill. No lock-in, ever.</p></div>
@@ -115,6 +173,7 @@
       <h2 class="reveal">Want to talk?</h2>
       <p class="reveal" data-d="1">If you've got a workflow eating your team's time, I'd like to hear about it. The first call is free and there's no pitch.</p>
       <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a 20-min call <span class="arrow">→</span></a></div>
+      <div class="cta-alt reveal" data-d="3"><span class="trust-line">I reply within <b>1 working day</b> · first call is free, no pitch</span></div>
     </div>
   </section>
 
