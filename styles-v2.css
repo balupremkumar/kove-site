@@ -581,6 +581,21 @@ html.preload *, html.preload *::before, html.preload *::after { transition: none
 .footer .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; pointer-events: none; }
 .footer .floor svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
+/* ============================================================
+   V5 CINEMATIC — round C1: hero ambient video + film grain
+   ============================================================ */
+.hero-media { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.hero-media video { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
+.hero-media.playing video { opacity: 0.5; }
+.hero-media::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7,11,18,0.62) 0%, rgba(7,11,18,0.5) 45%, rgba(7,11,18,0.78) 80%, var(--bg) 100%),
+              radial-gradient(120% 90% at 50% 10%, transparent 40%, rgba(7,11,18,0.55) 100%); }
+
+/* film grain — a CANVAS, deliberately: img/svg/background-image grain all
+   register as the page's LCP element (even on pseudo-elements) and tank the
+   score; canvas paints are exempt from LCP candidacy. Drawn once at idle. */
+canvas.grain { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2000; pointer-events: none; }
+
 /* directional page transitions — forward = descend, back = ascend (progressive) */
 @keyframes vt-sink-out { to { opacity: 0; transform: translateY(-22px); } }
 @keyframes vt-sink-in { from { opacity: 0; transform: translateY(26px); } }

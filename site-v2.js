@@ -106,6 +106,48 @@
       </div>`);
     dgRead = document.querySelector(".dg-read");
   }
+  /* ---------------- V5 CINEMATIC — film grain + hero video ----------------
+     grain MUST be a canvas: image/SVG/background grain becomes the LCP
+     element (Lighthouse 92→78); canvas paints are exempt from LCP. */
+  const drawGrain = () => {
+    let g = document.querySelector("canvas.grain");
+    if (!g) { g = document.createElement("canvas"); g.className = "grain"; g.setAttribute("aria-hidden", "true"); document.body.appendChild(g); }
+    const w = (g.width = Math.ceil(innerWidth / 2)), h = (g.height = Math.ceil(innerHeight / 2));
+    const ctx = g.getContext("2d");
+    const im = ctx.createImageData(w, h);
+    const d = im.data;
+    for (let i = 0; i < d.length; i += 4) { const v = (Math.random() * 255) | 0; d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 7; }
+    ctx.putImageData(im, 0, 0);
+  };
+  if ("requestIdleCallback" in window) requestIdleCallback(drawGrain, { timeout: 4000 }); else setTimeout(drawGrain, 1200);
+  let grainRT;
+  window.addEventListener("resize", () => { clearTimeout(grainRT); grainRT = setTimeout(drawGrain, 400); }, { passive: true });
+
+  const heroEl = document.getElementById("hero");
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (heroEl && !reduce && !saveData && matchMedia("(min-width:1024px) and (pointer:fine)").matches) {
+    const injectVid = () => {
+      const wrap = document.createElement("div");
+      wrap.className = "hero-media";
+      wrap.setAttribute("aria-hidden", "true");
+      wrap.innerHTML = `<video autoplay muted loop playsinline preload="none" poster="${R}media/posters/hero.webp"><source src="${R}media/hero/loop.webm" type="video/webm"><source src="${R}media/hero/loop.mp4" type="video/mp4"></video>`;
+      heroEl.insertBefore(wrap, heroEl.firstChild);
+      const v = wrap.querySelector("video");
+      v.addEventListener("canplay", () => wrap.classList.add("playing"), { once: true });
+      const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+      tryPlay();
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((es) => es.forEach((en) => { en.isIntersecting ? tryPlay() : v.pause(); }), { threshold: 0.05 }).observe(heroEl);
+      }
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) v.pause();
+        else if (heroEl.getBoundingClientRect().bottom > 0) tryPlay();
+      });
+    };
+    if ("requestIdleCallback" in window) requestIdleCallback(injectVid, { timeout: 3000 });
+    else setTimeout(injectVid, 1500);
+  }
+
   let themeMeta = document.querySelector('meta[name="theme-color"]');
   if (!themeMeta) { themeMeta = document.createElement("meta"); themeMeta.name = "theme-color"; document.head.appendChild(themeMeta); }
   const themeBands = ["#070B12", "#05080E", "#020409"];
