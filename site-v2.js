@@ -106,23 +106,10 @@
       </div>`);
     dgRead = document.querySelector(".dg-read");
   }
-  /* ---------------- V5 CINEMATIC — film grain + hero video ----------------
-     grain MUST be a canvas: image/SVG/background grain becomes the LCP
-     element (Lighthouse 92→78); canvas paints are exempt from LCP. */
-  const drawGrain = () => {
-    let g = document.querySelector("canvas.grain");
-    if (!g) { g = document.createElement("canvas"); g.className = "grain"; g.setAttribute("aria-hidden", "true"); document.body.appendChild(g); }
-    const w = (g.width = Math.ceil(innerWidth / 2)), h = (g.height = Math.ceil(innerHeight / 2));
-    const ctx = g.getContext("2d");
-    const im = ctx.createImageData(w, h);
-    const d = im.data;
-    for (let i = 0; i < d.length; i += 4) { const v = (Math.random() * 255) | 0; d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 7; }
-    ctx.putImageData(im, 0, 0);
-  };
-  if ("requestIdleCallback" in window) requestIdleCallback(drawGrain, { timeout: 4000 }); else setTimeout(drawGrain, 1200);
-  let grainRT;
-  window.addEventListener("resize", () => { clearTimeout(grainRT); grainRT = setTimeout(drawGrain, 400); }, { passive: true });
-
+  /* ---------------- V5 CINEMATIC — hero video ----------------
+     (film grain removed by Balu's call 2026-06-13: read as visual noise.
+     If texture is ever wanted again it MUST be a canvas — image/SVG/
+     background grain becomes the LCP element and costs ~13 perf points.) */
   const heroEl = document.getElementById("hero");
   const saveData = navigator.connection && navigator.connection.saveData;
   if (heroEl && !reduce && !saveData && matchMedia("(min-width:1024px) and (pointer:fine)").matches) {
