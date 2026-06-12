@@ -309,6 +309,64 @@
     hint.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   }
 
+  /* ---------------- V4 R2/R3 — sonar ping, decode kicker, click ripple, nav underline ---------------- */
+  if (!reduce && !sessionStorage.koveSonar) {
+    sessionStorage.koveSonar = "1";
+    const brand = document.querySelector(".nav .brand");
+    if (brand) setTimeout(() => { brand.classList.add("ping-once"); setTimeout(() => brand.classList.remove("ping-once"), 2400); }, 900);
+  }
+
+  const tag = document.querySelector(".hero-tag");
+  if (tag && !reduce) {
+    const finalText = tag.textContent;
+    const glyphs = "▖▘▝▗·:╌─0123456789ABCDEF";
+    let frame = 0;
+    const total = 22;
+    let settled = false;
+    const settle = () => { if (!settled) { settled = true; tag.textContent = finalText; } };
+    const tick = () => {
+      if (settled) return;
+      if (document.hidden) { settle(); return; } // throttled timers in hidden tabs freeze the scramble
+      frame++;
+      const reveal = Math.floor((frame / total) * finalText.length);
+      tag.textContent = finalText.slice(0, reveal) + finalText.slice(reveal).replace(/[^\s·]/g, () => glyphs[(Math.random() * glyphs.length) | 0]);
+      if (frame < total) setTimeout(tick, 34); else settle();
+    };
+    setTimeout(tick, 650);
+    setTimeout(settle, 2400); // hard deadline, same pattern as the reveal fallback
+  }
+
+  document.addEventListener("click", (e) => {
+    if (reduce) return;
+    const t = e.target.closest(".btn, .nav-cta, .fnav-btn");
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    const s = document.createElement("span");
+    s.className = "clickwave";
+    s.style.left = (e.clientX - r.left) + "px";
+    s.style.top = (e.clientY - r.top) + "px";
+    t.appendChild(s);
+    setTimeout(() => s.remove(), 700);
+  });
+
+  const navLinks = document.querySelector(".nav-links");
+  if (navLinks && matchMedia("(pointer:fine)").matches) {
+    navLinks.classList.add("has-u");
+    const u = document.createElement("span");
+    u.className = "nav-underline";
+    navLinks.appendChild(u);
+    const activeLink = navLinks.querySelector("a.active");
+    const placeU = (a) => {
+      if (!a) { u.style.opacity = "0"; return; }
+      u.style.opacity = "1";
+      u.style.width = a.offsetWidth + "px";
+      u.style.transform = `translateX(${a.offsetLeft}px)`;
+    };
+    navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("pointerenter", () => placeU(a)));
+    navLinks.addEventListener("pointerleave", () => placeU(activeLink));
+    placeU(activeLink);
+  }
+
   /* ---------------- MAGNETIC BUTTONS ---------------- */
   if (!reduce && matchMedia("(pointer:fine)").matches) {
     /* button text-roll: wrap label text so it rolls up on hover */
