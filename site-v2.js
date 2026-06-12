@@ -48,6 +48,11 @@
 
   const footerHTML = `
     <footer class="footer">
+      <div class="floor" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none" fill="none">
+        <path d="M0,74 C180,40 360,96 560,70 C760,44 900,98 1100,72 C1260,52 1360,84 1440,64 L1440,110 L0,110 Z" fill="rgba(2,5,10,0.85)"/>
+        <path d="M0,74 C180,40 360,96 560,70 C760,44 900,98 1100,72 C1260,52 1360,84 1440,64" stroke="rgba(154,233,255,0.10)" stroke-width="1"/>
+        <path d="M0,92 C220,70 420,104 640,88 C860,72 1080,104 1280,88 C1360,82 1410,92 1440,86 L1440,110 L0,110 Z" fill="rgba(1,3,8,0.9)"/>
+      </svg></div>
       <div class="wrap">
         <nav class="fnav" aria-label="Footer navigation">
           <a href="${R}work.html" class="fnav-btn"><span class="fnav-bg"></span><span class="fnav-label">See the work</span><span class="fnav-arrows" aria-hidden="true"><span class="fnav-arrow a1">→</span><span class="fnav-arrow a2">→</span></span></a>
@@ -86,6 +91,26 @@
   if (fm) fm.outerHTML = footerHTML;
   document.body.insertAdjacentHTML("beforeend", callBarHTML);
 
+  /* ---------------- V4 DESCENT — depth shade + gauge ---------------- */
+  document.body.insertAdjacentHTML("beforeend", `<div id="depthShade" aria-hidden="true"></div>`);
+  let dgRead = null;
+  if (matchMedia("(min-width:1100px)").matches) {
+    document.body.insertAdjacentHTML("beforeend", `
+      <div class="dgauge" aria-hidden="true">
+        <span class="dg-track"><span class="dg-fill"></span></span>
+        <span class="dg-tick" style="top:0"><i></i>0m</span>
+        <span class="dg-tick" style="top:33.3%"><i></i>40m</span>
+        <span class="dg-tick" style="top:66.6%"><i></i>80m</span>
+        <span class="dg-tick" style="top:100%"><i></i>120m</span>
+        <span class="dg-read">0m</span>
+      </div>`);
+    dgRead = document.querySelector(".dg-read");
+  }
+  let themeMeta = document.querySelector('meta[name="theme-color"]');
+  if (!themeMeta) { themeMeta = document.createElement("meta"); themeMeta.name = "theme-color"; document.head.appendChild(themeMeta); }
+  const themeBands = ["#070B12", "#05080E", "#020409"];
+  let lastBand = -1, lastMetres = -1;
+
   /* skip link (a11y) */
   const firstHeader = document.querySelector("header");
   if (firstHeader) {
@@ -110,6 +135,16 @@
       const h = document.documentElement.scrollHeight - innerHeight;
       prog.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
     }
+    // descent depth 0..1 — drives #depthShade, .dg-fill, .dg-read via CSS var
+    const dh = document.documentElement.scrollHeight - innerHeight;
+    const d = dh > 0 ? Math.min(1, Math.max(0, y / dh)) : 0;
+    document.documentElement.style.setProperty("--depth", d.toFixed(4));
+    if (dgRead) {
+      const m = Math.round(d * 120);
+      if (m !== lastMetres) { lastMetres = m; dgRead.textContent = m + "m"; }
+    }
+    const band = d < 0.33 ? 0 : d < 0.7 ? 1 : 2;
+    if (band !== lastBand) { lastBand = band; themeMeta.setAttribute("content", themeBands[band]); }
     // parallax
     parallaxEls.forEach((el) => {
       const sp = parseFloat(el.dataset.parallax);
@@ -316,4 +351,30 @@
       card.addEventListener("pointerleave", () => { card.style.transform = ""; });
     });
   }
+
+  /* ---------------- V4 DESCENT — directional page transitions ---------------- */
+  /* forward nav = descend, back = ascend; keyed off route depth order */
+  const routeDepth = (path) => {
+    if (path.includes("/insights/")) return 6;
+    if (path.includes("/lp/")) return 8.5;
+    const f = (path.split("/").pop() || "index.html").replace(".html", "");
+    if (f.indexOf("work-") === 0) return 4;
+    const order = { index: 0, services: 1, "power-platform": 2, work: 3, insights: 5, about: 7, contact: 8, privacy: 9 };
+    return f in order ? order[f] : 5;
+  };
+  window.addEventListener("pageswap", (e) => {
+    if (!e.activation || !e.activation.entry) return;
+    try {
+      const to = new URL(e.activation.entry.url).pathname;
+      document.documentElement.dataset.dir = routeDepth(to) >= routeDepth(location.pathname) ? "down" : "up";
+    } catch (_) {}
+  });
+  window.addEventListener("pagereveal", () => {
+    const act = window.navigation && navigation.activation;
+    if (!act || !act.from || !act.from.url) return;
+    try {
+      const from = new URL(act.from.url).pathname;
+      document.documentElement.dataset.dir = routeDepth(location.pathname) >= routeDepth(from) ? "down" : "up";
+    } catch (_) {}
+  });
 })();

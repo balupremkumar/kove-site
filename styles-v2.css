@@ -558,6 +558,40 @@ html.preload *, html.preload *::before, html.preload *::after { transition: none
 
 /* ---- Scroll hint — clickable ---- */
 .scroll-hint { cursor: pointer; border: none; background: none; transition: color .25s; }
+
+/* ============================================================
+   V4 DESCENT — round 1: the dive system
+   ============================================================ */
+:root { --depth: 0; }
+
+/* page darkens as you descend — fixed layer behind content, opacity only */
+#depthShade { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: #010308; opacity: calc(var(--depth) * 0.6); }
+
+/* depth gauge — right edge, desktop only, injected by site-v2.js */
+.dgauge { position: fixed; top: 104px; bottom: 56px; right: 18px; width: 48px; z-index: 60; pointer-events: none; font-family: var(--font-mono); }
+.dgauge .dg-track { position: absolute; top: 0; bottom: 0; right: 10px; width: 1px; background: rgba(154,233,255,0.13); }
+.dgauge .dg-fill { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, var(--ice), var(--azure)); transform: scaleY(var(--depth)); transform-origin: top; }
+.dgauge .dg-tick { position: absolute; right: 18px; transform: translateY(-50%); font-size: 9px; letter-spacing: 0.06em; color: rgba(148,166,188,0.42); }
+.dgauge .dg-tick i { position: absolute; right: -9px; top: 50%; width: 5px; height: 1px; background: rgba(148,166,188,0.32); }
+.dgauge .dg-read { position: absolute; right: 18px; top: calc(var(--depth) * 100%); transform: translateY(7px); font-size: 10px; color: var(--ice); text-shadow: 0 0 12px rgba(154,233,255,0.35); }
+@media (max-width: 1099px) { .dgauge { display: none; } }
+
+/* footer = ocean floor */
+.footer { overflow: hidden; }
+.footer .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; pointer-events: none; }
+.footer .floor svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* directional page transitions — forward = descend, back = ascend (progressive) */
+@keyframes vt-sink-out { to { opacity: 0; transform: translateY(-22px); } }
+@keyframes vt-sink-in { from { opacity: 0; transform: translateY(26px); } }
+@keyframes vt-rise-out { to { opacity: 0; transform: translateY(22px); } }
+@keyframes vt-rise-in { from { opacity: 0; transform: translateY(-26px); } }
+@media (prefers-reduced-motion: no-preference) {
+  html[data-dir="down"]::view-transition-old(root) { animation: vt-sink-out .2s ease both; }
+  html[data-dir="down"]::view-transition-new(root) { animation: vt-sink-in .28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  html[data-dir="up"]::view-transition-old(root) { animation: vt-rise-out .2s ease both; }
+  html[data-dir="up"]::view-transition-new(root) { animation: vt-rise-in .28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
 .scroll-hint:hover { color: var(--ice); }
 .scroll-hint:focus-visible { outline: 2px solid var(--ice); outline-offset: 4px; border-radius: 6px; }
 
