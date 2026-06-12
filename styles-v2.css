@@ -596,6 +596,17 @@ html.preload *, html.preload *::before, html.preload *::after { transition: none
    score; canvas paints are exempt from LCP candidacy. Drawn once at idle. */
 canvas.grain { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2000; pointer-events: none; }
 
+/* ---- V5 C3: descent interludes — full-bleed graded stills, Ken Burns via --sp ---- */
+.interlude { position: relative; height: clamp(170px, 34vh, 400px); overflow: hidden; }
+.interlude img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transform: scale(calc(1.16 - var(--sp, 0) * 0.12)) translateY(calc((var(--sp, 0) - 0.5) * -5%)); }
+.interlude::before, .interlude::after { content: ""; position: absolute; left: 0; right: 0; height: 36%; z-index: 1; pointer-events: none; }
+.interlude::before { top: 0; background: linear-gradient(180deg, var(--bg), transparent); }
+.interlude::after { bottom: 0; background: linear-gradient(0deg, var(--bg), transparent); }
+.il-cap { position: absolute; left: 0; right: 0; bottom: 16px; z-index: 2; }
+.il-cap span { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em; color: var(--ice); opacity: .7; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { .interlude img { transform: none; } }
+
 /* directional page transitions — forward = descend, back = ascend (progressive) */
 @keyframes vt-sink-out { to { opacity: 0; transform: translateY(-22px); } }
 @keyframes vt-sink-in { from { opacity: 0; transform: translateY(26px); } }

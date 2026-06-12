@@ -192,6 +192,12 @@
       const sp = parseFloat(el.dataset.parallax);
       el.style.transform = `translate3d(0, ${y * sp}px, 0)`;
     });
+    // V5 C3: per-scene progress (0 entering viewport bottom -> 1 leaving top)
+    if (!reduce) sceneEls.forEach((s) => {
+      const r = s.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+      s.style.setProperty("--sp", p.toFixed(4));
+    });
     // process-flow progress fills
     if (!reduce) flowFills.forEach((f) => {
       const r = f.step.getBoundingClientRect();
@@ -210,6 +216,7 @@
 
   /* ---------------- PARALLAX ---------------- */
   const parallaxEls = [...document.querySelectorAll("[data-parallax]")];
+  const sceneEls = [...document.querySelectorAll("[data-scene]")];
   const flowFills = [...document.querySelectorAll(".pf-step")].map((step) => {
     const fill = step.querySelector(".pf-fill");
     return fill ? { step, fill } : null;
