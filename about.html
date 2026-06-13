@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en-NZ">
+<html lang="en-NZ" class="preload">
 <head>
   <meta charset="UTF-8" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4KN43EF3W"></script>
@@ -37,7 +37,7 @@
       background:
         radial-gradient(circle at 30% 22%, rgba(67,166,245,0.16), transparent 55%),
         linear-gradient(160deg,#101a2b,#080d15); }
-    .portrait .mono { font-size: clamp(5rem,8vw,7rem); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+    .portrait .mono { font-size: clamp(5rem,8vw,7rem); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; opacity:0.14; }
     .op-photo { position:relative; margin:auto 0; z-index:2; width:min(66%, 252px); aspect-ratio:1; }
     .op-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:18px;
       border:1px solid rgba(154,233,255,0.3); filter: saturate(0.86);
@@ -139,9 +139,9 @@
     <div class="wrap">
       <div class="sec-head reveal"><span class="eyebrow">Things I've shipped</span><h2 style="margin-top:12px">What I've built</h2></div>
       <div class="showcase">
-        <a href="work-canterbury-lead-generator.html" class="glass sc reveal"><h3>Canterbury Lead Generator</h3><p>A multi-source pipeline that scrapes 14 NZ directories, enriches each lead with Claude, verifies emails and auto-drafts cold outreach. Replaced a full day of weekly research.</p><div class="stack">Python · Playwright · Claude Haiku · SQLite · pytest</div></a>
-        <a href="work-forge-crm.html" class="glass sc reveal" data-d="1"><h3>Forge</h3><p>A custom CRM built to fit the actual workflow, kanban-first, sub-1-second load. Custom fields, dashboard, multiple views. Used daily.</p><div class="stack">Node.js · Express · React 18 · SQLite · Vite · Tailwind</div></a>
-        <a href="work-voice-dictation.html" class="glass sc reveal" data-d="2"><h3>Voice, Rethought</h3><p>Speak into anything: any app, any window, any workflow. Offline Whisper, LLM rewrite, pasted in under half a second.</p><div class="stack">Python · whisper.cpp · pystray · Win32 SendInput</div></a>
+        <a href="work-canterbury-lead-generator.html" class="glass sc reveal"><div class="wmock" aria-hidden="true"><div class="wmock-head"><i></i><i></i><i></i><span class="wm-url">lead-pipeline · overnight run</span></div><div class="wm-term"><span class="ln"><b class="ok">✓</b> 412 businesses scanned</span><span class="ln"><b class="ok">✓</b> contacts enriched · emails verified</span><span class="ln"><b class="hot">▲</b> 38 scored hot · queued for review</span><span class="ln cur">next run 02:00</span></div></div><h3>Canterbury Lead Generator</h3><p>A multi-source pipeline that scrapes 14 NZ directories, enriches each lead with Claude, verifies emails and auto-drafts cold outreach. Replaced a full day of weekly research.</p><div class="stack">Python · Playwright · Claude Haiku · SQLite · pytest</div></a>
+        <a href="work-forge-crm.html" class="glass sc reveal" data-d="1"><div class="wmock" aria-hidden="true"><div class="wmock-head"><i></i><i></i><i></i><span class="wm-url">forge · pipeline board</span></div><div class="wm-kan"><div><span class="kt"></span><span class="kc"></span><span class="kc"></span><span class="kc"></span></div><div><span class="kt"></span><span class="kc glow"></span><span class="kc"></span></div><div><span class="kt"></span><span class="kc"></span></div></div></div><h3>Forge</h3><p>A custom CRM built to fit the actual workflow, kanban-first, sub-1-second load. Custom fields, dashboard, multiple views. Used daily.</p><div class="stack">Node.js · Express · React 18 · SQLite · Vite · Tailwind</div></a>
+        <a href="work-voice-dictation.html" class="glass sc reveal" data-d="2"><div class="wmock" aria-hidden="true"><div class="wmock-head"><i></i><i></i><i></i><span class="wm-url">voice → any app · offline</span></div><div class="wm-voice"><div class="wm-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="wm-arrow">→</span><div class="wm-text"><span class="tl w80"></span><span class="tl w60"></span><span class="tl w70 caret"></span></div></div></div><h3>Voice, Rethought</h3><p>Speak into anything: any app, any window, any workflow. Offline Whisper, LLM rewrite, pasted in under half a second.</p><div class="stack">Python · whisper.cpp · pystray · Win32 SendInput</div></a>
       </div>
     </div>
   </section>
@@ -171,7 +171,7 @@
     <div class="wrap">
       <h2 class="reveal">Want to talk?</h2>
       <p class="reveal" data-d="1">If you've got a workflow eating your team's time, I'd like to hear about it. The first call is free and there's no pitch.</p>
-      <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a 20-min call <span class="arrow">→</span></a></div>
+      <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a 30-min call <span class="arrow">→</span></a></div>
       <div class="cta-alt reveal" data-d="3"><span class="trust-line">I reply within <b>1 working day</b> · first call is free, no pitch</span></div>
     </div>
   </section>

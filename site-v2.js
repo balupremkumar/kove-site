@@ -89,6 +89,32 @@
   const fm = document.getElementById("footer-mount");
   if (nm) nm.outerHTML = navHTML;
   if (fm) fm.outerHTML = footerHTML;
+
+  /* a11y: wrap primary content in a single <main> landmark (closes landmark-one-main).
+     Runs before the beforeend appends below so depthShade/dgauge/call-bar stay outside main. */
+  (function () {
+    if (document.querySelector("main")) return;
+    const navEnd = document.getElementById("navOverlay") || document.getElementById("nav");
+    const footer = document.querySelector("footer.footer");
+    if (!navEnd || !footer || navEnd.parentNode !== footer.parentNode) return;
+    const main = document.createElement("main");
+    main.id = "main";
+    footer.parentNode.insertBefore(main, footer);
+    let n = navEnd.nextSibling;
+    while (n && n !== main) { const next = n.nextSibling; main.appendChild(n); n = next; }
+  })();
+
+  /* V5 cohesion: bring the homepage contour drift to inner-page heroes (.page-hero) */
+  (function () {
+    const ph = document.querySelector(".page-hero");
+    if (!ph || ph.querySelector(".contours")) return;
+    const bg = document.createElement("div");
+    bg.className = "page-hero-bg";
+    bg.setAttribute("aria-hidden", "true");
+    bg.innerHTML = '<svg class="contours" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="drift"><path d="M-100,250 Q480,120 1540,300"/><path d="M-100,330 Q520,200 1540,380"/><path d="M-100,410 Q560,290 1540,470"/></g><g class="drift2"><path class="c-far" d="M-100,540 Q520,420 1540,580"/><path class="c-far" d="M-100,640 Q560,520 1540,680"/><path class="c-far" d="M-100,740 Q600,650 1540,770"/></g></svg>';
+    ph.insertBefore(bg, ph.firstChild);
+  })();
+
   document.body.insertAdjacentHTML("beforeend", callBarHTML);
 
   /* ---------------- V4 DESCENT — depth shade + gauge ---------------- */
@@ -302,7 +328,7 @@
     hint.setAttribute("role", "button");
     hint.setAttribute("tabindex", "0");
     const go = () => {
-      const next = document.querySelector(".hero ~ section, .hero ~ div");
+      const next = document.querySelector("main > section, .hero ~ section, .hero ~ div");
       if (next) next.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
     };
     hint.addEventListener("click", go);

@@ -83,6 +83,13 @@
     .drift { animation: drift 14s ease-in-out infinite alternate; }
     .drift2 { animation: drift 18s ease-in-out infinite alternate-reverse; }
     @keyframes drift { from { transform: translateY(-8px); } to { transform: translateY(10px); } }
+    /* mobile hero: no video (desktop-only), so give the glows gentle life — transform/opacity only, no LCP risk */
+    @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+      .hero .glow-a { animation: hero-breathe-a 9s ease-in-out infinite alternate; }
+      .hero .glow-b { animation: hero-breathe-b 11s ease-in-out infinite alternate; }
+    }
+    @keyframes hero-breathe-a { from { opacity:.85; transform: translate(0,0) scale(1); } to { opacity:1; transform: translate(-2%,1%) scale(1.06); } }
+    @keyframes hero-breathe-b { from { opacity:.7; transform: translate(0,0) scale(1); } to { opacity:1; transform: translate(2%,-1%) scale(1.08); } }
 
     #heroLight { position: absolute; top: 0; left: 0; width: 460px; height: 460px; border-radius: 50%;
       transform: translate(var(--lx, 50vw), var(--ly, 40vh)) translate(-50%,-50%);
@@ -120,7 +127,10 @@
     .pillar:hover::before { opacity: 1; }
     .pillar:hover { border-color: var(--line-strong); transform: translateY(-4px); }
     .pillar > * { position: relative; }
-    .pillar-ico { width: 48px; height: 48px; border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--ice); background: rgba(67,166,245,0.10); border: 1px solid rgba(67,166,245,0.18); margin-bottom: 22px; }
+    .pillar-ico { width: 48px; height: 48px; border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--ice); background: linear-gradient(145deg, rgba(67,166,245,0.18), rgba(67,166,245,0.04)); border: 1px solid rgba(154,233,255,0.22); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); margin-bottom: 22px; transition: transform .4s var(--ease-out), border-color .4s, box-shadow .4s; }
+    .pillar-ico svg { transition: transform .5s cubic-bezier(0.34,1.56,0.64,1); }
+    .pillar:hover .pillar-ico { transform: translateY(-3px) scale(1.05); border-color: rgba(154,233,255,0.45); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 26px -10px rgba(67,166,245,0.55); }
+    .pillar:hover .pillar-ico svg { transform: rotate(-6deg) scale(1.08); }
     .pillar h3 { margin-bottom: 12px; }
     .pillar p { color: var(--muted); }
     @media (max-width: 800px) { .pillars { grid-template-columns: 1fr; } }
@@ -207,7 +217,17 @@
       .pipe-track::before, .pipe-pulse { display: none; }
       .pipe-node { flex-direction: row; gap: 9px; }
     }
-    @media (prefers-reduced-motion: reduce) { .pipe-pulse { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .pipe-pulse { display: none; } .pipe-node i { animation: none; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .pipe-node i { animation: pipe-node-glow 7.5s ease-in-out infinite; }
+      .pipe-node:nth-child(3) i { animation-delay: .5s; }
+      .pipe-node:nth-child(4) i { animation-delay: 1s; }
+      .pipe-node:nth-child(5) i { animation-delay: 1.5s; }
+      .pipe-node:nth-child(6) i { animation-delay: 2s; }
+      .pipe-node:nth-child(7) i { animation-delay: 2.5s; }
+      .pipe-node:nth-child(8) i { animation-delay: 3s; }
+    }
+    @keyframes pipe-node-glow { 0%, 70%, 100% { box-shadow: 0 0 0 0 rgba(154,233,255,0); } 12% { box-shadow: 0 0 10px 0 rgba(154,233,255,0.5); border-color: var(--ice); } }
 
     /* work */
     .work-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
@@ -224,6 +244,15 @@
     .cta-glow { position: absolute; inset: 0; background: radial-gradient(60% 80% at 50% 30%, rgba(67,166,245,0.14), transparent 60%); pointer-events: none; }
     .cta h2 { font-size: clamp(2.2rem,5.5vw,4.2rem); max-width: 18ch; margin: 0 auto 22px; }
     .cta p { color: var(--muted); font-size: 1.2rem; max-width: 46ch; margin: 0 auto 38px; }
+
+    /* guarantee / risk-reversal */
+    .guarantee-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .guarantee { padding: 30px; }
+    .guarantee:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+    .guarantee .g-ico { width: 42px; height: 42px; border-radius: 11px; display:flex; align-items:center; justify-content:center; color: var(--ice); background: linear-gradient(145deg, rgba(67,166,245,0.18), rgba(67,166,245,0.04)); border: 1px solid rgba(154,233,255,0.22); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); margin-bottom: 18px; }
+    .guarantee h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .guarantee p { color: var(--muted); font-size: .97rem; }
+    @media (max-width: 800px) { .guarantee-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body data-page="home">
@@ -262,9 +291,9 @@
         <span class="line reveal fly" data-d="2">follow-ups. They</span>
         <span class="line reveal fly" data-d="3">can <span class="grad">run themselves.</span></span>
       </h1>
-      <p class="hero-sub reveal" data-d="4">I build the kind of tools most consultants charge $50K for.<br>Then I hand them to your team and make sure they actually get used.</p>
+      <p class="hero-sub reveal" data-d="4">I build the kind of custom tools agencies quote five figures for.<br>Then I hand them to your team and make sure they actually get used.</p>
       <div class="hero-ctas reveal" data-d="4">
-        <a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a free 20-min call <span class="arrow">→</span></a>
+        <a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a free 30-min call <span class="arrow">→</span></a>
         <a href="work.html" class="btn btn-ghost btn-lg">See the work</a>
       </div>
       <div class="avail reveal" data-d="4"><i></i>Christchurch, NZ · I reply within 1 working day</div>
@@ -291,7 +320,7 @@
         <div class="glass pillar reveal" data-d="1">
           <div class="pillar-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <h3>Workflow automation</h3>
-          <p>The repetitive bits: quoting, invoicing, follow-ups, data entry, all made to run themselves. Most teams get 10+ hours a week back.</p>
+          <p>The repetitive bits: quoting, invoicing, follow-ups, data entry, automated end to end. Most teams get 10+ hours a week back.</p>
         </div>
         <div class="glass pillar reveal" data-d="2">
           <div class="pillar-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
@@ -328,8 +357,8 @@
 
   <!-- ===================== WHY ME ===================== -->
   <div class="interlude" data-scene aria-hidden="true">
-    <img src="media/stills/rays-01.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
-    <div class="il-cap"><div class="wrap"><span>— 20m · below the surface-level fixes</span></div></div>
+    <div class="il-rays" aria-hidden="true"></div>
+    <div class="il-cap"><div class="wrap"><span class="reveal">— 20m · past the surface-level fixes</span></div></div>
   </div>
 
   <section class="section-pad band" data-screen-label="Home / Why me">
@@ -455,6 +484,7 @@
       <div class="sec-head">
         <span class="eyebrow reveal">Pricing</span>
         <h2 class="reveal split-h2" data-d="1">Three ways in. Start anywhere.</h2>
+        <p class="lead reveal" data-d="2">The short version. <a href="services.html" class="ln" style="color:var(--ice)">Full breakdown on the services page →</a></p>
       </div>
       <div class="pricing">
         <div class="glass price feat reveal" data-d="1">
@@ -484,15 +514,15 @@
 
   <!-- ===================== WORK ===================== -->
   <div class="interlude" data-scene aria-hidden="true">
-    <img src="media/stills/ice-01.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
-    <div class="il-cap"><div class="wrap"><span>— 60m · where the deep work happens</span></div></div>
+    <div class="il-rays" aria-hidden="true"></div>
+    <div class="il-cap"><div class="wrap"><span class="reveal">— 60m · where the real work happens</span></div></div>
   </div>
 
   <section class="section-pad" data-screen-label="Home / Selected work">
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow reveal">Selected work</span>
-        <h2 class="reveal split-h2" data-d="1">Real builds. Real hours saved.</h2>
+        <h2 class="reveal split-h2" data-d="1">Tools I've shipped, and the hours they save.</h2>
         <p class="lead reveal" data-d="2">Anonymised because clients prefer it that way.</p>
       </div>
       <div class="work-grid">
@@ -507,7 +537,7 @@
             </div>
           </div>
           <span class="badge">Internal tool</span>
-          <h3>Lead research, a full day → zero</h3>
+          <h3>Cut lead research from a full day to zero</h3>
           <p>An overnight pipeline that finds, enriches and scores Canterbury leads, replacing 6+ hours of weekly manual research.</p>
           <span class="pl">Read case study <span class="arrow">→</span></span>
         </a>
@@ -547,7 +577,7 @@
           </div>
           <span class="badge badge--compliance">Health sector</span>
           <h3>Podcast post-production, fully automated</h3>
-          <p>7-stage pipeline: upload audio, get chapters, show notes, timestamps and guest research back in minutes. Built with a local-only mode for HIPC-compliant processing. No audio leaves the network.</p>
+          <p>7-stage pipeline: upload audio, get chapters, show notes, timestamps and guest research back in minutes. Built with a local-only mode that meets the NZ Health Information Privacy Code (HIPC). No audio leaves the network.</p>
           <span class="pl">Read case study <span class="arrow">→</span></span>
         </a>
       </div>
@@ -573,17 +603,44 @@
     </div>
   </section>
 
+  <!-- ===================== GUARANTEE ===================== -->
+  <section class="section-pad" data-screen-label="Home / Guarantee">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Low risk by design</span>
+        <h2 class="reveal split-h2" data-d="1">The risk sits with me, not you.</h2>
+      </div>
+      <div class="guarantee-grid">
+        <div class="glass guarantee reveal">
+          <div class="g-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Pay half on acceptance</h3>
+          <p>50% to start, 50% only once you've accepted the work. If you don't accept it, you don't pay the rest.</p>
+        </div>
+        <div class="glass guarantee reveal" data-d="1">
+          <div class="g-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>60-day warranty</h3>
+          <p>Anything that breaks in the first 60 days, I fix at no charge. Retainer clients get same-day response.</p>
+        </div>
+        <div class="glass guarantee reveal" data-d="2">
+          <div class="g-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>No lock-in, ever</h3>
+          <p>Source code, accounts, credentials, hosting are all yours. The day we finish, you could never speak to me again and it keeps running.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== FINAL CTA ===================== -->
   <div class="interlude" data-scene aria-hidden="true">
-    <img src="media/stills/ice-03.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async">
-    <div class="il-cap"><div class="wrap"><span>— 110m · nearly at the floor</span></div></div>
+    <div class="il-rays" aria-hidden="true"></div>
+    <div class="il-cap"><div class="wrap"><span class="reveal">— 110m · solid ground to build on</span></div></div>
   </div>
 
   <section class="cta" data-screen-label="Home / Final CTA">
     <div class="cta-glow" data-parallax="-0.05"></div>
     <div class="wrap">
       <h2 class="reveal split-h2">What would you do with 10 hours back this week?</h2>
-      <p class="reveal" data-d="1">Book a free 20-minute call. No pitch. I'll ask about your business and tell you what I'd automate first.</p>
+      <p class="reveal" data-d="1">Book a free 30-minute call. No pitch. I'll ask about your business and tell you what I'd automate first.</p>
       <div class="reveal" data-d="2"><a href="contact.html" class="btn btn-primary btn-lg" data-magnetic>Book a call <span class="arrow">→</span></a></div>
       <div class="cta-alt reveal" data-d="3" style="margin-top:22px"><span class="trust-line"><b>60-day warranty</b> · pay the second half only on acceptance · <b>no lock-in</b></span></div>
       <div class="cta-alt reveal" data-d="3">

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en-NZ">
+<html lang="en-NZ" class="preload">
 <head>
   <meta charset="UTF-8" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4KN43EF3W"></script>
@@ -65,8 +65,12 @@
           <div class="direct-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Christchurch, Canterbury, NZ</span></div>
         </div>
         <div class="direct-block"><div class="lbl">Reply time</div><p>1 working day or less, every time.</p></div>
-        <div class="direct-block"><div class="lbl">Book a call</div><p>30 minutes, no prep needed. Pick a time below, or <a href="https://cal.com/balu-prem-kumar-qyxfon/30min" target="_blank" rel="noopener" class="ln" style="color:var(--ice)">open the calendar in a new tab</a>.</p>
-        <iframe class="cal-embed" src="https://cal.com/balu-prem-kumar-qyxfon/30min?embed=true&theme=dark&layout=month_view" title="Book a 30-minute call" loading="lazy"></iframe></div>
+        <div class="direct-block"><div class="lbl">Book a call</div><p>30 minutes, no prep needed. I keep a limited number of call slots open each week. Pick a time below, or <a href="https://cal.com/balu-prem-kumar-qyxfon/30min" target="_blank" rel="noopener" class="ln" style="color:var(--ice)">open the calendar in a new tab</a>.</p>
+        <button type="button" class="cal-embed cal-facade" id="calFacade" data-cal="https://cal.com/balu-prem-kumar-qyxfon/30min?embed=true&theme=dark&layout=month_view" aria-label="Load the booking calendar">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="cal-facade-t">Load the booking calendar</span>
+          <span class="cal-facade-s">Loads cal.com here, or open it in a new tab above.</span>
+        </button></div>
       </div>
     </div>
   </section>
@@ -80,6 +84,13 @@
       const count = document.getElementById("charCount");
       const success = document.getElementById("successState");
       msg.addEventListener("input", () => { count.textContent = msg.value.length; });
+      const calFacade = document.getElementById("calFacade");
+      if (calFacade) calFacade.addEventListener("click", () => {
+        const f = document.createElement("iframe");
+        f.className = "cal-embed"; f.src = calFacade.dataset.cal;
+        f.title = "Book a 30-minute call"; f.loading = "lazy";
+        calFacade.replaceWith(f);
+      });
       const setInvalid = (f, bad) => f.closest(".field").classList.toggle("invalid", bad);
       form.addEventListener("submit", (e) => {
         e.preventDefault();
